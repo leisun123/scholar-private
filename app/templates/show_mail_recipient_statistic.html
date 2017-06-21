@@ -1,0 +1,67 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}IsolationWyn{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+{% block content%}
+	<div class="container">
+		<a>Total count:{{ count }}</a>
+		<table class="table">
+			<tr>
+				<th>ContactID</th>
+{#				封锁邮件数量#}
+				<th>BlockedCount</th>
+{#				退回邮件数量#}
+				<th>BouncedCount</th>
+{#				注册点击次数#}
+				<th>ClickedCount</th>
+{#				传送到目的地的邮件数量	#}
+				<th>DeliveredCount</th>
+{#				消息打开注册数#}
+				<th>OpenedCount</th>
+{#				邮件处理邮件总数#}
+				<th>ProcessedCount</th>
+{#				在发送队列中等待的消息数#}
+				<th>QueuedCount</th>
+{#				垃圾邮件投诉数量#}
+				<th>SpamComplaintCount</th>
+			</tr>
+			{% for scholar in scholars %}
+			<tr>
+				<td>{{ scholar['ContactID'] }}</td>
+				<td>{{ scholar['BlockedCount'] }}</td>
+				<td>{{ scholar['BouncedCount'] }}</td>
+				<td>{{ scholar['ClickedCount'] }}</td>
+				<td>{{ scholar['DeliveredCount'] }}</td>
+				<td>{{ scholar['OpenedCount'] }}</td>
+				<td>{{ scholar['ProcessedCount'] }}</td>
+				<td>{{ scholar['QueuedCount'] }}</td>
+				<td>{{ scholar['SpamComplaintCount'] }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}
+
+{#{% block scripts %}#}
+{#{{ super() }}#}
+{#<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>#}
+{#<script src="{{ url_for('static', filename='js/isotope.min.js') }}"></script>#}
+{#<script src="{{ url_for('static', filename='js/imagesloaded.js') }}"></script>#}
+{#<script type="text/javascript">#}
+{#    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};#}
+{#    (function(){#}
+{#        $.getJSON(#}
+{#            $SCRIPT_ROOT+"/", // Your AJAX route here#}
+{#            function(data) {#}
+{#                $('#id').text(data.ID);#}
+{#                $('#email').text(data.Email);#}
+{#            }#}
+{#        );#}
+{#        setTimeout(arguments.callee, 10000);#}
+{#    })();#}
+{#</script>#}
+{#{% endblock %}#}

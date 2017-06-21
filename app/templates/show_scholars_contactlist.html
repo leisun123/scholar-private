@@ -1,0 +1,30 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}IsolationWyn{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+{% block content%}
+	<div class="container">
+		<a>Total count:{{ count }}</a>
+		<table class="table">
+			<tr>
+				<th>ID</th>
+				<th>IsDeleted</th>
+				<th>Name</th>
+				<th>SubscriberCount</th>
+			</tr>
+			{% for scholar in scholars %}
+			<tr>
+				<td>{{ scholar['ID'] }}</td>
+				<td>{{ scholar['IsDeleted'] }}</td>
+				<td>{{ scholar['Name'] }}</td>
+				<td>{{ scholar['SubsciberCount'] }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}
+

@@ -1,0 +1,49 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}IsolationWyn{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+{% block content%}
+	<div class="container">
+		<a>Total count:{{ count }}</a>
+		<table class="table">
+			<tr>
+				<th>ID</th>
+				<th>CreatedAt</th>
+				<th>Name</th>
+				<th>Email</th>
+			</tr>
+			{% for scholar in scholars %}
+			<tr>
+				<td>{{ scholar['ID'] }}</td>
+				<td>{{ scholar['CreatedAt'] }}</td>
+				<td>{{ scholar['Name'] }}</td>
+				<td>{{ scholar['Email'] }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}
+
+{#{% block scripts %}#}
+{#{{ super() }}#}
+{#<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>#}
+{#<script src="{{ url_for('static', filename='js/isotope.min.js') }}"></script>#}
+{#<script src="{{ url_for('static', filename='js/imagesloaded.js') }}"></script>#}
+{#<script type="text/javascript">#}
+{#    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};#}
+{#    (function(){#}
+{#        $.getJSON(#}
+{#            $SCRIPT_ROOT+"/", // Your AJAX route here#}
+{#            function(data) {#}
+{#                $('#id').text(data.ID);#}
+{#                $('#email').text(data.Email);#}
+{#            }#}
+{#        );#}
+{#        setTimeout(arguments.callee, 10000);#}
+{#    })();#}
+{#</script>#}
+{#{% endblock %}#}
