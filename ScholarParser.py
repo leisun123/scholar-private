@@ -2,6 +2,7 @@ from ScholarArticle import ScholarArticle
 from decorators import except_pass
 from Tool import extract,fetch
 from spider_config import RULES
+import re
 
 EP_METHOD=lambda func:except_pass(func,ModelName='ScholarArticle')
 
@@ -24,4 +25,6 @@ class ScholarParser(ScholarArticle):
     @EP_METHOD
     def generate_email(self):
         temp=extract(RULES["email"],self.sec)
-        self.email=temp.split(':')[1]
+        # self.email=temp.split(':')[1]
+        emailRegex = r"([\w\.\-]+@[\w\.\-]+)"
+        self.email = re.search(emailRegex,str(temp).replace(' ','')).group(0)

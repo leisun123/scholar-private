@@ -8,7 +8,8 @@ class ScholarArticle(Scholar):
         self.url=None
         self.author=None
         self.email=None
-
+        self.first_name=None
+        
     def generate_title(self):
         pass
 
@@ -21,12 +22,17 @@ class ScholarArticle(Scholar):
     def generate_email(self):
         pass
 
+    def parse_first_name(self):
+        from Tool import nameparser
+        self.first_name=nameparser(self.author)
+
     def generate_all_method(self):
         self.generate_title()
         self.generate_url()
         self.generate_author()
         self.generate_email()
-
+        self.parse_first_name()
+        
     def insertdb(self):
         self.conn=self.connectdb()
         self.cur=self.conn.cursor()
@@ -49,7 +55,7 @@ class ScholarArticle(Scholar):
                 title,\
                 author,\
                 email)\
-            VALUES('{}','{}','{}','{}')".format(self.url,self.title, self.author,self.email))
+            VALUES('{}','{}','{}','{}','{}')".format(self.url,self.title, self.author,self.email,self.first_name))
         self.conn.commit()
 
     def show_in_cmd(self):
