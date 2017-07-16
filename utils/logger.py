@@ -22,4 +22,3 @@ def get_logger(name):
     default_logger.addHandler(stream)
     return default_logger
 
-logger=get_logger("scholar_spider")

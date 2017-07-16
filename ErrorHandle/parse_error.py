@@ -1,13 +1,13 @@
 #coding:utf-8
 """
-@file:      decorators.py
-@author:    lyn
-@contact:   tonylu716@gmail.com
-@python:    3.3
+@file:      parse_error
+@author:    IsolationWyn
+@contact:   genius_wz@aliyun.com
+@python:    3.5.2
 @editor:    PyCharm
-@create:    2016-10-02 2:45
+@create:    2017/7/1 2:57
 @description:
-            放常用的装饰器
+            --
 """
 
 def except_return_none(func,ModelName):
@@ -19,6 +19,7 @@ def except_return_none(func,ModelName):
                   .format(ModelName,func.__name__,str(e)))
             return None
     return wrapper
+
 
 #尽量用有返回值的
 def except_pass(func,ModelName):

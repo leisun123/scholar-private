@@ -28,3 +28,5 @@ class ScholarParser(ScholarArticle):
         # self.email=temp.split(':')[1]
         emailRegex = r"([\w\.\-]+@[\w\.\-]+)"
         self.email = re.search(emailRegex,str(temp).replace(' ','')).group(0)
+        
+        

@@ -1,11 +1,11 @@
 #coding:utf-8
 """
-@file:      Error
-@author:    lyn
-@contact:   tonylu716@gmail.com
-@python:    3.3
+@file:      net_error
+@author:    IsolationWyn
+@contact:   genius_wz@aliyun.com
+@python:    3.5.2
 @editor:    PyCharm
-@create:    2017-03-03 20:57
+@create:    2017/7/1 3:03
 @description:
             --
 """
