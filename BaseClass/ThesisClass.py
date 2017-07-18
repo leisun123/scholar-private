@@ -9,6 +9,7 @@
 @description:
             --
 """
+import requests
 class ThesisInfo(object):
     def __init__(self):
         self.avatar = None
@@ -98,28 +99,38 @@ class ThesisInfo(object):
         self._generate_keywordKeys()
         self._generate_cityKeys()
         self._generate_timeKeys()
-        
+    
+
+            
     def set_value(self):
-        return {"keywordKeys":self.keywordKeys,
-                "cityKeys":self.cityKeys,
-                "timeKeys":self.timeKeys,
-                "firstName":self.firstName,
-                "lastName":self.lastName,
-                "organization":self.organization,
-                "major":self.major,
-                "title":self.title,
-                "birth":self.birth,
-                "country":self.country,
-                "state":self.state,
-                "city":self.city,
-                "phone":self.phone,
+        
+        return {
+                "name":"{} {}".format(self.firstName,self.lastName),
                 "email":self.email,
-                "website":self.website,
-                "cooperation":self.cooperation,
-                "bio":self.bio,
-                "keywords":self.keywords,
-                "city":self.city,
-                "time":self.time
+                "password":"bcrypt",
+                "avatar":self.avatar,
+                "profile":
+                    {"keywordKeys":self.keywordKeys,
+                    "cityKeys":self.cityKeys,
+                    "timeKeys":self.timeKeys,
+                    "firstName":self.firstName,
+                    "lastName":self.lastName,
+                    "organization":self.organization,
+                    "major":self.major,
+                    "title":self.title,
+                    "birth":self.birth,
+                    "country":self.country,
+                    "state":self.state,
+                    "city":self.city,
+                    "phone":self.phone,
+                    "email":self.email,
+                    "website":self.website,
+                    "cooperation":self.cooperation,
+                    "bio":self.bio,
+                    "keywords":self.keywords,
+                    "city":self.city,
+                    "time":self.time
+                    }
                 }
         
     def terminal_monitoring(self):

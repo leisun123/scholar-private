@@ -10,42 +10,88 @@
             --
 """
 import datetime
-from sqlalchemy import Column,Integer,String,DateTime,Numeric,create_engine,VARCHAR
+from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-from ScholarConfig.config import DB_CONFIG
-
+from sqlalchemy.orm import sessionmaker, relationship
+from sqlalchemy.sql import func
+from ScholarConfig.config import DB_CONFIG,create_ssh_tunnel
+import simplejson
 from db.ISqlHelper import ISqlHelper
+from uuid import uuid4
 
+import requests
 BaseModel = declarative_base()
 
-class ThesisBase(BaseModel):
-    __tablename__='thesis'
-    id = Column(Integer,primary_key=True,autoincrement=True)
-    title = Column(VARCHAR(500),nullable=False)
-    source_url = Column(VARCHAR(500))
-    keywords = Column(VARCHAR(500))
-    update_time= Column(DateTime(),default=datetime.datetime.utcnow)
-    publish_time =Column(VARCHAR(200))
-    abstract = Column(VARCHAR(3000))
-    type = Column(VARCHAR(100))
-    doi = Column(VARCHAR(100))
-    pdf_url = Column(VARCHAR(500))
+
+class Group(BaseModel):
+    __tablename__ = 'groups'
+
+    id = Column(BigInteger, primary_key=True)
+    object_id = Column(String(36), nullable=False)
+    name = Column(String(255), nullable=False, unique=True)
     
+class ObjectAttribute(BaseModel):
+    __tablename__ = 'object_attributes'
+    __table_args__ = (
+        Index('object_id', 'object_id', 'name', unique=True),
+    )
+
+    id = Column(BigInteger, primary_key=True)
+    object_id = Column(String(36), nullable=False)
+    name = Column(String(255), nullable=False)
+    value = Column(LargeBinary)
+
+
+class Object(BaseModel):
+    __tablename__ = 'objects'
+
+    id = Column(String(36), primary_key=True, unique=True)
+    parent = Column(String(36))
+    type = Column(String(255), nullable=False)
+    name = Column(String(255), nullable=False, unique=True)
+    created_at = Column(DateTime, nullable=False)
+
+
+class User(BaseModel):
+    __tablename__ = 'users'
+
+    id = Column(BigInteger, primary_key=True)
+    object_id = Column(String(36), nullable=False)
+    scope = Column(String(255), nullable=False)
+    name = Column(String(255), nullable=False)
+    email = Column(String(255), nullable=False, unique=True)
+    password = Column(Text, nullable=False)
+    reset_password_token = Column(Text)
+    reset_password_sent_at = Column(DateTime)
+    remember_created_at = Column(DateTime)
+    sign_in_count = Column(BigInteger, nullable=False, server_default=text("'0'"))
+    current_sign_in_at = Column(DateTime)
+    last_sign_in_at = Column(DateTime)
+    current_sign_in_ip = Column(Text)
+    last_sign_in_ip = Column(Text)
+    confirmation_token = Column(Text)
+    confirmed_at = Column(DateTime)
+    confirmation_sent_at = Column(DateTime)
+    unconfirmed_email = Column(Text)
+    failed_attempts = Column(Integer, nullable=False, server_default=text("'0'"))
+    unlock_token = Column(Text)
+    locked_at = Column(DateTime)
+    created_at = Column(DateTime)
+    updated_at = Column(DateTime)
+
+class UserGroup(BaseModel):
+    __tablename__ = 'user_groups'
+    __table_args__ = (
+        Index('unique_user_id_group_id', 'user_id', 'group_id', unique=True),
+    )
+
+    id = Column(BigInteger, primary_key=True)
+    user_id = Column(ForeignKey('users.id'), nullable=False)
+    group_id = Column(ForeignKey('groups.id'), nullable=False, index=True)
+
+    group = relationship('Group')
+    user = relationship('User')
     
-class ScholarBase(BaseModel):
-    __tablename__='scholar'
-    id = Column(Integer,primary_key=True,autoincrement=True)
-    thesis = Column(VARCHAR(200))
-    name = Column(VARCHAR(200),nullable=False)
-    last_name = Column(VARCHAR(50),nullable=False)
-    email = Column(VARCHAR(300))
-    profession = Column(VARCHAR(300))
-    university = Column(VARCHAR(200))
-    city = Column(VARCHAR(200))
-    country = Column(VARCHAR(200))
-    affiliation = Column(VARCHAR(1000))
-  
 class Proxy(BaseModel):
     __tablename__ = 'proxys'
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -66,44 +112,97 @@ class SqlHelper(ISqlHelper):
             connect_args = {'check_same_thread':False}
             self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'],echo=False,connect_args=connect_args)
         else:
-            self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'],echo=False)
-        DB_Session = sessionmaker(bind=self.engine)
-        self.session = DB_Session()
+            self.engine =create_ssh_tunnel()
+            #self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
+            DB_Session = sessionmaker(bind=self.engine)
+            self.session = DB_Session()
         
     def init_db(self):
         BaseModel.metadata.create_all(self.engine)
         
-    def drop_db(self):
-        BaseModel.metadata.drop_all(self.engine)
+
+    # def drop_db(self):
+    #     BaseModel.metadata.drop_all(self.engine)
+    
+
+        
+    @staticmethod
+    def transcoding_avatar(avatar_url):
+        tmp = requests.get(avatar_url)
+        if tmp.status_code == 200:
+            return bytes(tmp.content,encoding='utf8')
         
     def insert_scholar_thesis(self, **values):
-        thesis = ThesisBase(
-                              title=values['title'],
-                              source_url=values['source_url'],
-                              keywords=values['keywords'],
-                              update_time=values['update_time'],
-                              publish_time=values['publish_time'],
-                              abstract=values['abstract'],
-                              type=values['type'],
-                              doi=values['doi'],
-                              pdf_url=values['pdf_url']
-                              )
-        from nameparser import HumanName
-        for i in values['scholar_info']:
-            scholar = ScholarBase(
-                              name=i['name'],
-                              last_name=HumanName(i['name']).last,
-                              thesis=values['title'],
-                              email=i['email'],
-                              profession=i['profession'],
-                              university=i['university'],
-                              city=i['city'],
-                              country=i['country']
-                                )
-            self.session.add(scholar)
-        self.session.add(thesis)
-        self.session.commit()
+        tmp_id = str(uuid4())
+        tmp_create_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        object = Object(
+                        id = tmp_id,
+                        parent = None,
+                        type = "user",
+                        name = "User:{}".format(tmp_id),
+                        created_at = tmp_create_time
+                        )
         
+        user = User(
+                        object_id = tmp_id,
+                        scope = "",
+                        name = values["name"],
+                        email = values["email"],
+                        password = "bcrypt",
+                        reset_password_token = None,
+                        reset_password_sent_at = None,
+                        remember_created_at = None,
+                        
+                        current_sign_in_at = None,
+                        last_sign_in_at = None,
+                        current_sign_in_ip = None,
+                        last_sign_in_ip = None,
+                        confirmation_token = None,
+                        confirmed_at = None,
+                        confirmation_sent_at = None,
+                        unconfirmed_email = None,
+                        
+                        unlock_token = None,
+                        locked_at = None,
+                        created_at = tmp_create_time,
+                        updated_at = None
+        )
+        
+        object_attributes_profile = ObjectAttribute(
+                        object_id = tmp_id,
+                        name = "profile",
+                        value = bytes(simplejson.dumps(values["profile"]),encoding='utf8'))
+
+        object_attributes_avatar = ObjectAttribute(
+                        object_id = tmp_id,
+                        name = "avatar",
+                        value = bytes("{}.jpg".format(user.id),encoding='utf8')
+        )
+        object_attributes_password = ObjectAttribute(
+                        object_id = tmp_id,
+                        name = "password",
+                        value = bytes(values["password"],encoding='utf8')
+        )
+
+        
+        # self.session.add(object)
+        # self.session.add(object_attributes_profile)
+        # self.session.add(object_attributes_avatar)
+        # self.session.add(object_attributes_password)
+        try:
+            self.session.add(user)
+            self.session.flush()
+            user_group = UserGroup(
+                        user_id = user.id,
+                        group_id = 5
+                        )
+            self.session.add(user_group)
+            self.session.commit()
+        except:
+            self.session.rollback()
+        
+
+    
     def output_proxy(self):
         ipprort=self.session.query(Proxy.ip,Proxy.port).all()
         with open("../utils/1.txt","r+") as f:
@@ -139,9 +238,10 @@ if __name__ == '__main__':
     sqlhelper = SqlHelper()
     import time
     from datetime import datetime
-    # sqlhelper.drop_db()
-    # sqlhelper.init_db()
-    sqlhelper.output_proxy()
+    
+    #sqlhelper.init_db()
+    sqlhelper.drop_db()
+    sqlhelper.init_db()
         
         
     

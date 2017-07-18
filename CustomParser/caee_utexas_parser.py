@@ -28,9 +28,9 @@ class CaeeUtexasClass(ThesisInfo):
         self.sec = sec
         super(CaeeUtexasClass, self).__init__()
         self.generate_all_method()
-        # parm=self.set_value()
-        # sqlhelper=SqlHelper()
-        # sqlhelper.insert_scholar_thesis(**parm)
+        parm=self.set_value()
+        sqlhelper=SqlHelper()
+        sqlhelper.insert_scholar_thesis(**parm)
     
     def _generate_avatar(self):
         self.avatar = extract(RULES["avatar"],self.sec)
@@ -95,9 +95,7 @@ class CaeeUtexasClass(ThesisInfo):
                 if ";" in tmp:
                     self.cooperation = tmp.split(";")
                 else:
-                    i = []
-                    i.append(tmp)
-                    self.cooperation = i
+                    self.cooperation.append(tmp)
             else:
                 self.cooperation = []
         
@@ -109,9 +107,7 @@ class CaeeUtexasClass(ThesisInfo):
             if "," in tmp:
                 self.keywords = tmp.split(",")
             else:
-                i = []
-                i.append(tmp)
-                self.keywords = i
+                self.keywords.append(tmp)
         else:
             self.keywords = []
     def _generate_city(self):

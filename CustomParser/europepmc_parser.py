@@ -29,9 +29,9 @@ class ScienceDirect(ThesisInfo):
         self.sec = sec
         super(ScienceDirect, self).__init__()
         self.generate_all_method()
-        # parm=self.set_value()
-        # sqlhelper=SqlHelper()
-        # sqlhelper.insert_scholar_thesis(**parm)
+        parm=self.set_value()
+        sqlhelper=SqlHelper()
+        sqlhelper.insert_scholar_thesis(**parm)
         
     @PS_ERROR
     def _generate_title(self):

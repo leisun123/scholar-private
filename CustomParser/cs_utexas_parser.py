@@ -30,9 +30,9 @@ class CSUtexasClass(ThesisInfo):
         self.sec = sec
         super(CSUtexasClass, self).__init__()
         self.generate_all_method()
-        # parm=self.set_value()
-        # sqlhelper=SqlHelper()
-        # sqlhelper.insert_scholar_thesis(**parm)
+        parm=self.set_value()
+        sqlhelper=SqlHelper()
+        sqlhelper.insert_scholar_thesis(**parm)
     
     def _generate_avatar(self):
         self.avatar = extract(RULES["avatar"],self.sec)
@@ -41,7 +41,7 @@ class CSUtexasClass(ThesisInfo):
         self.firstName = HumanName(extract("//strong/a/text()",str(etree.tostring(tmp)))).first
     def _generate_lastName(self):
         tmp = extract(RULES["info"],self.sec,multi=True)[0]
-        self.firstName = HumanName(extract("//strong/a/text()",str(etree.tostring(tmp)))).last
+        self.lastName = HumanName(extract("//strong/a/text()",str(etree.tostring(tmp)))).last
     def _generate_organization(self):
         self.organization = "The University of Texas at Austin"
     def _generate_major(self):

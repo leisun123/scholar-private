@@ -41,9 +41,9 @@ class MeUtexasClass(ThesisInfo):
         self.sec = sec
         super(MeUtexasClass, self).__init__()
         self.generate_all_method()
-        # parm=self.set_value()
-        # sqlhelper=SqlHelper()
-        # sqlhelper.insert_scholar_thesis(**parm)
+        parm=self.set_value()
+        sqlhelper=SqlHelper()
+        sqlhelper.insert_scholar_thesis(**parm)
     
     def _generate_avatar(self):
         self.avatar = extract(RULES["avatar"],self.sec)

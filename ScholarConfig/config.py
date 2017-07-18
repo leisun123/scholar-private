@@ -11,12 +11,16 @@
 """
 import os
 
+from sqlalchemy import create_engine
+from sshtunnel import SSHTunnelForwarder
+
 DB_CONFIG={
 
     'DB_CONNECT_TYPE':'sqlalchemy',#'pymongo'sqlalchemy
     # 'DB_CONNECT_STRING':'mongodb://localhost:27017/'
     #'DB_CONNECT_STRING':'sqlite:///'+os.path.dirname(__file__)+'/data/proxy.db'
-    'DB_CONNECT_STRING' : "postgresql://wyn:weiaizq1314@localhost:5432/scholar"
+    'DB_CONNECT_STRING' : "mysql+pymysql://wyn:weiaizq1314@localhost/eb"
+    #'DB_CONNECT_STRING' : "mysql+pymysql://root:root@localhost:{}/eb"
 }
 
 proxies = None
@@ -60,4 +64,14 @@ USER_AGENTS = [
 import random
 USER_AGENT = random.choice(USER_AGENTS)
 
-
+def create_ssh_tunnel():
+    server = SSHTunnelForwarder(
+            ('13.113.193.188',22),
+            ssh_username="ubuntu",
+            ssh_pkey="C:/Users/tonylu/Desktop/eb-web(1).pem",
+            remote_bind_address=('localhost',3306)
+            )
+    server.start()
+    
+    enginee = create_engine("mysql+pymysql://root:root@localhost:{}/eb".format(server.local_bind_port))
+    return enginee
