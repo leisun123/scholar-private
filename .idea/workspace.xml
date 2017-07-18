@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29ac3f02-7c2c-4098-a630-56da593e5469" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CustomParser/che_utexas_parser.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CustomParser/ece_utexas_parser.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CustomParser/tmi_utexas_parser.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ScholarConfig/che_utexas_rule.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ScholarConfig/tmi_utexas_rule.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TaskFeed/che_utexas_task.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TaskFeed/tmi_utexas_task.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BaseClass/ThesisClass.py" afterPath="$PROJECT_DIR$/BaseClass/ThesisClass.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CustomParser/caee_utexas_parser.py" afterPath="$PROJECT_DIR$/CustomParser/caee_utexas_parser.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CustomParser/cs_utexas_parser.py" afterPath="$PROJECT_DIR$/CustomParser/cs_utexas_parser.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CustomParser/europepmc_parser.py" afterPath="$PROJECT_DIR$/CustomParser/europepmc_parser.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CustomParser/me_utexas_parser.py" afterPath="$PROJECT_DIR$/CustomParser/me_utexas_parser.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ScholarConfig/config.py" afterPath="$PROJECT_DIR$/ScholarConfig/config.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/SqlHelper.py" afterPath="$PROJECT_DIR$/db/SqlHelper.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage.py" afterPath="$PROJECT_DIR$/manage.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,22 +21,22 @@
     <SUITE FILE_PATH="coverage/scholar$SqlHelper.coverage" NAME="SqlHelper Coverage Results" MODIFIED="1500390177203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/scholar$spider_config.coverage" NAME="spider_config Coverage Results" MODIFIED="1498148985324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/scholar$caee_utexas_rule.coverage" NAME="caee_utexas_rule Coverage Results" MODIFIED="1500389441644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ScholarConfig" />
-    <SUITE FILE_PATH="coverage/scholar$che_utexas_task.coverage" NAME="che_utexas_task Coverage Results" MODIFIED="1500390149972" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
+    <SUITE FILE_PATH="coverage/scholar$che_utexas_task.coverage" NAME="che_utexas_task Coverage Results" MODIFIED="1500391351890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
     <SUITE FILE_PATH="coverage/scholar$MailjetApi.coverage" NAME="MailjetApi Coverage Results" MODIFIED="1497983217494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/wynmail" />
     <SUITE FILE_PATH="coverage/scholar$caee_utexas_parser.coverage" NAME="caee_utexas_parser Coverage Results" MODIFIED="1500376299362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
     <SUITE FILE_PATH="coverage/scholar$proxy_manager.coverage" NAME="proxy_manager Coverage Results" MODIFIED="1499079668672" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/scholar$cs_utexas_parser.coverage" NAME="cs_utexas_parser Coverage Results" MODIFIED="1500229687840" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
     <SUITE FILE_PATH="coverage/scholar$app.coverage" NAME="app Coverage Results" MODIFIED="1497432581678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/scholar$views.coverage" NAME="views Coverage Results" MODIFIED="1498027289087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/main" />
-    <SUITE FILE_PATH="coverage/scholar$tmi_utexas_task.coverage" NAME="tmi_utexas_task Coverage Results" MODIFIED="1500386330465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
-    <SUITE FILE_PATH="coverage/scholar$me_utexas_task.coverage" NAME="me_utexas_task Coverage Results" MODIFIED="1500238438491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
+    <SUITE FILE_PATH="coverage/scholar$tmi_utexas_task.coverage" NAME="tmi_utexas_task Coverage Results" MODIFIED="1500392583830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
+    <SUITE FILE_PATH="coverage/scholar$me_utexas_task.coverage" NAME="me_utexas_task Coverage Results" MODIFIED="1500392423202" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
     <SUITE FILE_PATH="coverage/scholar$tmi_utexas_parser.coverage" NAME="tmi_utexas_parser Coverage Results" MODIFIED="1500369505410" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
     <SUITE FILE_PATH="coverage/scholar$rabbitmq.coverage" NAME="rabbitmq Coverage Results" MODIFIED="1497462037945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/scholar$send.coverage" NAME="send Coverage Results" MODIFIED="1497469403125" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/rabbitmq" />
     <SUITE FILE_PATH="coverage/scholar$property.coverage" NAME="property Coverage Results" MODIFIED="1499025977378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ScholarConfig" />
     <SUITE FILE_PATH="coverage/scholar$.coverage" NAME="描述器 Coverage Results" MODIFIED="1499027697286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pre" />
     <SUITE FILE_PATH="coverage/scholar$Tool.coverage" NAME="Tool Coverage Results" MODIFIED="1498765058971" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/scholar$cs_utexas_task.coverage" NAME="cs_utexas_task Coverage Results" MODIFIED="1500389069770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
+    <SUITE FILE_PATH="coverage/scholar$cs_utexas_task.coverage" NAME="cs_utexas_task Coverage Results" MODIFIED="1500391927293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
     <SUITE FILE_PATH="coverage/scholar$mail_server.coverage" NAME="mail-server Coverage Results" MODIFIED="1497995561191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/wynmail" />
     <SUITE FILE_PATH="coverage/scholar$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1499022291196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pre" />
     <SUITE FILE_PATH="coverage/scholar$ScholarManager.coverage" NAME="ScholarManager Coverage Results" MODIFIED="1498477307174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -172,7 +157,7 @@
     <favorites_list name="scholar" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.18975903">
+    <splitter split-orientation="horizontal" split-proportion="0.1">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="ThesisClass.py" pinned="false" current-in-tab="false">
@@ -264,10 +249,10 @@
             <entry file="file://$PROJECT_DIR$/db/SqlHelper.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="667">
-                  <caret line="201" column="35" lean-forward="false" selection-start-line="201" selection-start-column="35" selection-end-line="201" selection-end-column="35" />
+                  <caret line="202" column="35" lean-forward="false" selection-start-line="202" selection-start-column="35" selection-end-line="202" selection-end-column="35" />
                   <folding>
                     <element signature="e#197#212#0" expanded="true" />
-                    <marker date="1500390803294" expanded="true" signature="4153:4204" ph="..." />
+                    <marker date="1500392882213" expanded="true" signature="4153:4204" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -276,8 +261,8 @@
           <file leaf-file-name="caee_utexas_parser.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/CustomParser/caee_utexas_parser.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="552">
-                  <caret line="55" column="24" lean-forward="true" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
+                <state relative-caret-position="-460">
+                  <caret line="62" column="12" lean-forward="true" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
                   <folding>
                     <element signature="e#205#227#0" expanded="true" />
                     <marker date="1500365074022" expanded="true" signature="2975:2976" ph="..." />
@@ -294,34 +279,52 @@
           <file leaf-file-name="ThesisClass.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/BaseClass/ThesisClass.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="175">
-                  <caret line="85" column="30" lean-forward="true" selection-start-line="85" selection-start-column="30" selection-end-line="85" selection-end-column="30" />
+                <state relative-caret-position="2760">
+                  <caret line="120" column="23" lean-forward="false" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SqlHelper.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="SqlHelper.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/db/SqlHelper.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="575">
-                  <caret line="124" column="50" lean-forward="true" selection-start-line="124" selection-start-column="50" selection-end-line="124" selection-end-column="50" />
+                <state relative-caret-position="506">
+                  <caret line="201" column="15" lean-forward="true" selection-start-line="201" selection-start-column="15" selection-end-line="201" selection-end-column="15" />
                   <folding>
                     <element signature="e#197#212#0" expanded="true" />
+                    <marker date="1500392882213" expanded="true" signature="4153:4204" ph="..." />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="manage.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/manage.py">
+          <file leaf-file-name="europepmc_task.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/TaskFeed/europepmc_task.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="368">
-                  <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-                  <folding>
-                    <element signature="e#0#36#0" expanded="true" />
-                    <marker date="1500389623660" expanded="true" signature="573:593" ph="select * fro... groups" />
-                  </folding>
+                <state relative-caret-position="672">
+                  <caret line="50" column="33" lean-forward="true" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="me_utexas_task.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/TaskFeed/me_utexas_task.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="759">
+                  <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="tmi_utexas_task.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/TaskFeed/tmi_utexas_task.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="428">
+                  <caret line="29" column="18" lean-forward="true" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -340,61 +343,41 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="caee_utexas_rule.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ScholarConfig/caee_utexas_rule.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="345">
-                  <caret line="15" column="47" lean-forward="true" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="caee_utexas_task.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/TaskFeed/caee_utexas_task.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="621">
-                  <caret line="34" column="14" lean-forward="false" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="cs_utexas_task.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/TaskFeed/cs_utexas_task.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="552">
-                  <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+                <state relative-caret-position="437">
+                  <caret line="27" column="4" lean-forward="true" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="tmi_utexas_task.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/TaskFeed/tmi_utexas_task.py">
+          <file leaf-file-name="cs_utexas_parser.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CustomParser/cs_utexas_parser.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="520">
-                  <caret line="33" column="41" lean-forward="false" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+                <state relative-caret-position="552">
+                  <caret line="110" column="57" lean-forward="false" selection-start-line="110" selection-start-column="57" selection-end-line="110" selection-end-column="57" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="che_utexas_task.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="che_utexas_task.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/TaskFeed/che_utexas_task.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="451">
-                  <caret line="42" column="35" lean-forward="true" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
+                <state relative-caret-position="405">
+                  <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ScholarConfig/config.py">
+          <file leaf-file-name="che_utexas_parser.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CustomParser/che_utexas_parser.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="184">
-                  <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+                <state relative-caret-position="382">
+                  <caret line="32" column="47" lean-forward="true" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
                   <folding />
                 </state>
               </provider>
@@ -865,7 +848,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.caee_utexas_task">
+  <component name="RunManager" selected="Python.tmi_utexas_task">
     <configuration default="false" name="cs_utexas_task" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -880,25 +863,6 @@
       <module name="scholar" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TaskFeed/cs_utexas_task.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="SqlHelper" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/db" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="scholar" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/db/SqlHelper.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -923,25 +887,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="caee_utexas_rule" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ScholarConfig" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="scholar" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ScholarConfig/caee_utexas_rule.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="caee_utexas_task" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -956,6 +901,44 @@
       <module name="scholar" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TaskFeed/caee_utexas_task.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="me_utexas_task" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TaskFeed" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="scholar" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TaskFeed/me_utexas_task.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="tmi_utexas_task" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TaskFeed" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="scholar" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TaskFeed/tmi_utexas_task.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -1143,18 +1126,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.ScholarManager" />
       <item index="1" class="java.lang.String" itemvalue="Python.cs_utexas_task" />
-      <item index="2" class="java.lang.String" itemvalue="Python.SqlHelper" />
-      <item index="3" class="java.lang.String" itemvalue="Python.che_utexas_task" />
-      <item index="4" class="java.lang.String" itemvalue="Python.caee_utexas_rule" />
-      <item index="5" class="java.lang.String" itemvalue="Python.caee_utexas_task" />
+      <item index="2" class="java.lang.String" itemvalue="Python.che_utexas_task" />
+      <item index="3" class="java.lang.String" itemvalue="Python.caee_utexas_task" />
+      <item index="4" class="java.lang.String" itemvalue="Python.me_utexas_task" />
+      <item index="5" class="java.lang.String" itemvalue="Python.tmi_utexas_task" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.caee_utexas_task" />
-        <item index="1" class="java.lang.String" itemvalue="Python.SqlHelper" />
-        <item index="2" class="java.lang.String" itemvalue="Python.che_utexas_task" />
-        <item index="3" class="java.lang.String" itemvalue="Python.caee_utexas_rule" />
-        <item index="4" class="java.lang.String" itemvalue="Python.cs_utexas_task" />
+        <item index="0" class="java.lang.String" itemvalue="Python.tmi_utexas_task" />
+        <item index="1" class="java.lang.String" itemvalue="Python.me_utexas_task" />
+        <item index="2" class="java.lang.String" itemvalue="Python.cs_utexas_task" />
+        <item index="3" class="java.lang.String" itemvalue="Python.che_utexas_task" />
+        <item index="4" class="java.lang.String" itemvalue="Python.caee_utexas_task" />
       </list>
     </recent_temporary>
   </component>
@@ -1185,15 +1168,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1456" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977912" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34453124" sideWeight="0.9416168" order="4" side_tool="true" content_ui="tabs" x="2308" y="117" width="2098" height="832" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3125" sideWeight="0.9416168" order="4" side_tool="true" content_ui="tabs" x="2308" y="117" width="2098" height="832" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3233533" sideWeight="0.20742187" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3233533" sideWeight="0.7925781" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13671875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34453124" sideWeight="0.058383234" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17578125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3125" sideWeight="0.058383234" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27101335" sideWeight="0.49681783" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24801902" sideWeight="0.4984375" order="6" side_tool="false" content_ui="tabs" />
@@ -1460,24 +1444,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CustomParser/che_utexas_parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="32" column="47" lean-forward="true" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
-          <folding>
-            <element signature="e#205#227#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TaskFeed/me_utexas_task.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="39" column="32" lean-forward="false" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/wyn/wynpythonlib/Lib/site-packages/sqlalchemy/pool.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3494">
@@ -1552,14 +1518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TaskFeed/europepmc_task.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="658">
-          <caret line="50" column="33" lean-forward="true" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TaskFeed/existed_spider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -1576,30 +1534,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TaskFeed/tmi_utexas_task.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="33" column="41" lean-forward="false" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TaskFeed/cs_utexas_task.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CustomParser/cs_utexas_parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="41" column="33" lean-forward="true" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ScholarConfig/caee_utexas_rule.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -1610,16 +1544,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ScholarConfig/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="541">
+          <caret line="40" column="36" lean-forward="false" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+          <folding>
+            <element signature="e#192#201#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
-          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+          <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
             <marker date="1500389623660" expanded="true" signature="573:593" ph="select * fro... groups" />
@@ -1627,10 +1563,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BaseClass/ThesisClass.py">
+    <entry file="file://$PROJECT_DIR$/TaskFeed/caee_utexas_task.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="85" column="30" lean-forward="true" selection-start-line="85" selection-start-column="30" selection-end-line="85" selection-end-column="30" />
+        <state relative-caret-position="520">
+          <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomParser/che_utexas_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="32" column="47" lean-forward="true" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TaskFeed/europepmc_task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="50" column="33" lean-forward="true" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TaskFeed/cs_utexas_task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="27" column="4" lean-forward="true" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1647,29 +1607,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/SqlHelper.py">
+    <entry file="file://$PROJECT_DIR$/CustomParser/cs_utexas_parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="124" column="50" lean-forward="true" selection-start-line="124" selection-start-column="50" selection-end-line="124" selection-end-column="50" />
-          <folding>
-            <element signature="e#197#212#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="552">
+          <caret line="110" column="57" lean-forward="false" selection-start-line="110" selection-start-column="57" selection-end-line="110" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TaskFeed/caee_utexas_task.py">
+    <entry file="file://$PROJECT_DIR$/TaskFeed/me_utexas_task.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="34" column="14" lean-forward="false" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
+        <state relative-caret-position="759">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TaskFeed/tmi_utexas_task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="29" column="18" lean-forward="true" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BaseClass/ThesisClass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2760">
+          <caret line="120" column="23" lean-forward="false" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TaskFeed/che_utexas_task.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="42" column="35" lean-forward="true" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
+        <state relative-caret-position="405">
+          <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/SqlHelper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="201" column="15" lean-forward="true" selection-start-line="201" selection-start-column="15" selection-end-line="201" selection-end-column="15" />
+          <folding>
+            <element signature="e#197#212#0" expanded="true" />
+            <marker date="1500392882213" expanded="true" signature="4153:4204" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

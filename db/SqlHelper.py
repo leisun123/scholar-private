@@ -185,11 +185,12 @@ class SqlHelper(ISqlHelper):
         )
 
         
-        # self.session.add(object)
-        # self.session.add(object_attributes_profile)
-        # self.session.add(object_attributes_avatar)
-        # self.session.add(object_attributes_password)
+
         try:
+            self.session.add(object)
+            self.session.add(object_attributes_profile)
+            self.session.add(object_attributes_avatar)
+            self.session.add(object_attributes_password)
             self.session.add(user)
             self.session.flush()
             user_group = UserGroup(
