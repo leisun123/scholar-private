@@ -28,11 +28,11 @@ class ThesisInfo(object):
         self.cooperation = []
         self.bio = None
         self.keywords = []
-        self.city = []
-        self.time = []
+        self.city = ["China"]
+        self.time = ["Flexible"]
         self.keywordKeys = []
-        self.cityKeys = []
-        self.timeKeys = []
+        self.cityKeys = [1]
+        self.timeKeys = [1]
 
     def _generate_avatar(self):
         pass
@@ -104,13 +104,14 @@ class ThesisInfo(object):
             
     def set_value(self):
         
-        return {
+        parm = {
                 "name":"{} {}".format(self.firstName,self.lastName),
                 "email":self.email,
                 "password":"bcrypt",
                 "avatar":self.avatar,
                 "profile":
-                    {"keywordKeys":self.keywordKeys,
+                    {
+                    "keywordKeys":self.keywordKeys,
                     "cityKeys":self.cityKeys,
                     "timeKeys":self.timeKeys,
                     "firstName":self.firstName,
@@ -126,12 +127,18 @@ class ThesisInfo(object):
                     "email":self.email,
                     "website":self.website,
                     "cooperation":self.cooperation,
-                    "bio":self.bio,
-                    "keywords":self.keywords,
-                    "city":self.city,
-                    "time":self.time
+                    "bio":self.bio
                     }
                 }
+        for i in self.keywordKeys:
+            parm["profile"]["keyword-{}".format(i)] = self.keywords[i-1]
+        for j in self.cityKeys:
+            parm["profile"]["city-{}".format(j)] = self.cityKeys[j-1]
+        for h in self.timeKeys:
+            parm["profile"]["time-{}".format(h)] = self.timeKeys[h-1]
+        return parm
+        
+        
         
     def terminal_monitoring(self):
         print('*******************scholar info***********************')
@@ -153,4 +160,28 @@ class ThesisInfo(object):
         print('keywords:\t\t{}'.format(self.keywords))
         
 if __name__ == '__main__':
-    print(ThesisInfo.__dict__)
+    # parm = {"keywordKeys":[1,2,3],
+    #         "cityKeys":[1],
+    #         "timeKeys":[1],
+    #         "firstName":"Chun-Hung",
+    #         "lastName":"Chen",
+    #         "organization":"George Mason University",
+    #         "major":"System Engineering",
+    #         "title":"Professor",
+    #         "birth":"2017-05-30",
+    #         "country":"USA",
+    #         "state":"VA",
+    #         "city":"Fairfax",
+    #         "phone":"+1 (703) 993-3572",
+    #         "email":"cchen9@gmu.edu",
+    #         "website":"http://mason.gmu.edu/~cchen9/",
+    #         "cooperation":["Short time teaching","Customizing core curriculum","Research or development"],
+    #         "bio":"Understanding what could go wrong before it happens is vital to almost every industry. Stochastic modeling works to help engineers simulate incidents that arise from seemingly random circumstances. This is especially important to air transportation systems, technology manufacturing, healthcare, security networks, power grids, and military operations. Chun-\n\nHung Chen is the inventor of a novel idea called Optimal Computing Budget Allocation, which drastically improves the efficiency of stochastic simulation. Because this methodology has proven to be of great importance to so many applications, Chen鈥檚 research has been funded by a variety of organizations such as the National Science Foundation, the National Institutes of Health, the Department of Energy, NASA, the US Air Force, the US Missile Defense Agency, and the Federal Aviation Administration. Chen teaches several sections of systems simulation modeling and research techniques on the graduate and undergraduate level.\n",
+    #         "keyword-1":"highly efficient methodology ",
+    #         "keyword-2":"semiconductor manufacturing",
+    #         "keyword-3":"power grids",
+    #         "city-1":"China",
+    #         "time-1":"Flexible"}
+    pass
+    
+    

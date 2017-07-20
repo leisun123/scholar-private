@@ -30,7 +30,7 @@ from ErrorHandle.parse_error import except_pass
 from db.SqlHelper import SqlHelper
 from utils.connection import extract
 from ScholarConfig.me_utexas_rule import RULES
-from nameparser import HumanName
+from TaskFeed.me_utexas_task import MeUtexasTask
 PS_ERROR = lambda func:except_pass(func,ModelName = 'cs_utexas')
 
 class MeUtexasClass(ThesisInfo):

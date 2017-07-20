@@ -11,6 +11,7 @@
 """
 import datetime
 from sqlalchemy import *
+from sqlalchemy import exc
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 from sqlalchemy.sql import func
@@ -88,7 +89,6 @@ class UserGroup(BaseModel):
     id = Column(BigInteger, primary_key=True)
     user_id = Column(ForeignKey('users.id'), nullable=False)
     group_id = Column(ForeignKey('groups.id'), nullable=False, index=True)
-
     group = relationship('Group')
     user = relationship('User')
     
@@ -107,13 +107,14 @@ class Proxy(BaseModel):
     
     
 class SqlHelper(ISqlHelper):
-    def __init__(self):
+    def __init__(self,logger=None):
+        self.logger = logger
         if 'sqlite' in DB_CONFIG['DB_CONNECT_STRING']:
             connect_args = {'check_same_thread':False}
             self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'],echo=False,connect_args=connect_args)
         else:
-            self.engine =create_ssh_tunnel()
-            #self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
+            #self.engine =create_ssh_tunnel()
+            self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
             DB_Session = sessionmaker(bind=self.engine)
             self.session = DB_Session()
         
@@ -121,10 +122,9 @@ class SqlHelper(ISqlHelper):
         BaseModel.metadata.create_all(self.engine)
         
 
-    # def drop_db(self):
-    #     BaseModel.metadata.drop_all(self.engine)
+    def drop_db(self):
+        BaseModel.metadata.drop_all(self.engine)
     
-
         
     @staticmethod
     def transcoding_avatar(avatar_url):
@@ -173,11 +173,7 @@ class SqlHelper(ISqlHelper):
                         name = "profile",
                         value = bytes(simplejson.dumps(values["profile"]),encoding='utf8'))
 
-        object_attributes_avatar = ObjectAttribute(
-                        object_id = tmp_id,
-                        name = "avatar",
-                        value = bytes("{}.jpg".format(user.id),encoding='utf8')
-        )
+
         object_attributes_password = ObjectAttribute(
                         object_id = tmp_id,
                         name = "password",
@@ -189,19 +185,24 @@ class SqlHelper(ISqlHelper):
         try:
             self.session.add(object)
             self.session.add(object_attributes_profile)
-            self.session.add(object_attributes_avatar)
             self.session.add(object_attributes_password)
             self.session.add(user)
             self.session.flush()
+            object_attributes_avatar = ObjectAttribute(
+                        object_id = tmp_id,
+                        name = "avatar",
+                        value = bytes("{}.jpg".format(user.id),encoding='utf8')
+                        )
             user_group = UserGroup(
                         user_id = user.id,
                         group_id = 5
                         )
+            self.session.add(object_attributes_avatar)
             self.session.add(user_group)
             self.session.commit()
-        except:
+        except exc.SQLAlchemyError as e:
+            self.logger.error("{} info commit failed! Caused by {}".format(values["name"],e))
             self.session.rollback()
-        
 
     
     def output_proxy(self):
@@ -210,21 +211,18 @@ class SqlHelper(ISqlHelper):
              for i,j in ipprort:
                  f.writelines("{}:{}\n".format(i.replace('\'',''),j))
                 
-    def delete(self, conditions=None):
-        if conditions:
-            condition_list = []
-            for key in list(conditions.keys()):
-                if self.params.get(key,None):
-                    condition_list.append(self.params.get(key)==conditions.get(key))
-            conditions = condition_list
-            query = self.session.query(ThesisBase)
-            for condition in conditions:
-                query = query.filter(condition)
-            deleteNum = query.delete()
-            self.session.commit()
-        else:
-            deleteNum = 0
-        return {'deleteNum',deleteNum}
+    def parser_data_delete(self):
+        result=self.session.query(User).filter(User.password=="bcrypt").all()
+        for i in result:
+            try:
+                self.session.query(Object).filter(Object.id == i.object_id).delete()
+                self.session.query(ObjectAttribute).filter(ObjectAttribute.object_id == i.object_id).delete()
+                self.session.query(UserGroup).filter(UserGroup.user_id == i.id).delete()
+                self.session.query(User).filter(User.id ==  i.id).delete()
+                self.session.commit()
+            except exc.SQLAlchemyError as e:
+                self.logger.error("{} delete fail! Caused by{}".format(i.id,e))
+                self.session.rollback()
     
     def update(self, conditions=None,value=None):
         pass
@@ -239,10 +237,9 @@ if __name__ == '__main__':
     sqlhelper = SqlHelper()
     import time
     from datetime import datetime
+    sqlhelper.parser_data_delete()
     
-    #sqlhelper.init_db()
-    sqlhelper.drop_db()
-    sqlhelper.init_db()
+    
         
         
     

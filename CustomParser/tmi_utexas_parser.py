@@ -17,7 +17,7 @@ from db.SqlHelper import SqlHelper
 from utils.connection import extract
 from ScholarConfig.tmi_utexas_rule import RULES
 from nameparser import HumanName
-
+from TaskFeed.tmi_utexas_task import TmiUtexasTask
 PS_ERROR = lambda func:except_pass(func,ModelName = 'caee_utexas')
 
 class TmiUtexasClass(ThesisInfo):
@@ -29,7 +29,7 @@ class TmiUtexasClass(ThesisInfo):
         super(TmiUtexasClass, self).__init__()
         self.generate_all_method()
         parm=self.set_value()
-        sqlhelper=SqlHelper()
+        sqlhelper=SqlHelper(TmiUtexasTask.logger)
         sqlhelper.insert_scholar_thesis(**parm)
     
     def _generate_avatar(self):

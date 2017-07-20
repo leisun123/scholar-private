@@ -27,15 +27,14 @@ import random
 from ScholarConfig.europepmc_rule import CRWAL_POOL_SIZE
 from utils.proxy_manager import ProxyManager
 class Taskmanager(object):
-    
+    logger = None
     def __init__(self,logging_name):
-        
+        Taskmanager.logger = get_logger(logging_name)
         #self.interval = WATCH_INTERVAL
         self.crawl_pool = Pool(size=CRWAL_POOL_SIZE)
         self.page_queue = Queue()
         self.info_queue = Queue()
-        self.logger=get_logger(logging_name)
-        self.proxy_manager = ProxyManager("../utils/1.txt",self.logger)
+        self.proxy_manager = ProxyManager("../utils/1.txt",Taskmanager.logger)
         #self.timer = Timer(random.randint(0,2),self.interval)
         self.proxys = self.proxy_manager.get_proxy()
         
