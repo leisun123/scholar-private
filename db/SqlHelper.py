@@ -19,7 +19,7 @@ from ScholarConfig.config import DB_CONFIG,create_ssh_tunnel
 import simplejson
 from db.ISqlHelper import ISqlHelper
 from uuid import uuid4
-
+from utils.kmp_match import kmp_match
 import requests
 BaseModel = declarative_base()
 
@@ -212,13 +212,13 @@ class SqlHelper(ISqlHelper):
                  f.writelines("{}:{}\n".format(i.replace('\'',''),j))
                 
     def parser_data_delete(self):
-        result=self.session.query(User).filter(User.password=="bcrypt").all()
+        result=self.session.query(User).filter(kmp_match(User.password , "bcrypt")).all()
         for i in result:
             try:
-                self.session.query(Object).filter(Object.id == i.object_id).delete()
-                self.session.query(ObjectAttribute).filter(ObjectAttribute.object_id == i.object_id).delete()
-                self.session.query(UserGroup).filter(UserGroup.user_id == i.id).delete()
-                self.session.query(User).filter(User.id ==  i.id).delete()
+                self.session.query(Object).filter(kmp_match(Object.id , i.object_id) == 0).delete()
+                self.session.query(ObjectAttribute).filter(kmp_match(ObjectAttribute.object_id , i.object_id) == 0).delete()
+                self.session.query(UserGroup).filter(kmp_match(UserGroup.user_id , i.id) == 0).delete()
+                self.session.query(User).filter(kmp_match(User.id ,  i.id) == 0).delete()
                 self.session.commit()
             except exc.SQLAlchemyError as e:
                 self.logger.error("{} delete fail! Caused by{}".format(i.id,e))

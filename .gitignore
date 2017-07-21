@@ -104,3 +104,4 @@ ENV/
 
 .gitignore
 .idea/vcs.xml
+PhotoTemp/

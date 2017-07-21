@@ -20,6 +20,7 @@ from nameparser import HumanName
 from TaskFeed.caee_utexas_task import CaeeUtexasTask
 PS_ERROR = lambda func:except_pass(func,ModelName = 'caee_utexas')
 
+
 class CaeeUtexasClass(ThesisInfo):
     def __init__(self,sec):
         """
