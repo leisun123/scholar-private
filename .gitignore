@@ -5,6 +5,6 @@
 *.egg-info
 dist
 build
-.idea/
+*.idea/
 *.pyc
-__pycache__
+*__pycache__/
