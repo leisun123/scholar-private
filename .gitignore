@@ -96,10 +96,7 @@ ENV/
 .ropeproject
 
 .gitignore
-.idea/dataSources.local.xml
-.idea/dataSources.xml
-.idea/dataSources/
-.idea/vcs.xml
+.idea/
 BaseClass/__pycache__/
 CustomParser/__pycache__/
 ErrorHandle/__pycache__/
@@ -108,3 +105,5 @@ ScholarConfig/__pycache__/
 TaskFeed/__pycache__/
 db/__pycache__/
 utils/__pycache__/
+app/__pycache__/
+wynmail/__pycache__/
