@@ -1,12 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
-### Example user template template
-### Example user template
-
-# IntelliJ project files
-.idea
-*.iml
-out
-gen### Python template
+### Python template
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -103,5 +96,15 @@ ENV/
 .ropeproject
 
 .gitignore
+.idea/dataSources.local.xml
+.idea/dataSources.xml
+.idea/dataSources/
 .idea/vcs.xml
+BaseClass/__pycache__/
+CustomParser/__pycache__/
+ErrorHandle/__pycache__/
 PhotoTemp/
+ScholarConfig/__pycache__/
+TaskFeed/__pycache__/
+db/__pycache__/
+utils/__pycache__/
