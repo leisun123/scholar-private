@@ -14,13 +14,14 @@ from sqlalchemy import *
 from sqlalchemy import exc
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
-from sqlalchemy.sql import func
 from ScholarConfig.config import DB_CONFIG,create_ssh_tunnel
 import simplejson
 from db.ISqlHelper import ISqlHelper
 from uuid import uuid4
-from utils.kmp_match import kmp_match
-import requests
+
+from utils.logger import get_logger
+from utils.photo_download import download
+
 BaseModel = declarative_base()
 
 
@@ -126,13 +127,7 @@ class SqlHelper(ISqlHelper):
         BaseModel.metadata.drop_all(self.engine)
     
         
-    @staticmethod
-    def transcoding_avatar(avatar_url):
-        tmp = requests.get(avatar_url)
-        if tmp.status_code == 200:
-            return bytes(tmp.content,encoding='utf8')
-        
-    def insert_scholar_thesis(self, **values):
+    def insert_scholar(self, **values):
         tmp_id = str(uuid4())
         tmp_create_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         object = Object(
@@ -199,6 +194,8 @@ class SqlHelper(ISqlHelper):
                         )
             self.session.add(object_attributes_avatar)
             self.session.add(user_group)
+            download(values["avatar"],user.id,self.logger)
+            self.logger.info("{} has inserted".format(user.name))
             self.session.commit()
         except exc.SQLAlchemyError as e:
             self.logger.error("{} info commit failed! Caused by {}".format(values["name"],e))
@@ -210,19 +207,27 @@ class SqlHelper(ISqlHelper):
         with open("../utils/1.txt","r+") as f:
              for i,j in ipprort:
                  f.writelines("{}:{}\n".format(i.replace('\'',''),j))
-                
+    
+    #生产库慎用
     def parser_data_delete(self):
-        result=self.session.query(User).filter(kmp_match(User.password , "bcrypt")).all()
-        for i in result:
-            try:
-                self.session.query(Object).filter(kmp_match(Object.id , i.object_id) == 0).delete()
-                self.session.query(ObjectAttribute).filter(kmp_match(ObjectAttribute.object_id , i.object_id) == 0).delete()
-                self.session.query(UserGroup).filter(kmp_match(UserGroup.user_id , i.id) == 0).delete()
-                self.session.query(User).filter(kmp_match(User.id ,  i.id) == 0).delete()
-                self.session.commit()
-            except exc.SQLAlchemyError as e:
-                self.logger.error("{} delete fail! Caused by{}".format(i.id,e))
-                self.session.rollback()
+        result = iter(self.session.query(User).outerjoin(UserGroup,User.password.like("bcr%")).all())
+        try:
+            while True:
+                i = next(result)
+                try:
+                    self.session.query(Object.id)
+                    self.session.query(Object).filter(Object.id == i.object_id).delete()
+                    self.session.query(ObjectAttribute).filter(ObjectAttribute.object_id == i.object_id).delete()
+                    self.session.query(UserGroup).filter(UserGroup.user_id == i.id).delete()
+                    self.session.query(User).filter(User.id ==  i.id).delete()
+                    self.session.commit()
+                    self.logger.info("deleted {}".format(i.name))
+                except exc.SQLAlchemyError as e:
+                    self.logger.error("{} delete fail! Caused by{}".format(i.id,e))
+                    self.session.rollback()
+        except StopIteration:
+            self.logger.info("Finish")
+        self.session.close()
     
     def update(self, conditions=None,value=None):
         pass
@@ -234,9 +239,7 @@ class SqlHelper(ISqlHelper):
         pass
     
 if __name__ == '__main__':
-    sqlhelper = SqlHelper()
-    import time
-    from datetime import datetime
+    sqlhelper = SqlHelper(logger=get_logger("test"))
     sqlhelper.parser_data_delete()
     
     

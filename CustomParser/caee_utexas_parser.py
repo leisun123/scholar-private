@@ -9,6 +9,7 @@
 @description:
             --
 """
+import asyncio
 from lxml import etree
 
 from BaseClass.ThesisClass import ThesisInfo
@@ -29,9 +30,7 @@ class CaeeUtexasClass(ThesisInfo):
         self.sec = sec
         super(CaeeUtexasClass, self).__init__()
         self.generate_all_method()
-        parm=self.set_value()
-        sqlhelper=SqlHelper(CaeeUtexasTask.logger)
-        sqlhelper.insert_scholar_thesis(**parm)
+
     
     def _generate_avatar(self):
         self.avatar = extract(RULES["avatar"],self.sec)

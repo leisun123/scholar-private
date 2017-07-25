@@ -9,7 +9,6 @@
 @description:
             --
 """
-import random
 
 import gevent
 
@@ -29,9 +28,10 @@ class CaeeUtexasTask(Taskmanager):
     
     def run(self):
         all_greenlet = []
-        self.page_queue.put("http://www.caee.utexas.edu/faculty/directory")
+        self.page_queue.put_nowait("http://www.caee.utexas.edu/faculty/directory")
         all_greenlet.append(gevent.spawn(self._page_loop))
         all_greenlet.append(gevent.spawn(self._item_loop))
+        all_greenlet.append(gevent.spawn(self._db_save_loop))
         gevent.joinall(all_greenlet)
       
         
@@ -42,15 +42,18 @@ class CaeeUtexasTask(Taskmanager):
         #print(html.capitalize())
         item=extract(RULES["item_url"],html,multi=True)
         for i in item:
-            self.info_queue.put(BASE_URL + i)
+            self.info_queue.put_nowait(BASE_URL + i)
     
     def _crawl_info(self,item_url):
         self.logger.info("processing info %s",item_url)
         from BaseClass.ThesisClass import ThesisInfo
         from CustomParser.caee_utexas_parser import CaeeUtexasClass
         sec=fetch(item_url,proxies=None,logger=self.logger)
-        CaeeUtexasClass(sec).terminal_monitoring()
-    
+        tmp = CaeeUtexasClass(sec)
+        parm = tmp.set_value()
+        tmp.terminal_monitoring()
+        self.parm_queue.put_nowait(parm)
+        
    
 if __name__ == '__main__':
     s=CaeeUtexasTask()

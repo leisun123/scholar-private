@@ -21,20 +21,20 @@ import gevent
 
 from gevent.pool import Pool
 from gevent.queue import Queue
-#from multiprocessing import Queue, Process, Value
-from utils.timer import Timer
-import random
-from ScholarConfig.europepmc_rule import CRWAL_POOL_SIZE
+from db.SqlHelper import SqlHelper
+from ScholarConfig.config import CRWAL_POOL_SIZE
 from utils.proxy_manager import ProxyManager
 class Taskmanager(object):
-    logger = None
+    
     def __init__(self,logging_name):
-        Taskmanager.logger = get_logger(logging_name)
+        
         #self.interval = WATCH_INTERVAL
         self.crawl_pool = Pool(size=CRWAL_POOL_SIZE)
+        self.logger = get_logger(logging_name)
         self.page_queue = Queue()
         self.info_queue = Queue()
-        self.proxy_manager = ProxyManager("../utils/1.txt",Taskmanager.logger)
+        self.parm_queue = Queue()
+        self.proxy_manager = ProxyManager("../utils/1.txt",self.logger)
         #self.timer = Timer(random.randint(0,2),self.interval)
         self.proxys = self.proxy_manager.get_proxy()
         
@@ -51,7 +51,7 @@ class Taskmanager(object):
     def _page_loop(self):
         while 1:
             page_url=self.page_queue.get(block=True)
-            gevent.sleep(4)
+            gevent.sleep(1)
             self.crawl_pool.spawn(self._feed_info_queue,page_url)
     
     def _feed_info_queue(self,url):
@@ -60,16 +60,20 @@ class Taskmanager(object):
     def _item_loop(self):
         while 1:
             item_url=self.info_queue.get(block=True)
-            gevent.sleep(4)
+            gevent.sleep(1)
             self.crawl_pool.spawn(self._crawl_info,item_url)
             
     def _crawl_info(self,item_url):
         pass
-        
+    
+    def _db_save_loop(self):
+        while 1:
+            parm = self.parm_queue.get(block=True)
+            self.crawl_pool.spawn(SqlHelper(logger=self.logger).insert_scholar,**parm)
     
         
     
-    
+
     
     
     

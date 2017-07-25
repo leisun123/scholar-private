@@ -9,6 +9,7 @@
 @description:
             --
 """
+
 def kmp_match(text, pattern):
     # By checking the largest word suffix which matches the word prefix, we can
     # generate a 'prefix table' that can then be used as a state machine, where 0 is the
@@ -58,7 +59,6 @@ def kmp_match(text, pattern):
     return -1
 
 if __name__ == '__main__':
-    Input = 'wewq','wewq'
-    print(Input)
-    res = kmp_match(Input[0],Input[1])
-    print (res, "{}".format(Input[0][res:res+len(Input[1])]))
+   res=kmp_match(str(12313),str(1231))
+   if res ==0 :
+    print(res)

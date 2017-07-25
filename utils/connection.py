@@ -20,7 +20,7 @@ from ScholarConfig.config import USER_AGENT
 from utils.selenuim_parse import SelenuimParse
 
 
-def fetch(url,timeout=10,from_web=True,retry_num=5,proxies=None,logger=None):
+def fetch(url,timeout=10,from_web=True,retry_num=5,proxies=None,logger=None,decode=True):
     if not from_web:
         with open('','rb') as f:
             return f.read()
@@ -48,8 +48,11 @@ def fetch(url,timeout=10,from_web=True,retry_num=5,proxies=None,logger=None):
                 continue
         if resp is None:
             raise URLFetchError(url)
-        return resp.content.decode("UTF8")
-    
+        if decode:
+            return resp.content.decode("UTF8")
+        else:
+            return resp.content
+        
 def extract(regx,html_source,multi=False):
     #lxml解析
     if isinstance(html_source,str):
