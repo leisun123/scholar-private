@@ -20,14 +20,12 @@
 @description:
             --
 """
-import random
 
 import gevent
-
 from BaseClass.task_manager import Taskmanager
 from utils.connection import fetch,extract
 from ScholarConfig.che_utexas_rule import RULES,BASE_URL
-from utils.timer import Timer
+
 
 
 class CheUtexasTask(Taskmanager):
@@ -61,7 +59,10 @@ class CheUtexasTask(Taskmanager):
         from CustomParser.che_utexas_parser import CheUtexasClass
         sec=fetch(item_url,proxies=None,logger=self.logger)
         CheUtexasClass(sec).terminal_monitoring()
-    
+        tmp = CheUtexasClass(sec)
+        parm = tmp.set_value()
+        tmp.terminal_monitoring()
+        self.parm_queue.put_nowait(parm)
    
 if __name__ == '__main__':
     s=CheUtexasTask()

@@ -9,14 +9,12 @@
 @description:
             --
 """
-import random
-
 import gevent
 
 from BaseClass.task_manager import Taskmanager
 from utils.connection import fetch,extract
 from ScholarConfig.tmi_utexas_rule import RULES,BASE_URL
-from utils.timer import Timer
+
 
 
 class TmiUtexasTask(Taskmanager):
@@ -48,7 +46,10 @@ class TmiUtexasTask(Taskmanager):
         from BaseClass.ThesisClass import ThesisInfo
         from CustomParser.tmi_utexas_parser import TmiUtexasClass
         sec=fetch(item_url,proxies=None,logger=self.logger)
-        TmiUtexasClass(sec).terminal_monitoring()
+        tmp = TmiUtexasClass(sec)
+        parm = tmp.set_value()
+        tmp.terminal_monitoring()
+        self.parm_queue.put_nowait(parm)
     
    
 if __name__ == '__main__':

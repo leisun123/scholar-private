@@ -1,37 +1,33 @@
 #coding:utf-8
 """
-@file:      graphics_stanford_task
+@file:      eecs_berkeley_task
 @author:    IsolationWyn
 @contact:   genius_wz@aliyun.com
 @python:    3.5.2
 @editor:    PyCharm
-@create:    2017/7/20 15:50
+@create:    2017/7/26 18:28
 @description:
             --
 """
-import random
 
 import gevent
-
 from BaseClass.task_manager import Taskmanager
 from utils.connection import fetch,extract
-from ScholarConfig.che_utexas_rule import RULES,BASE_URL
-from utils.timer import Timer
+from ScholarConfig.eecs_berkeley_rule import RULES,BASE_URL
 
-
-class GraphicsStanfordTask(Taskmanager):
+class EECSBerkeleyTask(Taskmanager):
     
     def __init__(self):
-        #super(ScienceDirectTask,self).__init__()
-        Taskmanager.__init__(self,"graphics_stanford")
+        Taskmanager.__init__(self,"eecsberkeleytask")
         self.base_url = BASE_URL
     
     
     def run(self):
         all_greenlet = []
-        self.page_queue.put(BASE_URL)
+        self.page_queue.put_nowait("https://www2.eecs.berkeley.edu/Faculty/Lists/list.html?_ga=2.157267064.273235644.1500137616-1698500221.1500137605")
         all_greenlet.append(gevent.spawn(self._page_loop))
         all_greenlet.append(gevent.spawn(self._item_loop))
+        all_greenlet.append(gevent.spawn(self._db_save_loop))
         gevent.joinall(all_greenlet)
       
         
@@ -42,21 +38,18 @@ class GraphicsStanfordTask(Taskmanager):
         #print(html.capitalize())
         item=extract(RULES["item_url"],html,multi=True)
         for i in item:
-            self.info_queue.put(i)
+            self.info_queue.put_nowait(BASE_URL + i)
     
     def _crawl_info(self,item_url):
         self.logger.info("processing info %s",item_url)
-        from BaseClass.ThesisClass import ThesisInfo
-        from CustomParser.che_utexas_parser import CheUtexasClass
+        from CustomParser.eecs_berkeley_parser import EECSUtexasClass
         sec=fetch(item_url,proxies=None,logger=self.logger)
-        CheUtexasClass(sec).terminal_monitoring()
-    
+        tmp = EECSUtexasClass(sec)
+        parm = tmp.set_value()
+        tmp.terminal_monitoring()
+        self.parm_queue.put_nowait(parm)
+        
    
 if __name__ == '__main__':
-    s=CheUtexasTask()
+    s=EECSBerkeleyTask()
     s.run()
-    # from ScholarConfig.Rules import RULES
-    # url = "http://europepmc.org/search?query=big+data&page=0"
-    # html=fetch(url)
-    # a=extract(RULES["item_url"],html)
-    # print(a)

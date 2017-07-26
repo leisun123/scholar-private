@@ -9,14 +9,10 @@
 @description:
             --
 """
-import random
-
-import gevent
 
 from BaseClass.task_manager import Taskmanager
 from utils.connection import fetch,extract
 from ScholarConfig.cs_utexas_rule import RULES,BASE_URL
-from utils.timer import Timer
 from lxml import etree
 
 class CSUtexasTask(Taskmanager):
@@ -33,8 +29,11 @@ class CSUtexasTask(Taskmanager):
         sec = extract(RULES["item"],html,multi=True)
         for i in sec:
             if i is not None:
-                CSUtexasClass(str(etree.tostring(i))).terminal_monitoring()
-        
+                tmp = CSUtexasClass(str(etree.tostring(i)))
+                parm = tmp.set_value()
+                tmp.terminal_monitoring()
+                self.parm_queue.put_nowait(parm)
+                
    
 if __name__ == '__main__':
     s=CSUtexasTask()

@@ -9,14 +9,12 @@
 @description:
             --
 """
-import random
-
 import gevent
 
 from BaseClass.task_manager import Taskmanager
 from utils.connection import fetch,extract
 from ScholarConfig.me_utexas_rule import MAX_PAGE,BASE_URL
-from utils.timer import Timer
+
 
 
 class MeUtexasTask(Taskmanager):
@@ -48,8 +46,11 @@ class MeUtexasTask(Taskmanager):
         html=fetch(item_url,proxies=None,logger=self.logger)
         sec=extract(RULES["item"],html,multi=True)
         for i in sec:
-            MeUtexasClass(str(etree.tostring(i))).terminal_monitoring()
-    
+            tmp = MeUtexasClass(str(etree.tostring(i)))
+            parm = tmp.set_value()
+            tmp.terminal_monitoring()
+            self.parm_queue.put_nowait(parm)
+            
    
 if __name__ == '__main__':
     s=MeUtexasTask()

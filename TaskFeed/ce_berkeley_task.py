@@ -1,11 +1,11 @@
 #coding:utf-8
 """
-@file:      caee_utexas_task
+@file:      ce_berkeley_task
 @author:    IsolationWyn
 @contact:   genius_wz@aliyun.com
 @python:    3.5.2
 @editor:    PyCharm
-@create:    2017/7/17 4:57
+@create:    2017/7/26 20:18
 @description:
             --
 """
@@ -13,20 +13,18 @@
 import gevent
 from BaseClass.task_manager import Taskmanager
 from utils.connection import fetch,extract
-from ScholarConfig.caee_utexas_rule import RULES,BASE_URL
+from ScholarConfig.ce_berkeley_rule import RULES,BASE_URL
 
-
-
-class CaeeUtexasTask(Taskmanager):
+class CEBerkeleyTask(Taskmanager):
     
     def __init__(self):
-        Taskmanager.__init__(self,"caeeutexas")
+        Taskmanager.__init__(self,"ceberkeley")
         self.base_url = BASE_URL
     
     
     def run(self):
         all_greenlet = []
-        self.page_queue.put_nowait("http://www.caee.utexas.edu/faculty/directory")
+        self.page_queue.put_nowait("http://www.ce.berkeley.edu/people/faculty?type=faculty")
         all_greenlet.append(gevent.spawn(self._page_loop))
         all_greenlet.append(gevent.spawn(self._item_loop))
         all_greenlet.append(gevent.spawn(self._db_save_loop))
@@ -44,14 +42,14 @@ class CaeeUtexasTask(Taskmanager):
     
     def _crawl_info(self,item_url):
         self.logger.info("processing info %s",item_url)
-        from CustomParser.caee_utexas_parser import CaeeUtexasClass
+        from CustomParser.ce_berkeley_parser import CEBerkeleyClass
         sec=fetch(item_url,proxies=None,logger=self.logger)
-        tmp = CaeeUtexasClass(sec)
+        tmp = CEBerkeleyClass(sec)
         parm = tmp.set_value()
         tmp.terminal_monitoring()
         self.parm_queue.put_nowait(parm)
         
    
 if __name__ == '__main__':
-    s=CaeeUtexasTask()
+    s=CEBerkeleyTask()
     s.run()

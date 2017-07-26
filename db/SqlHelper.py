@@ -114,8 +114,8 @@ class SqlHelper(ISqlHelper):
             connect_args = {'check_same_thread':False}
             self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'],echo=False,connect_args=connect_args)
         else:
-            #self.engine =create_ssh_tunnel()
-            self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
+            self.engine =create_ssh_tunnel()
+            #self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
             DB_Session = sessionmaker(bind=self.engine)
             self.session = DB_Session()
         

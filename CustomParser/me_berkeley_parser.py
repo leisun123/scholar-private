@@ -1,33 +1,30 @@
 #coding:utf-8
 """
-@file:      graphics_stanford_parser
+@file:      me_berkeley_parser
 @author:    IsolationWyn
 @contact:   genius_wz@aliyun.com
 @python:    3.5.2
 @editor:    PyCharm
-@create:    2017/7/20 15:49
+@create:    2017/7/26 19:09
 @description:
             --
 """
-from lxml import etree
-
 from BaseClass.ThesisClass import ThesisInfo
 from ErrorHandle.parse_error import except_pass
-from db.SqlHelper import SqlHelper
 from utils.connection import extract
-from ScholarConfig.che_utexas_rule  import RULES
+from ScholarConfig.me_berkeley_rule  import RULES
 from nameparser import HumanName
-from TaskFeed.graphics_stanford_task import GraphicsStanfordTask
-PS_ERROR = lambda func:except_pass(func,ModelName = 'graphics_stanford')
+PS_ERROR = lambda func:except_pass(func,ModelName = 'me_berkeley')
 
-class GraphicsStanfordClass(ThesisInfo):
+class MEBerkeleyClass(ThesisInfo):
     def __init__(self,sec):
         """
         :param sec: item url
         """
         self.sec = sec
-        super(GraphicsStanfordClass, self).__init__()
+        super(MEBerkeleyClass, self).__init__()
         self.generate_all_method()
+
     
     def _generate_avatar(self):
         self.avatar = extract(RULES["avatar"],self.sec)
@@ -38,9 +35,9 @@ class GraphicsStanfordClass(ThesisInfo):
         tmp = extract(RULES["name"],self.sec)
         self.lastName = HumanName(tmp).last
     def _generate_organization(self):
-        self.organization = "The University of Texas at Austin"
+        self.organization = "University of California at Berkeley"
     def _generate_major(self):
-        self.major = "McKetta Department of Chemical Engineering"
+        self.major = "Mechanical Engineering"
     def _generate_title(self):
         self.title = extract(RULES["title"],self.sec)
     def _generate_birth(self):
@@ -54,24 +51,27 @@ class GraphicsStanfordClass(ThesisInfo):
             self.maincity = self.city[0]
             
     def _generate_phone(self):
-        self.phone = extract(RULES["phone"],self.sec)
+        pass
         
     def _generate_email(self):
-        tmp = extract(RULES["email"],self.sec)
+        a = str(self.sec).replace('arrow@2x.png','')
+        emailRegex = r"([\w\.\-]+@[\w\.\-]+)"
+        import re
+        tmp = re.search(emailRegex,a)
         if tmp is not None:
-            self.email = tmp.xpath('string(.)')
+            self.email=tmp.group()
+
     def _generate_website(self):
         pass
+    
     def _generate_cooperation(self):
-        tmp = extract(RULES["cooperation"],self.sec)
-        if tmp is not None:
-            self.cooperation = tmp.strip().split(',')
+        pass
+        
     def _generate_bio(self):
-        tmp = extract(RULES["bio"],self.sec)
-        if tmp is not None:
-            self.bio = tmp.xpath('string(.)')
+        pass
+
     def _generate_keywords(self):
-        self.keywords = extract(RULES["keywords"],self.sec,multi=True)
+        pass
         
     def _generate_city(self):
         pass
@@ -86,6 +86,7 @@ class GraphicsStanfordClass(ThesisInfo):
 
 if __name__ == '__main__':
     from utils.connection import fetch
-    html= fetch("https://profiles.stanford.edu/abbas-el-gamal?tab=bio")
-    a=extract(RULES["avatar"],html)
+    html= fetch("http://www.me.berkeley.edu/people/faculty")
+    #print(html)
+    a=extract(RULES["item_url"],html,multi=True)
     print(a)
