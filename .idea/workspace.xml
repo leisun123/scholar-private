@@ -2,31 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29ac3f02-7c2c-4098-a630-56da593e5469" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CustomParser/ece_utexas_parser.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CustomParser/eecs_berkeley_parser.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CustomParser/me_berkeley_parser.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ScholarConfig/ce_berkeley_rule.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ScholarConfig/ece_utexas_rule.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ScholarConfig/eecs_berkeley_rule.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ScholarConfig/me_berkeley_rule.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TaskFeed/ce_berkeley_task.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TaskFeed/ece_utexas_task.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TaskFeed/eecs_berkeley_task.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TaskFeed/me_berkeley_task.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CustomParser/graphics_stanford_parser.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ScholarConfig/graphics_stanford_rule.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ScholarParser.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TaskFeed/graphics_stanford_task.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spider_config.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TaskFeed/caee_utexas_task.py" afterPath="$PROJECT_DIR$/TaskFeed/caee_utexas_task.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TaskFeed/che_utexas_task.py" afterPath="$PROJECT_DIR$/TaskFeed/che_utexas_task.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TaskFeed/cs_utexas_task.py" afterPath="$PROJECT_DIR$/TaskFeed/cs_utexas_task.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TaskFeed/existed_spider.py" afterPath="$PROJECT_DIR$/TaskFeed/existed_spider.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TaskFeed/me_utexas_task.py" afterPath="$PROJECT_DIR$/TaskFeed/me_utexas_task.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TaskFeed/tmi_utexas_task.py" afterPath="$PROJECT_DIR$/TaskFeed/tmi_utexas_task.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CustomParser/ece_utexas_parser.py" afterPath="$PROJECT_DIR$/CustomParser/ece_utexas_parser.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ScholarConfig/ece_utexas_rule.py" afterPath="$PROJECT_DIR$/ScholarConfig/ece_utexas_rule.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/SqlHelper.py" afterPath="$PROJECT_DIR$/db/SqlHelper.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/main_manage.py" afterPath="$PROJECT_DIR$/CustomParser/ce_berkeley_parser.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,7 +16,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/scholar$pretty_dict.coverage" NAME="pretty_dict Coverage Results" MODIFIED="1500664132615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/scholar$sciencedirect_task.coverage" NAME="sciencedirect_task Coverage Results" MODIFIED="1500945962785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
-    <SUITE FILE_PATH="coverage/scholar$ece_utexas_task.coverage" NAME="ece_utexas_task Coverage Results" MODIFIED="1501074838956" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
+    <SUITE FILE_PATH="coverage/scholar$ece_utexas_task.coverage" NAME="ece_utexas_task Coverage Results" MODIFIED="1501075907920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
     <SUITE FILE_PATH="coverage/scholar$caee_utexas_task.coverage" NAME="caee_utexas_task Coverage Results" MODIFIED="1501023236799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
     <SUITE FILE_PATH="coverage/scholar$send_email.coverage" NAME="send_email Coverage Results" MODIFIED="1496980887927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/scholar$super.coverage" NAME="super Coverage Results" MODIFIED="1499026387280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pre" />
@@ -176,7 +154,7 @@
     <favorites_list name="scholar" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.62980133">
+    <splitter split-orientation="horizontal" split-proportion="0.5055693">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="ce_berkeley_parser.py" pinned="false" current-in-tab="false">
@@ -191,21 +169,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SqlHelper.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="SqlHelper.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/db/SqlHelper.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="410">
-                  <caret line="108" column="4" lean-forward="false" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ce_berkeley_rule.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ScholarConfig/ce_berkeley_rule.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="552">
-                  <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+                <state relative-caret-position="1008">
+                  <caret line="134" column="29" lean-forward="true" selection-start-line="134" selection-start-column="29" selection-end-line="134" selection-end-column="29" />
                   <folding />
                 </state>
               </provider>
@@ -271,11 +239,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ce_berkeley_task.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ce_berkeley_task.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/TaskFeed/ce_berkeley_task.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="40" column="48" lean-forward="false" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
+                <state relative-caret-position="611">
+                  <caret line="47" column="30" lean-forward="true" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
                   <folding>
                     <element signature="e#205#218#0" expanded="true" />
                   </folding>
@@ -286,10 +254,21 @@
           <file leaf-file-name="existed_spider.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/TaskFeed/existed_spider.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="414">
-                  <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+                <state relative-caret-position="276">
+                  <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ece_utexas_parser.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CustomParser/ece_utexas_parser.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="534">
+                  <caret line="70" column="75" lean-forward="false" selection-start-line="70" selection-start-column="75" selection-end-line="70" selection-end-column="75" />
                   <folding>
-                    <element signature="e#198#250#0" expanded="true" />
+                    <marker date="1501075907759" expanded="true" signature="201:413" ph="import ..." />
+                    <marker date="1501075907759" expanded="true" signature="1701:1749" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -304,16 +283,6 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="736">
                   <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ScholarConfig/config.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-207">
-                  <caret line="15" column="20" lean-forward="false" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
                   <folding />
                 </state>
               </provider>
@@ -383,14 +352,24 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="existed_spider.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="existed_spider.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/TaskFeed/existed_spider.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="327">
-                  <caret line="47" column="4" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
+                <state relative-caret-position="557">
+                  <caret line="50" column="25" lean-forward="false" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
                   <folding>
                     <element signature="e#198#250#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ece_utexas_rule.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/ScholarConfig/ece_utexas_rule.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="621">
+                  <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -447,6 +426,7 @@
       <find>abrahamson@</find>
       <find>glaser@c</find>
       <find>tel:(510) 642-1264</find>
+      <find>Sarfraz</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -493,9 +473,7 @@
         <option value="$PROJECT_DIR$/CustomParser/ece_utexas_edu.py" />
         <option value="$PROJECT_DIR$/TaskFeed/caee_utexas_task.py" />
         <option value="$PROJECT_DIR$/TaskFeed/ece_utexas_task.py" />
-        <option value="$PROJECT_DIR$/ScholarConfig/ece_utexas_rule.py" />
         <option value="$PROJECT_DIR$/TaskFeed/eecs_berkeley_task.py" />
-        <option value="$PROJECT_DIR$/CustomParser/ece_utexas_parser.py" />
         <option value="$PROJECT_DIR$/ScholarConfig/eecs_berkeley_rule.py" />
         <option value="$PROJECT_DIR$/TaskFeed/me_berkeley_task.py" />
         <option value="$PROJECT_DIR$/CustomParser/eecs_berkeley_parser.py" />
@@ -506,6 +484,8 @@
         <option value="$PROJECT_DIR$/CustomParser/ce_berkeley_parser.py" />
         <option value="$PROJECT_DIR$/TaskFeed/existed_spider.py" />
         <option value="$PROJECT_DIR$/db/SqlHelper.py" />
+        <option value="$PROJECT_DIR$/ScholarConfig/ece_utexas_rule.py" />
+        <option value="$PROJECT_DIR$/CustomParser/ece_utexas_parser.py" />
       </list>
     </option>
   </component>
@@ -985,9 +965,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.ce_berkeley_task" />
-        <item index="1" class="java.lang.String" itemvalue="Python.me_berkeley_task" />
-        <item index="2" class="java.lang.String" itemvalue="Python.ece_utexas_task" />
+        <item index="0" class="java.lang.String" itemvalue="Python.ece_utexas_task" />
+        <item index="1" class="java.lang.String" itemvalue="Python.ce_berkeley_task" />
+        <item index="2" class="java.lang.String" itemvalue="Python.me_berkeley_task" />
         <item index="3" class="java.lang.String" itemvalue="Python.eecs_berkeley_task" />
         <item index="4" class="java.lang.String" itemvalue="Python.ce_berkeley_parser" />
       </list>
@@ -1020,10 +1000,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1456" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33511043" sideWeight="0.38544154" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.60898966" sideWeight="0.9416168" order="4" side_tool="true" content_ui="tabs" x="2308" y="117" width="2098" height="832" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19888623" sideWeight="0.9416168" order="4" side_tool="true" content_ui="tabs" x="2308" y="117" width="2098" height="832" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3229246" sideWeight="0.20742187" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27494287" sideWeight="0.50636435" order="3" side_tool="true" content_ui="tabs" />
@@ -1234,14 +1215,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ScholarConfig/ece_utexas_rule.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="31" column="20" lean-forward="false" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TaskFeed/cs_utexas_task.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -1313,17 +1286,6 @@
         <state relative-caret-position="874">
           <caret line="67" column="18" lean-forward="false" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CustomParser/ece_utexas_parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-529">
-          <caret line="37" column="27" lean-forward="false" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
-          <folding>
-            <marker date="1501066911314" expanded="true" signature="201:413" ph="import ..." />
-            <marker date="1501066911314" expanded="true" signature="1701:1749" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1401,47 +1363,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ScholarConfig/ce_berkeley_rule.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state relative-caret-position="736">
+          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CustomParser/me_berkeley_parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="35" column="17" lean-forward="false" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+        <state relative-caret-position="230">
+          <caret line="10" column="3" lean-forward="false" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
           <folding>
             <element signature="e#206#250#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TaskFeed/existed_spider.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="e#198#250#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CustomParser/ce_berkeley_parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1012">
-          <caret line="58" column="28" lean-forward="false" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
+        <state relative-caret-position="373">
+          <caret line="60" column="12" lean-forward="false" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
           <folding>
             <element signature="e#207#251#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/SqlHelper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="108" column="4" lean-forward="false" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1487,11 +1431,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TaskFeed/ce_berkeley_task.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="40" column="48" lean-forward="false" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
+        <state relative-caret-position="795">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding>
             <element signature="e#205#218#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TaskFeed/existed_spider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="50" column="25" lean-forward="false" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
+          <folding>
+            <element signature="e#198#250#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomParser/ece_utexas_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="70" column="75" lean-forward="false" selection-start-line="70" selection-start-column="75" selection-end-line="70" selection-end-column="75" />
+          <folding>
+            <marker date="1501075907759" expanded="true" signature="201:413" ph="import ..." />
+            <marker date="1501075907759" expanded="true" signature="1701:1749" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/SqlHelper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="134" column="29" lean-forward="true" selection-start-line="134" selection-start-column="29" selection-end-line="134" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ScholarConfig/ece_utexas_rule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

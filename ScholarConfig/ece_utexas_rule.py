@@ -17,11 +17,11 @@ RULES = {
     "phone":"//*[@id='faculty-profile-panel']/div/div[3]/div/div/div/div[3]/div/div/section/div/div/text()",
     "email-1":"//*[@id='faculty-profile-panel']/div/div[3]/div/div/div/div[5]/div/div/section/div/div/a/text()",
     "email-2":"//*[@id='faculty-profile-panel']/div/div[3]/div/div/div/div[3]/div/div/section/div/div/a/text()",
-    "keywords":"//*[@id='faculty-profile-panel']/div/div[2]/div/div[1]/div/div[2]/div/div[3]/div/div/div/div/div/text()",
+    "keywords":"//*[@id='faculty-profile-panel']/div/div[2]/div/div[3]/div/div[1]/div/div/div/div/section/div/div/a/text()",
     "website-1":"//*[@id='faculty-profile-panel']/div/div[3]/div/div/div/div[9]/div/div/div/div/div/a/@href",
     "website-2":"//*[@id='faculty-profile-panel']/div/div[3]/div/div/div/div[5]/div/div/div/div/div/a/@href",
     "bio":"//*[@id='faculty-profile-panel']/div/div[2]/div/div[2]/div/div/div/div/div/div/p[1]/text()",
-    "cooperation":"//*[@id='faculty-profile-panel']/div/div[2]/div/div[3]/div/div[1]/div/div/div/div/section/div/div/a/text()"
+    "cooperation":"//*[@id='faculty-profile-panel']/div/div[2]/div/div[3]/div/div[2]/div/div/div/div/section/div/div/text()"
 }
 
 BASE_URL =  "http://www.ece.utexas.edu"

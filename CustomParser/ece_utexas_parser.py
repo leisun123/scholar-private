@@ -68,13 +68,13 @@ class ECEUtexasClass(ThesisInfo):
             else:
                 self.website = extract(RULES["website-2"],self.sec)
     def _generate_cooperation(self):
-        self.cooperation.append(extract(RULES["cooperation"],self.sec))
+        self.cooperation = extract(RULES["cooperation"],self.sec,multi=True)
         
     def _generate_bio(self):
         self.bio = extract(RULES["bio"],self.sec)
 
     def _generate_keywords(self):
-        self.keywords.append(extract(RULES["keywords"],self.sec))
+        self.keywords = extract(RULES["keywords"],self.sec,multi=True)
         
     def _generate_city(self):
         pass
@@ -91,5 +91,5 @@ if __name__ == '__main__':
     from utils.connection import fetch
     html= fetch("http://www.ece.utexas.edu/people/faculty/david-soloveichik")
     #print(html)
-    a=extract(RULES["bio"],html)
+    a=extract(RULES["keywords"],html)
     print(a)
