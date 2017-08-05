@@ -12,7 +12,7 @@
 from BaseClass.ThesisClass import ThesisInfo
 from SampleData.ame_nd import organization,major
 from nameparser import HumanName
-
+import re
 
 class AmeNdClass(ThesisInfo):
     def __init__(self, sec=None, parse_data=None):
@@ -26,21 +26,27 @@ class AmeNdClass(ThesisInfo):
 
     
     def _generate_avatar(self):
-        if self.parse_data["avatar"]:
-            self.avatar = self.parse_data["avatar"]
+        if "avatar" in self.parse_data.keys():
+            if self.parse_data["avatar"]:
+                regex = '[a-zA-z]+://[^\s]*'
+                res = re.search(regex, str(self.parse_data["avatar"]))
+                self.avatar = res.group()
     def _generate_firstName(self):
-        if self.parse_data["name"]:
-            self.firstName = HumanName(self.parse_data["name"]).first
+        if "name" in self.parse_data.keys():
+            if self.parse_data["name"]:
+                self.firstName = HumanName(self.parse_data["name"]).first
     def _generate_lastName(self):
-        if self.parse_data["name"]:
-            self.lastName = HumanName(self.parse_data).last
+        if "name" in self.parse_data.keys():
+            if self.parse_data["name"]:
+                self.lastName = HumanName(self.parse_data["name"]).last
     def _generate_organization(self):
         self.organization = organization
     def _generate_major(self):
         self.major = major
     def _generate_title(self):
-        if self.parse_data["title"]:
-            self.title = self.parse_data["title"]
+        if "title" in self.parse_data.keys():
+            if self.parse_data["title"]:
+                self.title = self.parse_data["title"]
     def _generate_birth(self):
         pass
     def _generate_country(self):
@@ -52,26 +58,31 @@ class AmeNdClass(ThesisInfo):
             self.maincity = self.city[0]
             
     def _generate_phone(self):
-        if self.parse_data["phone"]:
-            self.phone = self.parse_data["phone"]
+        if "phone" in self.parse_data.keys():
+            if self.parse_data["phone"]:
+               self.phone = self.parse_data["phone"]
     def _generate_email(self):
-        if self.parse_data["email"]:
-            self.email = self.parse_data["email"]
+        if "email" in self.parse_data.keys():
+            if self.parse_data["email"]:
+                self.email = self.parse_data["email"]
     def _generate_website(self):
-        if self.parse_data["website"]:
-            import re
-            regex = '"(.*?)"'
-            res = re.search(regex, str(self.parse_data["website"]))
-            self.website = res
+        if "website" in self.parse_data.keys():
+            if self.parse_data["website"]:
+                regex = '"(.*?)"'
+                res = re.search(regex, str(self.parse_data["website"]))
+                self.website = res.group()
     def _generate_cooperation(self):
-        if self.parse_data["cooperation"]:
-            self.cooperation.append(self.parse_data["cooperation"])
+        if "cooperation" in self.parse_data.keys():
+            if self.parse_data["cooperation"]:
+                self.cooperation.append(self.parse_data["cooperation"])
     def _generate_bio(self):
-        if self.parse_data["bio"]:
-            self.bio = self.parse_data["bio"]
+        if "bio" in self.parse_data.keys():
+            if self.parse_data["bio"]:
+                self.bio = self.parse_data["bio"]
     def _generate_keywords(self):
-        if self.parse_data["keywords"]:
-            self.keywords.append(self.parse_data["keywords"])
+        if "keywords" in self.parse_data.keys():
+            if self.parse_data["keywords"]:
+                self.keywords.append(self.parse_data["keywords"])
     def _generate_city(self):
         pass
     def _generate_time(self):
