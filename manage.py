@@ -85,19 +85,59 @@
 #
 #
 #
-async def go(loop):
-    engine = await create_engine(user='root', db='test_pymysql',
-                                 host='127.0.0.1', password='', loop=loop)
-    async with engine.acquire() as conn:
-        await conn.execute(tbl.insert().values(val='abc'))
-        await conn.execute(tbl.insert().values(val='xyz'))
+from flask import Flask
+from flask_restplus import Api, Resource, fields, cors
 
-        async for row in conn.execute(tbl.select()):
-            print(row.id, row.val)
+from flask_cors import CORS
 
-    engine.close()
-    await engine.wait_closed()
+app = Flask(__name__)
+CORS(app, resource={"/api/*": {"origins": "*"}})
+api = Api(app, version='1.0', title='TodoMVC API',
+    description='A simple TodoMVC API',
+)
+
+ns = api.namespace('api', description='TODO operations')
 
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(go(loop))
+
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    return response
+
+@ns.route('/')
+
+class TodoList(Resource):
+    '''Shows a list of all todos, and lets you POST to add new tasks'''
+    @ns.doc('list_todos')
+    #@ns.marshal_list_with()
+    #
+    def get(self):
+        '''List all tasks'''
+        return {
+  "data": [
+    { "id": 1, "name": "Windstorm" },
+    { "id": 2, "name": "Bombasto" },
+    { "id": 3, "name": "Magneta" },
+    { "id": 4, "name": "Tornado" }
+  ]
+}
+
+@ns.route('/<int:id>')
+class Todo(Resource):
+    def get(self,id):
+        return {
+            "data": {"id":id,"name":"wz"}
+        }
+
+    def put(self,id):
+        return {
+            "data": {"id": id, "name": "wz"}
+        }
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True,host='127.0.0.1',port=3004)

@@ -55,7 +55,6 @@ class CheUtexasTask(Taskmanager):
     
     def _crawl_info(self,item_url):
         self.logger.info("processing info %s",item_url)
-        from BaseClass.ThesisClass import ThesisInfo
         from CustomParser.che_utexas_parser import CheUtexasClass
         sec=fetch(item_url,proxies=None,logger=self.logger)
         CheUtexasClass(sec).terminal_monitoring()

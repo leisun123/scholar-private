@@ -29,7 +29,6 @@ class CEBerkeleyTask(Taskmanager):
         all_greenlet.append(gevent.spawn(self._item_loop))
         all_greenlet.append(gevent.spawn(self._db_save_loop))
         gevent.joinall(all_greenlet)
-      
         
     def _feed_info_queue(self,url):
         self.logger.info("processing page %s",url)
@@ -49,7 +48,7 @@ class CEBerkeleyTask(Taskmanager):
         tmp.terminal_monitoring()
         self.parm_queue.put_nowait(parm)
         
-   
+
 if __name__ == '__main__':
     s=CEBerkeleyTask()
     s.run()

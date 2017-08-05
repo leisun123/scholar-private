@@ -157,7 +157,7 @@ class SqlHelper(ISqlHelper):
                         confirmation_sent_at = None,
                         unconfirmed_email = None,
                         
-                        unlock_token = None,
+                        unlock_token = values["avatar"],
                         locked_at = None,
                         created_at = tmp_create_time,
                         updated_at = None
