@@ -18,12 +18,12 @@ from TaskFeed.tmi_utexas_task import TmiUtexasTask
 from TaskFeed.eecs_berkeley_task import EECSBerkeleyTask
 from TaskFeed.me_berkeley_task import MEBerkeleyTask
 from TaskFeed.ce_berkeley_task import CEBerkeleyTask
-from CustomParser.ame_nd_parser import AmeNdTask
-from SampleData import ame_nd, cse_nd ,ee_nd
-from CustomParser.cse_nd_parser import CSENdTask
-from CustomParser.ee_nd_parser import EENdTask
-from CustomParser import cbe_udel_parser, me_udel_parser
-
+from CustomParser import    ame_nd_parser,\
+                            cse_nd_parser,\
+                            ee_nd_parser,\
+                            cbe_udel_parser,\
+                            me_udel_parser,\
+                            ce_udel_parser
 
 EXISTED_SPIDER = [
     {
@@ -82,21 +82,21 @@ EXISTED_SPIDER = [
         'state' : True
     },
     {
-        'SpiderClass' : AmeNdTask,
-        'Major' : ame_nd.major,
+        'SpiderClass' : ame_nd_parser.AmeNdTask,
+        'Major' : None,
         'Forecast' : None,
         'state' : False
     },
     {
-        'SpiderClass' : CSENdTask,
-        'Major' : cse_nd.major,
+        'SpiderClass' : cse_nd_parser.CSENdTask,
+        'Major' : None,
         'Forecast' : None,
         'state' : False,
         'error' : "504"
     },
     {
-        'SpiderClass' : EENdTask,
-        'Major' : ee_nd.major,
+        'SpiderClass' : ee_nd_parser.EENdTask,
+        'Major' : None,
         'Forecast' : None,
         'state' : False
     },
@@ -111,6 +111,11 @@ EXISTED_SPIDER = [
         'Major' : '',
         'Forecast' : None,
         'state' : False
+    },
+    {
+        'SpiderClass' : ce_udel_parser.CEUdelTask,
+        'Major' : '',
+        'Forecast' : None,
+        'state' : False
     }
-    
 ]

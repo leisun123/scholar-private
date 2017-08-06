@@ -13,7 +13,7 @@ import os
 
 from sqlalchemy import create_engine
 from sshtunnel import SSHTunnelForwarder
-CRWAL_POOL_SIZE = 50
+CRWAL_POOL_SIZE = 5
 DB_CONFIG={
 
     'DB_CONNECT_TYPE':'sqlalchemy',#'pymongo'sqlalchemy

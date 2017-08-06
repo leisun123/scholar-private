@@ -9,10 +9,14 @@
 @description:
             --
 """
+from gevent import monkey
+monkey.patch_all()
+
 import gevent
 from BaseClass.task_manager import Taskmanager
 from utils.connection import fetch,extract
 from utils.auto_generate import auto_generate
+from utils.logger import get_logger
 
 class CommonTask(Taskmanager):
     
@@ -26,6 +30,7 @@ class CommonTask(Taskmanager):
                       is_url_joint = False):
         Taskmanager.__init__(self,website_name)
         self.website_name = website_name
+        self.logger = get_logger(self.website_name)
         self.custom_parser = custom_parser
         self.base_url = base_url
         self.sample_url = sample_url
@@ -70,13 +75,4 @@ class CommonTask(Taskmanager):
         self.parm_queue.put_nowait(parm)
         
 if __name__ == '__main__':
-    from SampleData.ame_nd import base_url,sample_url,data,item_url_rule
-    from CustomParser.ame_nd_parser import AmeNdClass
-    a = CommonTask(website_name=AmeNdClass.__name__,
-                   custom_parser=AmeNdClass,
-                   base_url=base_url,
-                   sample_url=sample_url,
-                   data=data,
-                   item_url_rule=item_url_rule
-                   )
-    a.run()
+    pass

@@ -29,11 +29,7 @@ class CEUdelClass(ThesisInfo):
 
     
     def _generate_avatar(self):
-        if "avatar" in self.parse_data.keys():
-            if self.parse_data["avatar"]:
-                regex = '[a-zA-z]+://[^\s]*'
-                res = re.search(regex, str(self.parse_data["avatar"]))
-                self.avatar = res.group()
+        self.avatar = "http://www.ce.udel.edu" + extract(avatar_rule,self.sec)
     def _generate_firstName(self):
         if "name" in self.parse_data.keys():
             if self.parse_data["name"]:

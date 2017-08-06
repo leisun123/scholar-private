@@ -18,14 +18,17 @@ item_url_rule = "//a[@class='external-link']/@href"
 #个人简历规则
 bio_rule = "//h2[text()='Biography']/following-sibling::*/text()"
 phone_rule = None
+avatar_rule = "//*[@id='content-core']/p/img/@src"
+cooperation_rule = "//p[@class='organisation']/strong/text()"
+website_rule = "//ul[@class='profileLinks']/li[1]/a/@href"
 #示例数据
-data = {"avatar":"https://engineering.nd.edu/profiles/pantsaklis/@@images/d55661c5-6a47-4932-af0d-0fbc0c9d5345.jpeg",
-        "name":"Panos Antsaklis",
-        "title":"H. Clifford and Evelyn A. Brosey Chair Professor",
-        "phone":"574-631-5792",
-        "email":"antsaklis.1@nd.edu",
-        "website":"http://www.nd.edu/~pantsakl/",
-        "cooperation":"Department of Computer Science and Engineering",
+data = {#"avatar":"https://engineering.nd.edu/profiles/pantsaklis/@@images/d55661c5-6a47-4932-af0d-0fbc0c9d5345.jpeg",
+        "name":"Suman Datta",
+        "title":"Chang Family Professor of Engineering Innovation",
+        "phone":"574-631-8835",
+        "email":"sdatta@nd.edu",
+        #"website":"http://www.ndcl.ee.psu.edu/index.asp",
+        #"cooperation":"Chang Family Professor of Engineering Innovation ",
         "keywords":"Department of Electrical Engineering"
         }
 
@@ -34,3 +37,4 @@ organization = "UNIVERSITY of NOTRE DAME"
 
 #主修专业
 major = "Department of Electrical Engineering"
+

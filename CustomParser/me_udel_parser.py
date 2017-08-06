@@ -34,6 +34,8 @@ class MEUdelClass(ThesisInfo):
                 regex = '[a-zA-z]+://[^\s]*'
                 res = re.search(regex, str(self.parse_data["avatar"]))
                 self.avatar = res.group()
+        self.avatar = "http://www.me.udel.edu" \
+                      + extract(avatar_rule, self.sec)
     def _generate_firstName(self):
         if "name" in self.parse_data.keys():
             if self.parse_data["name"]:
@@ -72,12 +74,16 @@ class MEUdelClass(ThesisInfo):
         if "email" in self.parse_data.keys():
             if self.parse_data["email"]:
                 self.email = self.parse_data["email"]
+        else:
+            self.email = extract(email_rule, self.sec)
     def _generate_website(self):
         if "website" in self.parse_data.keys():
             if self.parse_data["website"]:
                 regex = '"(.*?)"'
                 res = re.search(regex, str(self.parse_data["website"]))
                 self.website = res.group()
+        else:
+            self.website = extract(website_rule, self.sec)
     def _generate_cooperation(self):
         if "cooperation" in self.parse_data.keys():
             if self.parse_data["cooperation"]:
@@ -115,4 +121,4 @@ if __name__ == '__main__':
                    is_url_joint=True
                    )
     MEUdelTask.run()
-    print(MEUdelTask.count)
+    print("count:",MEUdelTask.count)

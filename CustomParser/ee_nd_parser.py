@@ -14,6 +14,7 @@ from BaseClass.common_task import CommonTask
 from SampleData.ee_nd import *
 from nameparser import HumanName
 import re
+
 from utils.connection import extract
 
 
@@ -34,6 +35,7 @@ class EENdClass(ThesisInfo):
                 regex = '[a-zA-z]+://[^\s]*'
                 res = re.search(regex, str(self.parse_data["avatar"]))
                 self.avatar = res.group()
+        self.avatar = extract(avatar_rule, self.sec)
     def _generate_firstName(self):
         if "name" in self.parse_data.keys():
             if self.parse_data["name"]:
@@ -78,10 +80,15 @@ class EENdClass(ThesisInfo):
                 regex = '"(.*?)"'
                 res = re.search(regex, str(self.parse_data["website"]))
                 self.website = res.group()
+        else:
+            if extract(website_rule, self.sec):
+                self.website = extract(website_rule, self.sec)
     def _generate_cooperation(self):
         if "cooperation" in self.parse_data.keys():
             if self.parse_data["cooperation"]:
                 self.cooperation.append(self.parse_data["cooperation"])
+        else:
+            self.cooperation = extract(cooperation_rule, self.sec)
     def _generate_bio(self):
         if "bio" in self.parse_data.keys():
             if self.parse_data["bio"]:

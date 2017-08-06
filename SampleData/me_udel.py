@@ -18,18 +18,23 @@ item_url_rule = "//tr/td/strong/a/@href"
 #个人简历规则
 bio_rule = "//h3[text()='Executive Summary']/following-sibling::*/text()"
 phone_rule = None
+avatar_rule = "//*[@id='content']/div[1]/img/@src"
+email_rule = "//*[@id='content']/div[1]/p[1]/a/text()"
+website_rule = "//*[@id='content']/div[1]/p[2]/a/@href"
+
+
 #示例数据
-data = {"avatar":"https://engineering.nd.edu/profiles/pantsaklis/@@images/d55661c5-6a47-4932-af0d-0fbc0c9d5345.jpeg",
-        "name":"Panos Antsaklis",
-        "title":"George W. Laird Professor",
-        "phone":"574-631-5792",
-        "email":"antsaklis.1@nd.edu",
-        "website":"http://research.me.udel.edu/~advani",
-        "keywords": "Department of Mechanical Engineering"
+data = {#"avatar":"https://engineering.nd.edu/profiles/pantsaklis/@@images/d55661c5-6a47-4932-af0d-0fbc0c9d5345.jpeg",
+        "name":"Dr. Suresh G. Advani",
+        #"title":"George W. Laird Professor",
+        #"phone":"574-631-5792",
+        #"email":"advani@udel.edu",
+        #"website":"http://research.me.udel.edu/~advani",
+        #"keywords": "Department of Mechanical Engineering"
         }
 
 #组织名
-organization = "UNIVERSITY of NOTRE DAME"
+organization = "University of Delaware"
 
 #主修专业
-major = "Department of Electrical Engineering"
+major = "MECHANICAL Engineering"

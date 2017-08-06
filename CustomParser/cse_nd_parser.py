@@ -105,7 +105,7 @@ class CSENdClass(ThesisInfo):
         self.timeKeys = [i for i in range(1,len(self.timeKeys)+1)]
 
 if __name__ == '__main__':
-    from SampleData.cse_nd import base_url,sample_url,data,item_url_rule
+    from SampleData.cse_nd  import base_url,sample_url,data,item_url_rule
     CSENdTask = CommonTask(website_name=CSENdClass.__name__,
                    custom_parser=CSENdClass,
                    base_url=base_url,
@@ -113,8 +113,8 @@ if __name__ == '__main__':
                    data=data,
                    item_url_rule=item_url_rule
                    )
-    CSENdClass.run()
-    print(CSENdClass.count)
+    CSENdTask.run()
+    print(CSENdTask.count)
     # from SampleData.ame_nd import *
     # from utils.connection import extract, fetch
     # html = fetch("https://engineering.nd.edu/profiles/kchristensen")

@@ -18,8 +18,9 @@ item_url_rule = "//tr/td/nobr/a/@href"
 #个人简历规则
 bio_rule = None
 phone_rule = None
+avatar_rule = "//*[@id='content']/div[1]/img/@src"
 #示例数据
-data = {"avatar":"http://www.ce.udel.edu/directories/headshots/12-Attoh-Okine-Nii.jpg",
+data = {
         "name":"Nii O. Attoh-Okine",
         "title":"Professor",
         "phone":"(302) 831-4532",

@@ -29,11 +29,8 @@ class CBEUdelClass(ThesisInfo):
 
     
     def _generate_avatar(self):
-        if "avatar" in self.parse_data.keys():
-            if self.parse_data["avatar"]:
-                regex = '[a-zA-z]+://[^\s]*'
-                res = re.search(regex, str(self.parse_data["avatar"]))
-                self.avatar = res.group()
+        self.avatar = "http://www.cbe.udel.edu"\
+                      + extract(avatar_rule,self.sec)
     def _generate_firstName(self):
         if "name" in self.parse_data.keys():
             if self.parse_data["name"]:
@@ -110,7 +107,9 @@ if __name__ == '__main__':
                    base_url=base_url,
                    sample_url=sample_url,
                    data=data,
-                   item_url_rule=item_url_rule
+                   item_url_rule=item_url_rule,
+                   default_url="http://www.cbe.udel.edu/directory/",
+                   is_url_joint=True
                    )
     CBETask.run()
     print(CBETask.count)

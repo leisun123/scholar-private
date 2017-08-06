@@ -15,8 +15,6 @@ from utils.logger import get_logger
 
 monkey.patch_all()
 
-import sys
-import time
 import gevent
 
 from gevent.pool import Pool

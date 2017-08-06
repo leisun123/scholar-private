@@ -66,7 +66,7 @@ class AmeNdClass(ThesisInfo):
             if self.parse_data["phone"]:
                self.phone = self.parse_data["phone"]
         tmp = extract(phone_rule, self.sec)
-        if tmp:
+        if len(tmp):
             self.phone = tmp.xpath('string(.)').strip().replace('Phone:','')
     def _generate_email(self):
         if "email" in self.parse_data.keys():
