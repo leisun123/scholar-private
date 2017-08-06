@@ -37,7 +37,7 @@ class Taskmanager(object):
         self.proxy_manager = ProxyManager("../utils/1.txt",self.logger)
         #self.timer = Timer(random.randint(0,2),self.interval)
         self.proxys = self.proxy_manager.get_proxy()
-        
+        self.count = 0
         
     def run(self):
         pass
@@ -69,8 +69,9 @@ class Taskmanager(object):
     def _db_save_loop(self):
         while 1:
             parm = self.parm_queue.get(block=True)
+            self.count = self.count+1
             self.crawl_pool.spawn(SqlHelper(logger=self.logger).insert_scholar,**parm)
-    
+            
         
     
 

@@ -1,31 +1,31 @@
 #coding:utf-8
 """
-@file:      common_parser
+@file:      cse_nd_parser
 @author:    IsolationWyn
 @contact:   genius_wz@aliyun.com
 @python:    3.5.2
 @editor:    PyCharm
-@create:    2017/8/1 1:34
+@create:    2017/8/5 15:45
 @description:
             --
 """
 from BaseClass.ThesisClass import ThesisInfo
 from BaseClass.common_task import CommonTask
-from SampleData.ame_nd import *
+from SampleData.cse_nd import *
 from nameparser import HumanName
 import re
 
 from utils.connection import extract
 
 
-class AmeNdClass(ThesisInfo):
+class CSENdClass(ThesisInfo):
     def __init__(self, sec=None, parse_data=None):
         """
         :param sec: item url
         """
         self.sec = sec
         self.parse_data = parse_data
-        super(AmeNdClass, self).__init__()
+        super(CSENdClass, self).__init__()
         self.generate_all_method()
 
     
@@ -65,9 +65,10 @@ class AmeNdClass(ThesisInfo):
         if "phone" in self.parse_data.keys():
             if self.parse_data["phone"]:
                self.phone = self.parse_data["phone"]
-        tmp = extract(phone_rule, self.sec)
-        if tmp:
-            self.phone = tmp.xpath('string(.)').strip().replace('Phone:','')
+        if phone_rule:
+            tmp = extract(phone_rule, self.sec)
+            if tmp:
+                self.phone = tmp.xpath('string(.)').strip().replace('Phone:','')
     def _generate_email(self):
         if "email" in self.parse_data.keys():
             if self.parse_data["email"]:
@@ -104,15 +105,18 @@ class AmeNdClass(ThesisInfo):
         self.timeKeys = [i for i in range(1,len(self.timeKeys)+1)]
 
 if __name__ == '__main__':
-    from SampleData.ame_nd import base_url,sample_url,data,item_url_rule
-    from CustomParser.ame_nd_parser import AmeNdClass
-    AmeNdTask = CommonTask(website_name=AmeNdClass.__name__,
-                   custom_parser=AmeNdClass,
+    from SampleData.cse_nd import base_url,sample_url,data,item_url_rule
+    CSENdTask = CommonTask(website_name=CSENdClass.__name__,
+                   custom_parser=CSENdClass,
                    base_url=base_url,
                    sample_url=sample_url,
                    data=data,
                    item_url_rule=item_url_rule
                    )
-    AmeNdTask.run()
-    print(AmeNdTask.count)
- 
+    CSENdClass.run()
+    print(CSENdClass.count)
+    # from SampleData.ame_nd import *
+    # from utils.connection import extract, fetch
+    # html = fetch("https://engineering.nd.edu/profiles/kchristensen")
+    # a = extract(phone_rule, html).xpath('string(.)').strip().replace('Phone:','')
+    # print(a)

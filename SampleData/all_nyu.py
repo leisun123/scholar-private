@@ -1,11 +1,11 @@
 #coding:utf-8
 """
-@file:      ame.nd.edu
+@file:      engineering_nyu
 @author:    IsolationWyn
 @contact:   genius_wz@aliyun.com
 @python:    3.5.2
 @editor:    PyCharm
-@create:    2017/8/1 1:49
+@create:    2017/8/6 11:16
 @description:
             --
 """

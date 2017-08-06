@@ -1,31 +1,27 @@
 #coding:utf-8
 """
-@file:      common_parser
+@file:      template_parser
 @author:    IsolationWyn
 @contact:   genius_wz@aliyun.com
 @python:    3.5.2
 @editor:    PyCharm
-@create:    2017/8/1 1:34
+@create:    2017/8/5 14:43
 @description:
             --
 """
 from BaseClass.ThesisClass import ThesisInfo
-from BaseClass.common_task import CommonTask
-from SampleData.ame_nd import *
+from SampleData.ame_nd import organization,major
 from nameparser import HumanName
 import re
 
-from utils.connection import extract
-
-
-class AmeNdClass(ThesisInfo):
+class TemplateClass(ThesisInfo):
     def __init__(self, sec=None, parse_data=None):
         """
         :param sec: item url
         """
         self.sec = sec
         self.parse_data = parse_data
-        super(AmeNdClass, self).__init__()
+        super(TemplateClass, self).__init__()
         self.generate_all_method()
 
     
@@ -65,9 +61,6 @@ class AmeNdClass(ThesisInfo):
         if "phone" in self.parse_data.keys():
             if self.parse_data["phone"]:
                self.phone = self.parse_data["phone"]
-        tmp = extract(phone_rule, self.sec)
-        if tmp:
-            self.phone = tmp.xpath('string(.)').strip().replace('Phone:','')
     def _generate_email(self):
         if "email" in self.parse_data.keys():
             if self.parse_data["email"]:
@@ -86,8 +79,6 @@ class AmeNdClass(ThesisInfo):
         if "bio" in self.parse_data.keys():
             if self.parse_data["bio"]:
                 self.bio = self.parse_data["bio"]
-        if bio_rule:
-            self.bio = extract(bio_rule, self.sec)
     def _generate_keywords(self):
         if "keywords" in self.parse_data.keys():
             if self.parse_data["keywords"]:
@@ -104,15 +95,6 @@ class AmeNdClass(ThesisInfo):
         self.timeKeys = [i for i in range(1,len(self.timeKeys)+1)]
 
 if __name__ == '__main__':
-    from SampleData.ame_nd import base_url,sample_url,data,item_url_rule
-    from CustomParser.ame_nd_parser import AmeNdClass
-    AmeNdTask = CommonTask(website_name=AmeNdClass.__name__,
-                   custom_parser=AmeNdClass,
-                   base_url=base_url,
-                   sample_url=sample_url,
-                   data=data,
-                   item_url_rule=item_url_rule
-                   )
-    AmeNdTask.run()
-    print(AmeNdTask.count)
- 
+    from utils.connection import fetch
+    html= fetch("http://www.me.berkeley.edu/people/faculty/m-reza-alam")
+#    print(html)
