@@ -19,7 +19,6 @@ DB_CONFIG={
     'DB_CONNECT_TYPE':'sqlalchemy',#'pymongo'sqlalchemy
     # 'DB_CONNECT_STRING':'mongodb://localhost:27017/'
     #'DB_CONNECT_STRING':'sqlite:///'+os.path.dirname(__file__)+'/data/proxy.db'
-    'DB_CONNECT_STRING' : "mysql+pymysql://wyn:weiaizq1314@10.8.3.95/eb"
     #'DB_CONNECT_STRING' : "mysql+pymysql://root:root@localhost:{}/eb"
 }
 
