@@ -114,17 +114,21 @@ class SqlHelper(ISqlHelper):
             connect_args = {'check_same_thread':False}
             self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'],echo=False,connect_args=connect_args)
         else:
-            #self.engine =create_ssh_tunnel()
-            self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
-            DB_Session = sessionmaker(bind=self.engine)
+            self.engine =create_ssh_tunnel()
+            #self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
+            DB_Session = sessionmaker(bind=self.engine,
+                                      pool_size=50,
+                                      max_overflow=20,
+                                      pool_recycle=7200,
+                                      pool_time=30)
             self.session = DB_Session()
         
     def init_db(self):
         BaseModel.metadata.create_all(self.engine)
         
 
-    def drop_db(self):
-        BaseModel.metadata.drop_all(self.engine)
+    # def drop_db(self):
+    #     BaseModel.metadata.drop_all(self.engine)
     
         
     def insert_scholar(self, **values):
@@ -194,7 +198,7 @@ class SqlHelper(ISqlHelper):
                         )
             self.session.add(object_attributes_avatar)
             self.session.add(user_group)
-            download(values["avatar"],user.id,self.logger)
+            #download(values["avatar"],user.id,self.logger)
             self.logger.info("{} has inserted".format(user.name))
             self.session.commit()
         except exc.SQLAlchemyError as e:

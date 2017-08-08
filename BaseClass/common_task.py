@@ -9,14 +9,12 @@
 @description:
             --
 """
-from gevent import monkey
-monkey.patch_all()
-
 import gevent
 from BaseClass.task_manager import Taskmanager
 from utils.connection import fetch,extract
 from utils.auto_generate import auto_generate
 from utils.logger import get_logger
+import requests
 
 class CommonTask(Taskmanager):
     
@@ -38,10 +36,11 @@ class CommonTask(Taskmanager):
         self.item_url_rule = item_url_rule
         self.default_url = default_url
         self.is_url_joint = is_url_joint
+        self.requsts_session = requests.session()
         
     def run(self):
         all_greenlet = []
-        self.page_queue.put_nowait(self.base_url)
+        self.page_queue.put(self.base_url)
         all_greenlet.append(gevent.spawn(self._page_loop))
         all_greenlet.append(gevent.spawn(self._item_loop))
         all_greenlet.append(gevent.spawn(self._db_save_loop))
@@ -51,15 +50,14 @@ class CommonTask(Taskmanager):
     def _feed_info_queue(self,url):
         self.logger.info("processing page %s",url)
         
-        html = fetch(url,proxies=None,logger=self.logger)
+        html = fetch(url, requests_session=self.requsts_session,
+                     proxies=None,logger=self.logger)
         #print(html.capitalize())
         item = extract(self.item_url_rule, html, multi=True)
         if not self.is_url_joint:
-            for i in item:
-                self.info_queue.put_nowait(i)
+            [self.info_queue.put_nowait(i) for i in item]
         else:
-            for i in item:
-                self.info_queue.put_nowait(self.default_url + i)
+            [self.info_queue.put_nowait(self.default_url + i) for i in item]
     
     def _crawl_info(self,item_url):
         self.logger.info("processing info %s",item_url)
@@ -68,8 +66,10 @@ class CommonTask(Taskmanager):
                                          data=self.data,
                                          common_url=item_url)
         
-        sec=fetch(item_url, proxies=None, logger=self.logger)
-        tmp = self.custom_parser(sec,self.parse_data)
+        sec=fetch(item_url, requests_session=self.requsts_session,
+                  proxies=None, logger=self.logger)
+        tmp = self.custom_parser(sec=sec,
+                                 parse_data=self.parse_data)
         parm = tmp.set_value()
         tmp.terminal_monitoring()
         self.parm_queue.put_nowait(parm)

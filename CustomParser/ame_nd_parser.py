@@ -77,7 +77,8 @@ class AmeNdClass(ThesisInfo):
             if self.parse_data["website"]:
                 regex = '"(.*?)"'
                 res = re.search(regex, str(self.parse_data["website"]))
-                self.website = res.group()
+                if len(res):
+                    self.website = res.group()
     def _generate_cooperation(self):
         if "cooperation" in self.parse_data.keys():
             if self.parse_data["cooperation"]:

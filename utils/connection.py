@@ -20,7 +20,13 @@ from ScholarConfig.config import USER_AGENT
 from utils.selenuim_parse import SelenuimParse
 
 
-def fetch(url,timeout=10,from_web=True,retry_num=5,proxies=None,logger=None,decode=True):
+def fetch(url,requests_session=requests.session(),
+          timeout=10,
+          from_web=True,
+          retry_num=5,
+          proxies=None,
+          logger=None,
+          decode=True):
     if not from_web:
         with open('','rb') as f:
             return f.read()
@@ -38,7 +44,7 @@ def fetch(url,timeout=10,from_web=True,retry_num=5,proxies=None,logger=None,deco
                 if proxies is not None:
                     kwargs["proxies"] = { "http": proxies,\
                                           "https": proxies, }
-                resp=requests.get(url,**kwargs)
+                resp=requests_session.get(url,**kwargs)
                 if resp.status_code != 200:
                     raise HTTPError(resp.status_code,url)
                 break

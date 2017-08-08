@@ -9,17 +9,6 @@
 @description:
             --
 """
-#coding:utf-8
-"""
-@file:      caee_utexas_task
-@author:    IsolationWyn
-@contact:   genius_wz@aliyun.com
-@python:    3.5.2
-@editor:    PyCharm
-@create:    2017/7/17 4:57
-@description:
-            --
-"""
 
 import gevent
 from BaseClass.task_manager import Taskmanager

@@ -13,7 +13,7 @@ import os
 
 from sqlalchemy import create_engine
 from sshtunnel import SSHTunnelForwarder
-CRWAL_POOL_SIZE = 5
+CRWAL_POOL_SIZE = 40
 DB_CONFIG={
 
     'DB_CONNECT_TYPE':'sqlalchemy',#'pymongo'sqlalchemy
@@ -68,10 +68,11 @@ def create_ssh_tunnel():
         server = SSHTunnelForwarder(
                 ('13.113.193.188',22),
                 ssh_username="ubuntu",
-                ssh_pkey="C:/Users/tonylu/Desktop/eb-web(1).pem",
+                ssh_pkey="/home/wyn/桌面/eb-web(1).pem",
                 remote_bind_address=('localhost',3306)
                 )
         server.start()
         
-        enginee = create_engine("mysql+pymysql://root:root@localhost:{}/eb".format(server.local_bind_port))
+        enginee = create_engine("mysql+pymysql://root:root@localhost:{}/eb".format(server.local_bind_port),\
+                                pool_size=30)
         return enginee
