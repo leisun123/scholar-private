@@ -86,7 +86,4 @@ class CheUtexasClass(ThesisInfo):
         self.timeKeys = [i for i in range(1,len(self.timeKeys)+1)]
 
 if __name__ == '__main__':
-    from utils.connection import fetch
-    html= fetch("http://tmi.utexas.edu/people/type/faculty/")
-    a=extract(RULES["item_url"],html,multi=True)
-    print(a)
+    pass

@@ -110,13 +110,12 @@ class BIONyuClass(ThesisInfo):
 
 if __name__ == '__main__':
     BIONyuTask = CommonTask(website_name=BIONyuClass.__name__,
-                   custom_parser=BIONyuClass,
-                   base_url=base_url,
-                   sample_url=sample_url,
-                   data=data,
-                   item_url_rule=item_url_rule,
-                   default_url="http://engineering.nyu.edu",
-                   is_url_joint=True
-                   )
+               custom_parser=BIONyuClass,
+               base_url=base_url,
+               sample_url=sample_url,
+               data=data,
+               item_url_rule=item_url_rule,
+               default_url="http://engineering.nyu.edu/",
+               is_url_joint=True
+               )
     BIONyuTask.run()
-    print("count:", BIONyuTask.count)

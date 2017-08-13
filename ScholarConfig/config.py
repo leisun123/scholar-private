@@ -19,7 +19,7 @@ DB_CONFIG={
     'DB_CONNECT_TYPE':'sqlalchemy',#'pymongo'sqlalchemy
     # 'DB_CONNECT_STRING':'mongodb://localhost:27017/'
     #'DB_CONNECT_STRING':'sqlite:///'+os.path.dirname(__file__)+'/data/proxy.db'
-    #'DB_CONNECT_STRING' : "mysql+pymysql://root:root@localhost:{}/eb"
+    'DB_CONNECT_STRING' : "mysql+pymysql://root:root@localhost/eb"
 }
 
 proxies = None
@@ -73,5 +73,6 @@ def create_ssh_tunnel():
         server.start()
         
         enginee = create_engine("mysql+pymysql://root:root@localhost:{}/eb".format(server.local_bind_port),\
-                                pool_size=30)
+                                pool_size=30,
+                                max_overflow=10)
         return enginee

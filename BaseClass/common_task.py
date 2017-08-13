@@ -66,7 +66,7 @@ class CommonTask(Taskmanager):
                                          data=self.data,
                                          common_url=item_url)
         
-        sec=fetch(item_url, requests_session=self.requsts_session,
+        sec = fetch(item_url, requests_session=self.requsts_session,
                   proxies=None, logger=self.logger)
         tmp = self.custom_parser(sec=sec,
                                  parse_data=self.parse_data)

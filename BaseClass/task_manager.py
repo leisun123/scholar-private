@@ -11,7 +11,7 @@
 """
 from gevent import monkey
 
-from utils.logger import get_logger
+
 
 monkey.patch_all()
 
@@ -22,6 +22,8 @@ from gevent.queue import Queue
 from db.SqlHelper import SqlHelper
 from ScholarConfig.config import CRWAL_POOL_SIZE
 from utils.proxy_manager import ProxyManager
+from utils.logger import get_logger
+from init import project_dir
 class Taskmanager(object):
     
     def __init__(self,logging_name):
@@ -32,10 +34,11 @@ class Taskmanager(object):
         self.page_queue = Queue()
         self.info_queue = Queue()
         self.parm_queue = Queue()
-        self.proxy_manager = ProxyManager("../utils/1.txt",self.logger)
+        self.proxy_manager = ProxyManager("{}/1.txt".format(project_dir),self.logger)
         #self.timer = Timer(random.randint(0,2),self.interval)
         self.proxys = self.proxy_manager.get_proxy()
         self.count = 0
+
         
     def run(self):
         pass
@@ -49,8 +52,8 @@ class Taskmanager(object):
     def _page_loop(self):
         while 1:
             page_url=self.page_queue.get(block=True)
-            gevent.sleep(1)
-            self.crawl_pool.spawn(self._feed_info_queue,page_url)
+            gevent.sleep(0)
+            self.crawl_pool.spawn(self._feed_info_queue, page_url)
     
     def _feed_info_queue(self,url):
         pass
@@ -58,8 +61,8 @@ class Taskmanager(object):
     def _item_loop(self):
         while 1:
             item_url=self.info_queue.get(block=True)
-            gevent.sleep(1)
-            self.crawl_pool.spawn(self._crawl_info,item_url)
+            gevent.sleep(0)
+            self.crawl_pool.spawn(self._crawl_info, item_url)
             
     def _crawl_info(self,item_url):
         pass
@@ -68,7 +71,8 @@ class Taskmanager(object):
         while 1:
             parm = self.parm_queue.get(block=True)
             self.count = self.count+1
-            self.crawl_pool.spawn(SqlHelper(logger=self.logger).insert_scholar,**parm)
+            S = SqlHelper(logger=self.logger)
+            self.crawl_pool.spawn(S.insert_scholar, **parm)
             
         
     

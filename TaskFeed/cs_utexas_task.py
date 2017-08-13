@@ -9,7 +9,7 @@
 @description:
             --
 """
-
+import gevent
 from BaseClass.task_manager import Taskmanager
 from utils.connection import fetch,extract
 from ScholarConfig.cs_utexas_rule import RULES,BASE_URL
@@ -22,8 +22,13 @@ class CSUtexasTask(Taskmanager):
         Taskmanager.__init__(self,"cs_utexas")
         self.base_url = BASE_URL
     
-    
     def run(self):
+        all_greenlet = []
+        all_greenlet.append(gevent.spawn(self.crawl_info))
+        all_greenlet.append(gevent.spawn(self._db_save_loop))
+        gevent.joinall(all_greenlet)
+        
+    def crawl_info(self):
         from CustomParser.cs_utexas_parser import CSUtexasClass
         html = fetch(self.base_url,logger=self.logger)
         sec = extract(RULES["item"],html,multi=True)
@@ -33,7 +38,7 @@ class CSUtexasTask(Taskmanager):
                 parm = tmp.set_value()
                 tmp.terminal_monitoring()
                 self.parm_queue.put_nowait(parm)
-                
+        
    
 if __name__ == '__main__':
     s=CSUtexasTask()

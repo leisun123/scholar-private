@@ -116,11 +116,7 @@ class SqlHelper(ISqlHelper):
         else:
             self.engine =create_ssh_tunnel()
             #self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
-            DB_Session = sessionmaker(bind=self.engine,
-                                      pool_size=50,
-                                      max_overflow=20,
-                                      pool_recycle=7200,
-                                      pool_time=30)
+            DB_Session = sessionmaker(bind=self.engine)
             self.session = DB_Session()
         
     def init_db(self):
