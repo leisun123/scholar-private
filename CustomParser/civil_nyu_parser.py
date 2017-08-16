@@ -9,17 +9,6 @@
 @description:
             --
 """
-#coding:utf-8
-"""
-@file:      bio_nyu_parser
-@author:    IsolationWyn
-@contact:   genius_wz@aliyun.com
-@python:    3.5.2
-@editor:    PyCharm
-@create:    17-8-6 下午11:54
-@description:
-            --
-"""
 
 from BaseClass.ThesisClass import ThesisInfo
 from BaseClass.common_task import CommonTask

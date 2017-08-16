@@ -32,28 +32,5 @@ def pretty_dict(obj, indent=' '):
     print((''.join(_pretty(obj, indent))))
     
 if __name__ == '__main__':
-    d = {"name":"Narendra Ahuja",
-"email":"n-ahuja@illinois.edu",
-"password":"bcrypt",
-"avatar":"http://ws.engr.illinois.edu/directory/viewphoto.aspx?id=30761&s=215&type=portrait",
-"profile":{"keywordKeys":[1],
-"cityKeys":[1],
-"timeKeys":[1],
-"firstName":"Narendra",
-"lastName":"Ahuja",
-"organization":"University of Illinois",
-"major":"Algorithms and computational complexity",
-"title":"Professor Emeritus",
-"birth":"",
-"country":"USA",
-"state":"Illinois",
-"city":"Urbana",
-"phone":"(217) 333-1837",
-"email":"n-ahuja@illinois.edu",
-"website":"http://vision.ai.uiuc.edu/ahuja.html",
-"cooperation":[],
-"bio":"Teaching courses on Computer Vision, Pattern Recognition, Computer Engineering, Probability Theory, Robotics, and Knowledge Networks. In the last few years, co-developed two new interdisciplinary courses with colleagues from other departments: (1) Visualizing and Navigating Knowledge Networks. Co-developed with Profs. N. Contractor of Dept. of Speech Communication and Prof. M. Twidale of School of Library and Information Science. Under Madden Grant, awarded by UIUC Chancellors office. Taught twice. (2) Image Structure, Content and Depiction. Co-developed with Prof. P. Dhillon of Dept. of Educational Policy Studies. Being taught in Spring 2008. (1) Introduced a new computational approach to automatically extracting syntax of images, and using it for automated image understanding. We introduced automated ways of discovering, modeling, recognizing and explaining object categories occurring in arbitrary image sets without supervision and automatically organizing these categories into taxonomies. (2) Introduced a novel, Fourier based formulation for representation and synthesis of videos of dynamic textures. Conventionally, dynamic textures have been analyzed only in spatial domain. Undergraduate student can participate in research projects in the areas of computer vision, pattern recognition, human computer interaction, novel cameras and image and video retrieval.","keyword":["Algorithms and computational complexity"],
-"city":["china"],
-"time":["flexible"]}}
-pretty_dict(d)
+    pass
     

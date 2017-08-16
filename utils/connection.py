@@ -17,7 +17,7 @@ from lxml import etree
 from ScholarConfig.config import proxies
 from ErrorHandle.request_error import HTTPError, URLFetchError
 from ScholarConfig.config import USER_AGENT
-from utils.selenuim_parse import SelenuimParse
+
 
 
 def fetch(url,requests_session=requests.session(),
