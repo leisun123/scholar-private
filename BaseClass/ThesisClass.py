@@ -133,9 +133,9 @@ class ThesisInfo(object):
         for i in self.keywordKeys:
             parm["profile"]["keyword-{}".format(i)] = self.keywords[i-1]
         for j in self.cityKeys:
-            parm["profile"]["city-{}".format(j)] = self.cityKeys[j-1]
+            parm["profile"]["city-{}".format(j)] = self.city[j-1]
         for h in self.timeKeys:
-            parm["profile"]["time-{}".format(h)] = self.timeKeys[h-1]
+            parm["profile"]["time-{}".format(h)] = self.time[h-1]
         return parm
         
         

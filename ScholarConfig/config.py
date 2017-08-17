@@ -71,7 +71,7 @@ def create_ssh_tunnel():
         server = SSHTunnelForwarder(
                 ('13.113.193.188',22),
                 ssh_username="ubuntu",
-                ssh_pkey="/home/wyn/桌面/eb-web(1).pem",
+                ssh_pkey="C:/Users/tonylu/Desktop/eb-web(1).pem",
                 remote_bind_address=('localhost',3306)
                 )
         server.start()
