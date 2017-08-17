@@ -13,13 +13,14 @@ import os
 
 from sqlalchemy import create_engine
 from sshtunnel import SSHTunnelForwarder
+
 CRWAL_POOL_SIZE = 40
 DB_CONFIG={
 
     'DB_CONNECT_TYPE':'sqlalchemy',#'pymongo'sqlalchemy
     # 'DB_CONNECT_STRING':'mongodb://localhost:27017/'
     #'DB_CONNECT_STRING':'sqlite:///'+os.path.dirname(__file__)+'/data/proxy.db'
-    'DB_CONNECT_STRING' : "mysql+pymysql://root:root@localhost/eb"
+    'DB_CONNECT_STRING' : "mysql+pymysql://wyn:weiaizq1314@localhost/eb"
 }
 
 proxies = None
@@ -62,6 +63,9 @@ USER_AGENTS = [
 ]
 import random
 USER_AGENT = random.choice(USER_AGENTS)
+
+def get_user_agent():
+    return random.choice(USER_AGENT)
 
 def create_ssh_tunnel():
         server = SSHTunnelForwarder(

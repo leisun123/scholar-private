@@ -114,8 +114,8 @@ class SqlHelper(ISqlHelper):
             connect_args = {'check_same_thread':False}
             self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'],echo=False,connect_args=connect_args)
         else:
-            self.engine =create_ssh_tunnel()
-            #self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
+            #self.engine =create_ssh_tunnel()
+            self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
             DB_Session = sessionmaker(bind=self.engine)
             self.session = DB_Session()
         
@@ -186,7 +186,7 @@ class SqlHelper(ISqlHelper):
             object_attributes_avatar = ObjectAttribute(
                         object_id = tmp_id,
                         name = "avatar",
-                        value = bytes("{}.jpg".format(user.id),encoding='utf8')
+                        value = bytes("{}.jpg".format(user.id), encoding='utf8')
                         )
             user_group = UserGroup(
                         user_id = user.id,
@@ -195,8 +195,8 @@ class SqlHelper(ISqlHelper):
             self.session.add(object_attributes_avatar)
             self.session.add(user_group)
             #download(values["avatar"],user.id,self.logger)
-            self.logger.info("{} has inserted".format(user.name))
             self.session.commit()
+            self.logger.info("{} has inserted".format(user.name))
         except exc.SQLAlchemyError as e:
             self.logger.error("{} info commit failed! Caused by {}".format(values["name"],e))
             self.session.rollback()

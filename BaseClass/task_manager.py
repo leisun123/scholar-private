@@ -52,7 +52,7 @@ class Taskmanager(object):
     def _page_loop(self):
         while 1:
             page_url=self.page_queue.get(block=True)
-            gevent.sleep(0)
+            gevent.sleep(2)
             self.crawl_pool.spawn(self._feed_info_queue, page_url)
     
     def _feed_info_queue(self,url):
@@ -61,7 +61,7 @@ class Taskmanager(object):
     def _item_loop(self):
         while 1:
             item_url=self.info_queue.get(block=True)
-            gevent.sleep(0)
+            gevent.sleep(2)
             self.crawl_pool.spawn(self._crawl_info, item_url)
             
     def _crawl_info(self,item_url):
@@ -70,6 +70,7 @@ class Taskmanager(object):
     def _db_save_loop(self):
         while 1:
             parm = self.parm_queue.get(block=True)
+            gevent.sleep(2)
             self.count = self.count+1
             S = SqlHelper(logger=self.logger)
             self.crawl_pool.spawn(S.insert_scholar, **parm)

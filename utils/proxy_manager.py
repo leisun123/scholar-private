@@ -40,6 +40,7 @@ class ProxyManager(object):
             self.proxies = proxies_or_path
             
     def reload_proxies(self):
+        
         if not isinstance(self.proxied_or_path,str):
             raise TypeError("proxies_or_path ")
         if self.is_single:
