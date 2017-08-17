@@ -61,10 +61,10 @@ def set_value(name, email, organization, website, major, avatar):
 
 
 from db.SqlHelper import SqlHelper
-sqlhepler = SqlHelper(logger=get_logger("syl"))
 import pymysql
 conn = pymysql.connect(host='localhost',user='wyn',passwd='weiaizq1314',db='eb',port=3306)
 cur = conn.cursor()
+sqlhepler = SqlHelper(logger=get_logger("syl"))
 cur.execute("""
                   select * from sc;
                   """)
@@ -72,24 +72,24 @@ res= iter(cur.fetchall() )
 while True:
     tmp = (next(res))
     name = tmp[0].replace("INSERT INTO `sc` VALUES ('","").replace("'","").strip()
-    email = tmp[1]
-    major = tmp[2]
-    website = tmp[3]
-    avatar = tmp[4]
+    email = tmp[1].replace("'","")
+    major = tmp[2].replace("'","")
+    website = tmp[3].replace("'","")
+    avatar = tmp[4].replace("'","").replace(");","")
     if "Texas" in major:
        organization =  "Texas A&M University"
     else:
        organization = "University of Southern California"
     
     # print("name:",name)
-    # print("email",email)
-    # print("avatar",avatar)
-    # print("major",major)
-    # print("website",website)
-    # print("organzation",organzation)
+    # print("email:",email)
+    # print("avatar:",avatar)
+    # print("major:",major)
+    # print("website:",website)
+    # print("organzation:",organization)
     parm = set_value(name=name, email=email, avatar=avatar, major=major, organization=organization,
                      website=website)
-    sqlhepler.insert_scholar(**parm)
+    sqlhepler.update_scholar(**parm)
 
 
     

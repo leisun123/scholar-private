@@ -201,6 +201,20 @@ class SqlHelper(ISqlHelper):
             self.logger.error("{} info commit failed! Caused by {}".format(values["name"],e))
             self.session.rollback()
 
+    def update_scholar(self, **values):
+        try:
+            res = self.session.query(User).filter(User.name == values["name"])
+            res.update({User.email:values["email"],
+                        User.unlock_token:values["avatar"]})
+            
+            self.session.query(ObjectAttribute).filter(ObjectAttribute.id == res.one().id)\
+                    .update({ObjectAttribute.value:bytes(simplejson.dumps(values["profile"]),encoding='utf8')})
+            
+            self.session.commit()
+            self.logger.info("{} has updated".format(res.one().name))
+        except exc.SQLAlchemyError as e:
+            self.logger.error("{} info updated failed! Caused by {}".format(values["name"],e))
+            self.session.rollback()
     
     def output_proxy(self):
         ipprort=self.session.query(Proxy.ip,Proxy.port).all()
