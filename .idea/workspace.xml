@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29ac3f02-7c2c-4098-a630-56da593e5469" name="Default" comment="">
+<<<<<<< HEAD
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/BaseClass/science_direct_parser.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/selenuim_parser.py" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/utils/selenuim_parse.py" afterPath="" />
@@ -11,6 +12,23 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/SqlHelper.py" afterPath="$PROJECT_DIR$/db/SqlHelper.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/proxy_manager.py" afterPath="$PROJECT_DIR$/utils/proxy_manager.py" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/BaseClass/SCIENCE_DIRECT_TASK.py" afterPath="$PROJECT_DIR$/BaseClass/science_direct_task.py" />
+=======
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CustomParser/cee_ucla_parser.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CustomParser/cs_ucsb_parser.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CustomParser/cyber_umd_parser.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CustomParser/ece_umd_parser.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CustomParser/ece_uscb_parser.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CustomParser/mccormick_northwestern_parser.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CustomParser/me_umn_parser.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SampleData/cee_ucla.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SampleData/cs_ucsb.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SampleData/cyber_umd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SampleData/ece_ucsb.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SampleData/ece_umd.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SampleData/mccormick_northwestern.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SampleData/me_umn.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,6 +39,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+<<<<<<< HEAD
     <SUITE FILE_PATH="coverage/scholar$bio_nyu_parser.coverage" NAME="bio_nyu_parser Coverage Results" MODIFIED="1502267750906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
     <SUITE FILE_PATH="coverage/scholar$selenuim_parse.coverage" NAME="selenuim_parse Coverage Results" MODIFIED="1502904590985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/scholar$ce_udel_parser.coverage" NAME="ce_udel_parser Coverage Results" MODIFIED="1502281052100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
@@ -33,16 +52,64 @@
     <SUITE FILE_PATH="coverage/scholar$common_task.coverage" NAME="common_task Coverage Results" MODIFIED="1501913341250" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BaseClass" />
     <SUITE FILE_PATH="coverage/scholar$civil_nyu.coverage" NAME="civil_nyu Coverage Results" MODIFIED="1502039309801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SampleData" />
     <SUITE FILE_PATH="coverage/scholar$views.coverage" NAME="views Coverage Results" MODIFIED="1498027289087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/main" />
+=======
+    <SUITE FILE_PATH="coverage/scholar$cse_nd_parser.coverage" NAME="cse_nd_parser Coverage Results" MODIFIED="1502088777443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$send.coverage" NAME="send Coverage Results" MODIFIED="1497469403125" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/rabbitmq" />
+    <SUITE FILE_PATH="coverage/scholar$tmi_utexas_parser.coverage" NAME="tmi_utexas_parser Coverage Results" MODIFIED="1500369505410" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$eecs_berkeley_parser.coverage" NAME="eecs_berkeley_parser Coverage Results" MODIFIED="1501067028355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$ece_umd_parser.coverage" NAME="ece_umd_parser Coverage Results" MODIFIED="1502680954314" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$super.coverage" NAME="super Coverage Results" MODIFIED="1499026387280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pre" />
+    <SUITE FILE_PATH="coverage/scholar$connection.coverage" NAME="connection Coverage Results" MODIFIED="1500091116522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
+    <SUITE FILE_PATH="coverage/scholar$app.coverage" NAME="app Coverage Results" MODIFIED="1497432581678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/scholar$SqlHelper.coverage" NAME="SqlHelper Coverage Results" MODIFIED="1501009819927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
+    <SUITE FILE_PATH="coverage/scholar$spider_config.coverage" NAME="spider_config Coverage Results" MODIFIED="1498148985324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
     <SUITE FILE_PATH="coverage/scholar$ee_nd_parser.coverage" NAME="ee_nd_parser Coverage Results" MODIFIED="1502265980239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
     <SUITE FILE_PATH="coverage/scholar$send_email.coverage" NAME="send_email Coverage Results" MODIFIED="1496980887927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/scholar$caee_utexas_parser.coverage" NAME="caee_utexas_parser Coverage Results" MODIFIED="1500945810413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
     <SUITE FILE_PATH="coverage/scholar$rabbitmq.coverage" NAME="rabbitmq Coverage Results" MODIFIED="1497462037945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/scholar$me_utexas_task.coverage" NAME="me_utexas_task Coverage Results" MODIFIED="1500518771630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
     <SUITE FILE_PATH="coverage/scholar$photo_download.coverage" NAME="photo_download Coverage Results" MODIFIED="1501010888037" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
+<<<<<<< HEAD
     <SUITE FILE_PATH="coverage/scholar$pretty_dict.coverage" NAME="pretty_dict Coverage Results" MODIFIED="1501767739349" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/scholar$property.coverage" NAME="property Coverage Results" MODIFIED="1499025977378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ScholarConfig" />
     <SUITE FILE_PATH="coverage/scholar$ee_nd.coverage" NAME="ee_nd Coverage Results" MODIFIED="1502014412022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SampleData" />
     <SUITE FILE_PATH="coverage/scholar$me_udel_parser.coverage" NAME="me_udel_parser Coverage Results" MODIFIED="1502091020179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+=======
+    <SUITE FILE_PATH="coverage/scholar$cyber_umd_parser.coverage" NAME="cyber_umd_parser Coverage Results" MODIFIED="1502681179088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$Tool.coverage" NAME="Tool Coverage Results" MODIFIED="1498765058971" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/scholar$civil_nyu_parser.coverage" NAME="civil_nyu_parser Coverage Results" MODIFIED="1502281791585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1501516017220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
+    <SUITE FILE_PATH="coverage/scholar$europepmc_task.coverage" NAME="europepmc_task Coverage Results" MODIFIED="1500385517885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
+    <SUITE FILE_PATH="coverage/scholar$config.coverage" NAME="config Coverage Results" MODIFIED="1502065480037" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ScholarConfig" />
+    <SUITE FILE_PATH="coverage/scholar$ece_utexas_task.coverage" NAME="ece_utexas_task Coverage Results" MODIFIED="1501075907920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
+    <SUITE FILE_PATH="coverage/scholar$pretty_dict.coverage" NAME="pretty_dict Coverage Results" MODIFIED="1501767739349" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
+    <SUITE FILE_PATH="coverage/scholar$che_utexas_task.coverage" NAME="che_utexas_task Coverage Results" MODIFIED="1502264607433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
+    <SUITE FILE_PATH="coverage/scholar$ce_udel.coverage" NAME="ce_udel Coverage Results" MODIFIED="1501987788168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SampleData" />
+    <SUITE FILE_PATH="coverage/scholar$caee_utexas_task.coverage" NAME="caee_utexas_task Coverage Results" MODIFIED="1501023236799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
+    <SUITE FILE_PATH="coverage/scholar$common_task.coverage" NAME="common_task Coverage Results" MODIFIED="1501913341250" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BaseClass" />
+    <SUITE FILE_PATH="coverage/scholar$ce_berkeley_parser.coverage" NAME="ce_berkeley_parser Coverage Results" MODIFIED="1501074675788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$sciencedirect_task.coverage" NAME="sciencedirect_task Coverage Results" MODIFIED="1500945962785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
+    <SUITE FILE_PATH="coverage/scholar$cs_utexas_parser.coverage" NAME="cs_utexas_parser Coverage Results" MODIFIED="1500229687840" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$cee_ucla_parser.coverage" NAME="cee_ucla_parser Coverage Results" MODIFIED="1502630757594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$property.coverage" NAME="property Coverage Results" MODIFIED="1499025977378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ScholarConfig" />
+    <SUITE FILE_PATH="coverage/scholar$scholar_.coverage" NAME="scholar· Coverage Results" MODIFIED="1500653349620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/main" />
+    <SUITE FILE_PATH="coverage/scholar$cs_ucsb_parser.coverage" NAME="cs_ucsb_parser Coverage Results" MODIFIED="1502680688056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$ScholarManager.coverage" NAME="ScholarManager Coverage Results" MODIFIED="1498477307174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/scholar$bio_nyu_parser.coverage" NAME="bio_nyu_parser Coverage Results" MODIFIED="1502267750906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$me_udel_parser.coverage" NAME="me_udel_parser Coverage Results" MODIFIED="1502615745614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$selenuim_parse.coverage" NAME="selenuim_parse Coverage Results" MODIFIED="1502214363420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
+    <SUITE FILE_PATH="coverage/scholar$.coverage" NAME="描述器 Coverage Results" MODIFIED="1499027697286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pre" />
+    <SUITE FILE_PATH="coverage/scholar$me_utexas_parser.coverage" NAME="me_utexas_parser Coverage Results" MODIFIED="1500237305134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$views.coverage" NAME="views Coverage Results" MODIFIED="1498027289087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/main" />
+    <SUITE FILE_PATH="coverage/scholar$rabbitmq.coverage" NAME="rabbitmq Coverage Results" MODIFIED="1497462037945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/scholar$mccormick_northwestern.coverage" NAME="mccormick_northwestern Coverage Results" MODIFIED="1502697759361" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SampleData" />
+    <SUITE FILE_PATH="coverage/scholar$ce_berkeley_task.coverage" NAME="ce_berkeley_task Coverage Results" MODIFIED="1502265030600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
+    <SUITE FILE_PATH="coverage/scholar$mccormick_northwestern_parser.coverage" NAME="mccormick_northwestern_parser Coverage Results" MODIFIED="1502697804600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$bme_udel.coverage" NAME="bme_udel Coverage Results" MODIFIED="1501981466418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SampleData" />
+    <SUITE FILE_PATH="coverage/scholar$ce_udel_parser.coverage" NAME="ce_udel_parser Coverage Results" MODIFIED="1502281052100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$cbe_udel.coverage" NAME="cbe_udel Coverage Results" MODIFIED="1501999771703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SampleData" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
     <SUITE FILE_PATH="coverage/scholar$ece_utexas_parser.coverage" NAME="ece_utexas_parser Coverage Results" MODIFIED="1501064390007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
     <SUITE FILE_PATH="coverage/scholar$ce_udel.coverage" NAME="ce_udel Coverage Results" MODIFIED="1501987788168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SampleData" />
     <SUITE FILE_PATH="coverage/scholar$MailjetApi.coverage" NAME="MailjetApi Coverage Results" MODIFIED="1497983217494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/wynmail" />
@@ -53,9 +120,18 @@
     <SUITE FILE_PATH="coverage/scholar$me_berkeley_task.coverage" NAME="me_berkeley_task Coverage Results" MODIFIED="1501074845715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TaskFeed" />
     <SUITE FILE_PATH="coverage/scholar$scholar_backend.coverage" NAME="scholar-backend Coverage Results" MODIFIED="1501512111380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/server" />
     <SUITE FILE_PATH="coverage/scholar$ThesisClass.coverage" NAME="ThesisClass Coverage Results" MODIFIED="1500474475942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BaseClass" />
+<<<<<<< HEAD
     <SUITE FILE_PATH="coverage/scholar$.coverage" NAME="描述器 Coverage Results" MODIFIED="1499027697286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pre" />
     <SUITE FILE_PATH="coverage/scholar$cbe_udel.coverage" NAME="cbe_udel Coverage Results" MODIFIED="1501999771703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SampleData" />
     <SUITE FILE_PATH="coverage/scholar$super.coverage" NAME="super Coverage Results" MODIFIED="1499026387280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pre" />
+=======
+    <SUITE FILE_PATH="coverage/scholar$ame_nd_parser.coverage" NAME="ame_nd_parser Coverage Results" MODIFIED="1502261441614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$send_email.coverage" NAME="send_email Coverage Results" MODIFIED="1496980887927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/scholar$jsparse.coverage" NAME="jsparse Coverage Results" MODIFIED="1498762441797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
+    <SUITE FILE_PATH="coverage/scholar$ece_uscb_parser.coverage" NAME="ece_uscb_parser Coverage Results" MODIFIED="1502681055656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$caee_utexas_parser.coverage" NAME="caee_utexas_parser Coverage Results" MODIFIED="1500945810413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+    <SUITE FILE_PATH="coverage/scholar$me_berkeley_parser.coverage" NAME="me_berkeley_parser Coverage Results" MODIFIED="1501068485262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CustomParser" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
     <SUITE FILE_PATH="coverage/scholar$caee_utexas_rule.coverage" NAME="caee_utexas_rule Coverage Results" MODIFIED="1500389441644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ScholarConfig" />
     <SUITE FILE_PATH="coverage/scholar$mail_server.coverage" NAME="mail-server Coverage Results" MODIFIED="1497995561191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/wynmail" />
     <SUITE FILE_PATH="coverage/scholar$spider_config.coverage" NAME="spider_config Coverage Results" MODIFIED="1498148985324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -181,19 +257,32 @@
     <favorites_list name="scholar" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <splitter split-orientation="horizontal" split-proportion="0.61895674">
+=======
+    <splitter split-orientation="horizontal" split-proportion="0.64123714">
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="common_task.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/BaseClass/common_task.py">
+          <file leaf-file-name="ece_umd_parser.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CustomParser/ece_umd_parser.py">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
                 <state relative-caret-position="1072">
                   <caret line="74" column="40" lean-forward="true" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="40" />
                   <folding />
+=======
+                <state relative-caret-position="841">
+                  <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#215#259#0" expanded="true" />
+                  </folding>
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
                 </state>
               </provider>
             </entry>
           </file>
+<<<<<<< HEAD
           <file leaf-file-name="science_direct_parser.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/BaseClass/science_direct_parser.py">
               <provider selected="true" editor-type-id="text-editor">
@@ -202,11 +291,21 @@
                   <folding>
                     <element signature="e#210#254#0" expanded="true" />
                     <marker date="1502982960806" expanded="true" signature="452:607" ph="..." />
+=======
+          <file leaf-file-name="cyber_umd_parser.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CustomParser/cyber_umd_parser.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="836">
+                  <caret line="92" column="22" lean-forward="true" selection-start-line="92" selection-start-column="22" selection-end-line="92" selection-end-column="22" />
+                  <folding>
+                    <element signature="e#203#247#0" expanded="true" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
+<<<<<<< HEAD
           <file leaf-file-name="connection.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/utils/connection.py">
               <provider selected="true" editor-type-id="text-editor">
@@ -235,10 +334,21 @@
                 <state relative-caret-position="805">
                   <caret line="35" column="4" lean-forward="true" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
                   <folding />
+=======
+          <file leaf-file-name="cs_ucsb_parser.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CustomParser/cs_ucsb_parser.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="381">
+                  <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#203#247#0" expanded="true" />
+                  </folding>
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
                 </state>
               </provider>
             </entry>
           </file>
+<<<<<<< HEAD
           <file leaf-file-name="proxy_manager.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/utils/proxy_manager.py">
               <provider selected="true" editor-type-id="text-editor">
@@ -255,10 +365,21 @@
                 <state relative-caret-position="805">
                   <caret line="37" column="37" lean-forward="true" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
                   <folding />
+=======
+          <file leaf-file-name="ece_uscb_parser.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CustomParser/ece_uscb_parser.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="381">
+                  <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#203#247#0" expanded="true" />
+                  </folding>
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
                 </state>
               </provider>
             </entry>
           </file>
+<<<<<<< HEAD
           <file leaf-file-name="auto_generate.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/utils/auto_generate.py">
               <provider selected="true" editor-type-id="text-editor">
@@ -276,11 +397,21 @@
                   <caret line="62" column="23" lean-forward="true" selection-start-line="62" selection-start-column="23" selection-end-line="62" selection-end-column="23" />
                   <folding>
                     <element signature="e#206#219#0" expanded="true" />
+=======
+          <file leaf-file-name="cee_ucla_parser.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CustomParser/cee_ucla_parser.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="467">
+                  <caret line="82" column="33" lean-forward="true" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
+                  <folding>
+                    <element signature="e#203#247#0" expanded="true" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
+<<<<<<< HEAD
           <file leaf-file-name="selenuim_parser.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/utils/selenuim_parser.py">
               <provider selected="true" editor-type-id="text-editor">
@@ -288,6 +419,15 @@
                   <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
                   <folding>
                     <element signature="e#196#226#0" expanded="true" />
+=======
+          <file leaf-file-name="me_umn_parser.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/CustomParser/me_umn_parser.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="666">
+                  <caret line="81" column="25" lean-forward="false" selection-start-line="81" selection-start-column="25" selection-end-line="81" selection-end-column="25" />
+                  <folding>
+                    <element signature="e#201#245#0" expanded="true" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
                   </folding>
                 </state>
               </provider>
@@ -297,6 +437,7 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
           <file leaf-file-name="proxy_manager.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/utils/proxy_manager.py">
               <provider selected="true" editor-type-id="text-editor">
@@ -312,6 +453,13 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="-253">
                   <caret line="22" column="58" lean-forward="false" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
+=======
+          <file leaf-file-name="common_task.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/BaseClass/common_task.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="323">
+                  <caret line="50" column="28" lean-forward="false" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
                   <folding>
                     <element signature="e#192#201#0" expanded="true" />
                   </folding>
@@ -319,44 +467,20 @@
               </provider>
             </entry>
           </file>
+<<<<<<< HEAD
           <file leaf-file-name="pretty_dict.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/utils/pretty_dict.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="805">
                   <caret line="35" column="4" lean-forward="true" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="kmp_match.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/utils/kmp_match.py">
+=======
+          <file leaf-file-name="cs_ucsb.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SampleData/cs_ucsb.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="702">
-                  <caret line="41" column="14" lean-forward="true" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
+                <state relative-caret-position="395">
+                  <caret line="17" column="21" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
                   <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="connection.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/utils/connection.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="865">
-                  <caret line="94" column="7" lean-forward="false" selection-start-line="94" selection-start-column="7" selection-end-line="94" selection-end-column="7" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="science_direct_parser.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/BaseClass/science_direct_parser.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1127">
-                  <caret line="68" column="8" lean-forward="true" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
-                  <folding>
-                    <element signature="e#210#254#0" expanded="true" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -364,13 +488,86 @@
           <file leaf-file-name="SqlHelper.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/db/SqlHelper.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="120" column="8" lean-forward="true" selection-start-line="120" selection-start-column="8" selection-end-line="120" selection-end-column="8" />
+<<<<<<< HEAD
+                <state relative-caret-position="702">
+                  <caret line="41" column="14" lean-forward="true" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
+=======
+                <state relative-caret-position="376">
+                  <caret line="133" column="5" lean-forward="false" selection-start-line="133" selection-start-column="5" selection-end-line="133" selection-end-column="5" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
+<<<<<<< HEAD
+          <file leaf-file-name="connection.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/utils/connection.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="865">
+                  <caret line="94" column="7" lean-forward="false" selection-start-line="94" selection-start-column="7" selection-end-line="94" selection-end-column="7" />
+=======
+          <file leaf-file-name="ece_umd.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SampleData/ece_umd.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="576">
+                  <caret line="24" column="9" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+<<<<<<< HEAD
+          <file leaf-file-name="science_direct_parser.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/BaseClass/science_direct_parser.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1127">
+                  <caret line="68" column="8" lean-forward="true" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
+                  <folding>
+                    <element signature="e#210#254#0" expanded="true" />
+=======
+          <file leaf-file-name="cee_ucla_parser.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CustomParser/cee_ucla_parser.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="333">
+                  <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#203#247#0" expanded="true" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+<<<<<<< HEAD
+          <file leaf-file-name="SqlHelper.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/db/SqlHelper.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="391">
+                  <caret line="120" column="8" lean-forward="true" selection-start-line="120" selection-start-column="8" selection-end-line="120" selection-end-column="8" />
+                  <folding />
+=======
+          <file leaf-file-name="mccormick_northwestern_parser.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CustomParser/mccormick_northwestern_parser.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="264">
+                  <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+                  <folding>
+                    <marker date="1502697759168" expanded="true" signature="749:1088" ph="..." />
+                    <marker date="1502697759168" expanded="true" signature="749:900" ph="..." />
+                    <marker date="1502697759168" expanded="true" signature="1123:1282" ph="..." />
+                    <marker date="1502697759168" expanded="true" signature="1443:1600" ph="..." />
+                    <marker date="1502697759168" expanded="true" signature="2024:2234" ph="..." />
+                    <marker date="1502697759168" expanded="true" signature="2289:2571" ph="..." />
+                    <marker date="1502697759168" expanded="true" signature="2990:3292" ph="..." />
+                  </folding>
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
+                </state>
+              </provider>
+            </entry>
+          </file>
+<<<<<<< HEAD
           <file leaf-file-name="science_direct_task.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/BaseClass/science_direct_task.py">
               <provider selected="true" editor-type-id="text-editor">
@@ -382,10 +579,19 @@
                     <marker date="1502984950508" expanded="true" signature="5985:6282" ph="..." />
                     <marker date="1502984950508" expanded="true" signature="6231:6282" ph="..." />
                   </folding>
+=======
+          <file leaf-file-name="mccormick_northwestern.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SampleData/mccormick_northwestern.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="695">
+                  <caret line="36" column="21" lean-forward="true" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
+                  <folding />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
                 </state>
               </provider>
             </entry>
           </file>
+<<<<<<< HEAD
           <file leaf-file-name="selenuim_parser.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/utils/selenuim_parser.py">
               <provider selected="true" editor-type-id="text-editor">
@@ -393,21 +599,55 @@
                   <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
                   <folding>
                     <element signature="e#196#226#0" expanded="true" />
+=======
+          <file leaf-file-name="me_umn_parser.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CustomParser/me_umn_parser.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="357">
+                  <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+                  <folding>
+                    <marker date="1502700034640" expanded="true" signature="726:965" ph="..." />
+                    <marker date="1502700034640" expanded="true" signature="1045:1159" ph="..." />
+                    <marker date="1502700034640" expanded="true" signature="1366:1478" ph="..." />
+                    <marker date="1502700034640" expanded="true" signature="2168:2451" ph="..." />
+                    <marker date="1502700034640" expanded="true" signature="2826:3120" ph="..." />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
+<<<<<<< HEAD
           <file leaf-file-name="timer.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/utils/timer.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="702">
                   <caret line="37" column="37" lean-forward="true" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+=======
+          <file leaf-file-name="me_umn.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/SampleData/me_umn.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="693">
+                  <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
+<<<<<<< HEAD
+=======
+          <file leaf-file-name="ThesisClass.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/BaseClass/ThesisClass.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="240">
+                  <caret line="55" column="12" lean-forward="true" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
         </leaf>
       </split-second>
     </splitter>
@@ -422,11 +662,14 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+<<<<<<< HEAD
       <find>browser</find>
       <find>driver</find>
       <find>scrollArea cye-lm-tag</find>
       <find>Center for Mobile Cloud Computing Research (C4MCC), University of Malaya, Kuala Lumpur, Malaysia</find>
       <find>params</find>
+=======
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       <find>abstract--author-name</find>
       <find>Recei</find>
       <find>Publication cye-lm-tag</find>
@@ -435,7 +678,6 @@
       <find>count</find>
       <find>max</find>
       <find>create</find>
-      <find>mailto</find>
       <find>abrahamson@</find>
       <find>glaser@c</find>
       <find>tel:(510) 642-1264</find>
@@ -450,8 +692,19 @@
       <find>photos</find>
       <find>photo</find>
       <find>author</find>
+<<<<<<< HEAD
       <find>h4</find>
       <find>to</find>
+=======
+      <find>mail</find>
+      <find>mailto</find>
+      <find>h3</find>
+      <find>wei</find>
+      <find>h1</find>
+      <find>Wei</find>
+      <find>page-title</find>
+      <find>.jpg</find>
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -460,8 +713,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/SampleData/cbe_udel.py" />
         <option value="$PROJECT_DIR$/CustomParser/cbe_udel_parser.py" />
+=======
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
         <option value="$PROJECT_DIR$/SampleData/ce_udel.py" />
         <option value="$PROJECT_DIR$/SampleData/cse_nd.py" />
         <option value="$PROJECT_DIR$/SampleData/ee_nd.py" />
@@ -469,7 +725,6 @@
         <option value="$PROJECT_DIR$/SampleData/me_udel.py" />
         <option value="$PROJECT_DIR$/SampleData/all_nyu.py" />
         <option value="$PROJECT_DIR$/SampleData/engineering_nyu.py" />
-        <option value="$PROJECT_DIR$/CustomParser/me_udel_parser.py" />
         <option value="$PROJECT_DIR$/SampleData/bio_nyu.py" />
         <option value="$PROJECT_DIR$/SampleData/cse_nyu.py" />
         <option value="$PROJECT_DIR$/SampleData/civil_nyu.py" />
@@ -486,10 +741,16 @@
         <option value="$PROJECT_DIR$/init.py" />
         <option value="$PROJECT_DIR$/CustomParser/che_utexas_parser.py" />
         <option value="$PROJECT_DIR$/TaskFeed/cs_utexas_task.py" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/BaseClass/common_task.py" />
+=======
+        <option value="$PROJECT_DIR$/ScholarConfig/config.py" />
+        <option value="$PROJECT_DIR$/BaseClass/task_manager.py" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
         <option value="$PROJECT_DIR$/utils/auto_generate.py" />
         <option value="$PROJECT_DIR$/CustomParser/bio_nyu_parser.py" />
         <option value="$PROJECT_DIR$/CustomParser/ce_udel_parser.py" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/ScholarConfig/ece_umd_rule.py" />
         <option value="$PROJECT_DIR$/SampleData/ece_umd.py" />
         <option value="$PROJECT_DIR$/CustomParser/ece_umd_parser.py" />
@@ -511,6 +772,28 @@
         <option value="$PROJECT_DIR$/db/SqlHelper.py" />
         <option value="$PROJECT_DIR$/ScholarConfig/config.py" />
         <option value="$PROJECT_DIR$/BaseClass/science_direct_task.py" />
+=======
+        <option value="$PROJECT_DIR$/CustomParser/me_udel_parser.py" />
+        <option value="$PROJECT_DIR$/SampleData/ece_umd.py" />
+        <option value="$PROJECT_DIR$/CustomParser/ece_umd_parser.py" />
+        <option value="$PROJECT_DIR$/CustomParser/cyber_umd_parser.py" />
+        <option value="$PROJECT_DIR$/SampleData/cyber_umd.py" />
+        <option value="$PROJECT_DIR$/CustomParser/cs_ucsb_parser.py" />
+        <option value="$PROJECT_DIR$/SampleData/cs_ucsb.py" />
+        <option value="$PROJECT_DIR$/CustomParser/ece_uscb_parser.py" />
+        <option value="$PROJECT_DIR$/SampleData/ece_ucsb.py" />
+        <option value="$PROJECT_DIR$/CustomParser/engr_wisc.py" />
+        <option value="$PROJECT_DIR$/CustomParser/engr_wisc_parser.py" />
+        <option value="$PROJECT_DIR$/SampleData/engr_wisc.py" />
+        <option value="$PROJECT_DIR$/SampleData/cee_ucla.py" />
+        <option value="$PROJECT_DIR$/CustomParser/cee_ucla_parser.py" />
+        <option value="$PROJECT_DIR$/CustomParser/mccormick_northwestern_parser.py" />
+        <option value="$PROJECT_DIR$/db/SqlHelper.py" />
+        <option value="$PROJECT_DIR$/SampleData/mccormick_northwestern.py" />
+        <option value="$PROJECT_DIR$/BaseClass/common_task.py" />
+        <option value="$PROJECT_DIR$/SampleData/me_umn.py" />
+        <option value="$PROJECT_DIR$/CustomParser/me_umn_parser.py" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       </list>
     </option>
   </component>
@@ -520,11 +803,18 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+<<<<<<< HEAD
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="2576" />
     <option name="height" value="1456" />
+=======
+  <component name="ProjectFrameBounds">
+    <option name="y" value="-28" />
+    <option name="width" value="1920" />
+    <option name="height" value="1108" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -567,6 +857,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -600,6 +891,108 @@
       </pane>
       <pane id="Scope" />
       <pane id="Scratches" />
+=======
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scholar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scholar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scholar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scholar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scholar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scholar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ScholarConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scholar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scholar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SampleData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scholar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scholar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scholar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scholar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CustomParser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scholar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scholar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BaseClass" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -638,8 +1031,13 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Python.science_direct_task">
     <configuration name="SCIENCE_DIRECT_TASK" type="PythonConfigurationType" factoryName="Python" temporary="true">
+=======
+  <component name="RunManager" selected="Python.mccormick_northwestern">
+    <configuration default="false" name="ece_umd_parser" type="PythonConfigurationType" factoryName="Python" temporary="true">
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -652,29 +1050,80 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="scholar" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+<<<<<<< HEAD
       <option name="SCRIPT_NAME" value="E:\Dropbox\scholar\BaseClass\science_direct_task.py" />
+=======
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CustomParser/ece_umd_parser.py" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+<<<<<<< HEAD
     <configuration name="ScholarManager" type="PythonConfigurationType" factoryName="Python">
+=======
+    <configuration default="false" name="cyber_umd_parser" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CustomParser" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="scholar" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CustomParser/cyber_umd_parser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ece_uscb_parser" type="PythonConfigurationType" factoryName="Python" temporary="true">
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CustomParser" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="scholar" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+<<<<<<< HEAD
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ScholarManager.py" />
+=======
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CustomParser/ece_uscb_parser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="mccormick_northwestern_parser" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CustomParser" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="scholar" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CustomParser/mccormick_northwestern_parser.py" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+<<<<<<< HEAD
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -682,6 +1131,26 @@
       <tasks />
       <arguments />
       <envs />
+=======
+    <configuration default="false" name="mccormick_northwestern" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SampleData" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="scholar" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SampleData/mccormick_northwestern.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
     </configuration>
     <configuration default="true" type="ApexTest" factoryName="Apex Test">
       <method />
@@ -900,6 +1369,7 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.ScholarManager" />
+<<<<<<< HEAD
       <item index="1" class="java.lang.String" itemvalue="Python.manage" />
       <item index="2" class="java.lang.String" itemvalue="Python.civil_nyu_parser" />
       <item index="3" class="java.lang.String" itemvalue="Python.selenuim_parse" />
@@ -913,6 +1383,21 @@
         <item index="2" class="java.lang.String" itemvalue="Python.selenuim_parse" />
         <item index="3" class="java.lang.String" itemvalue="Python.manage" />
         <item index="4" class="java.lang.String" itemvalue="Python.civil_nyu_parser" />
+=======
+      <item index="1" class="java.lang.String" itemvalue="Python.ece_umd_parser" />
+      <item index="2" class="java.lang.String" itemvalue="Python.cyber_umd_parser" />
+      <item index="3" class="java.lang.String" itemvalue="Python.ece_uscb_parser" />
+      <item index="4" class="java.lang.String" itemvalue="Python.mccormick_northwestern_parser" />
+      <item index="5" class="java.lang.String" itemvalue="Python.mccormick_northwestern" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.mccormick_northwestern_parser" />
+        <item index="1" class="java.lang.String" itemvalue="Python.mccormick_northwestern" />
+        <item index="2" class="java.lang.String" itemvalue="Python.cyber_umd_parser" />
+        <item index="3" class="java.lang.String" itemvalue="Python.ece_uscb_parser" />
+        <item index="4" class="java.lang.String" itemvalue="Python.ece_umd_parser" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       </list>
     </recent_temporary>
   </component>
@@ -948,6 +1433,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-8" y="-8" width="2576" height="1456" extended-state="7" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2531835" sideWeight="0.259375" order="9" side_tool="false" content_ui="tabs" />
@@ -957,11 +1443,29 @@
       <window_info id="Run" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27734375" sideWeight="0.9416168" order="5" side_tool="false" content_ui="tabs" x="77" y="49" width="1600" height="876" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280899" sideWeight="0.49453124" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10859375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+    <frame x="0" y="-28" width="1920" height="1108" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2531835" sideWeight="0.259375" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34243697" sideWeight="0.52508" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20104167" sideWeight="0.9416168" order="5" side_tool="false" content_ui="tabs" x="1212" y="354" width="245" height="141" />
+      <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2548638" sideWeight="0.49291238" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.041145835" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31702465" sideWeight="0.058383234" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5054687" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25714287" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24579832" sideWeight="0.4984375" order="6" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24513619" sideWeight="0.4984375" order="6" side_tool="false" content_ui="tabs" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979593" sideWeight="0.49049127" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -985,14 +1489,26 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/CustomParser/cs_ucsb_parser.py</url>
+          <line>78</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
+<<<<<<< HEAD
       <option name="time" value="23" />
+=======
+      <option name="time" value="22" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/orcid/exceptions.py.bak">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1021,26 +1537,71 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
           <caret line="38" column="22" lean-forward="true" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="35" />
+=======
+    <entry file="file://$PROJECT_DIR$/utils/kmp_match.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/auto_generate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="19" column="6" lean-forward="false" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomParser/cbe_udel_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2616">
+          <caret line="114" column="24" lean-forward="false" selection-start-line="114" selection-start-column="24" selection-end-line="114" selection-end-column="24" />
+          <folding>
+            <element signature="e#194#238#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SampleData/cbe_udel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/wynmail/mail_server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
           <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+=======
+    <entry file="file://$PROJECT_DIR$/BaseClass/task_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/orcid_sdk/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="564">
           <caret line="42" column="51" lean-forward="true" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
+=======
+    <entry file="file://$PROJECT_DIR$/CustomParser/civil_nyu_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="118" column="18" lean-forward="false" selection-start-line="118" selection-start-column="18" selection-end-line="118" selection-end-column="18" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/orcid_sdk/constants.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -1061,10 +1622,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
           <caret line="133" column="0" lean-forward="true" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/CustomParser/ce_udel_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="111" column="20" lean-forward="false" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
+          <folding>
+            <element signature="e#201#245#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SampleData/ee_nd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="744">
+          <caret line="31" column="27" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://D:/wyn/wynpythonlib/Lib/site-packages/requests/api.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -1079,10 +1664,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/CustomParser/ece_utexas_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CustomParser/ce_berkeley_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1536">
+          <caret line="68" column="6" lean-forward="false" selection-start-line="68" selection-start-column="6" selection-end-line="68" selection-end-column="6" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1095,10 +1695,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/CustomParser/bio_nyu_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2688">
+          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="118" selection-end-column="32" />
+          <folding>
+            <element signature="e#202#246#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomParser/che_utexas_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1872">
+          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
@@ -1134,19 +1751,70 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="7" column="18" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+=======
+    <entry file="file://$PROJECT_DIR$/CustomParser/me_berkeley_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CustomParser/me_udel_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2496">
+          <caret line="109" column="23" lean-forward="false" selection-start-line="109" selection-start-column="23" selection-end-line="109" selection-end-column="23" />
+          <folding>
+            <element signature="e#201#245#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomParser/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="3" lean-forward="false" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomParser/cs_utexas_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SampleData/cyber_umd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="22" column="12" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/CustomParser/SCIENCE_DIRECT_PARSER.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+=======
+    <entry file="file://$PROJECT_DIR$/SampleData/cse_nd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="19" column="7" lean-forward="false" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/utils/ghostdriver.log">
+=======
+    <entry file="file://$PROJECT_DIR$/ScholarConfig/me_utexas_rule.py">
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1154,7 +1822,11 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/utils/__init__.py">
+=======
+    <entry file="file://$PROJECT_DIR$/ScholarConfig/me_berkeley_rule.py">
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1162,15 +1834,26 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/orcid/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="529">
           <caret line="23" column="31" lean-forward="false" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+=======
+    <entry file="file://$PROJECT_DIR$/ScholarConfig/eecs_berkeley_rule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/orcid/exceptions.py">
+=======
+    <entry file="file://$PROJECT_DIR$/ScholarConfig/ece_utexas_rule.py">
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1178,7 +1861,11 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/orcid/constants.py">
+=======
+    <entry file="file://$PROJECT_DIR$/ScholarConfig/tmi_utexas_rule.py">
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1186,7 +1873,11 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/CustomParser/ucsd_parser.py">
+=======
+    <entry file="file://$PROJECT_DIR$/ScholarConfig/caee_utexas_rule.py">
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1194,7 +1885,11 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/db/ISqlHelper.py">
+=======
+    <entry file="file://$PROJECT_DIR$/ScholarConfig/ce_berkeley_rule.py">
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1202,7 +1897,11 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/TaskFeed/tmi_utexas_task.py">
+=======
+    <entry file="file://$PROJECT_DIR$/ScholarConfig/che_utexas_rule.py">
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1210,62 +1909,112 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/SampleData/cbe_udel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="851">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/ScholarConfig/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/ScholarConfig/me_berkeley_rule.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/ScholarConfig/cs_utexas_rule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="14" column="52" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="52" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/ScholarConfig/me_utexas_rule.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/CustomParser/caee_utexas_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="131" column="15" lean-forward="false" selection-start-line="131" selection-start-column="15" selection-end-line="131" selection-end-column="15" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/ScholarConfig/cs_utexas_rule.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="598">
           <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/SampleData/engr_wisc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="16" column="46" lean-forward="true" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/CustomParser/ce_berkeley_parser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="598">
           <caret line="30" column="41" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="85" selection-end-column="12" />
+=======
+    <entry file="file://$PROJECT_DIR$/SampleData/me_udel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/utils/logger.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/CustomParser/engr_wisc_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="3" lean-forward="false" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/utils/photo_download.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="713">
           <caret line="34" column="4" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+=======
+    <entry file="file://$PROJECT_DIR$/SampleData/cee_ucla.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="18" column="30" lean-forward="true" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/utils/auto_generate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
@@ -1277,11 +2026,17 @@
     <entry file="file://$PROJECT_DIR$/BaseClass/ThesisClass.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1380">
+=======
+    <entry file="file://$PROJECT_DIR$/CustomParser/eecs_berkeley_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/BaseClass/common_task.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1072">
@@ -1334,36 +2089,126 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
           <caret line="41" column="14" lean-forward="true" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
+=======
+    <entry file="file://$PROJECT_DIR$/CustomParser/cs_ucsb_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding>
+            <element signature="e#203#247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomParser/cyber_umd_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="836">
+          <caret line="92" column="22" lean-forward="true" selection-start-line="92" selection-start-column="22" selection-end-line="92" selection-end-column="22" />
+          <folding>
+            <element signature="e#203#247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomParser/ece_umd_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="841">
+          <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding>
+            <element signature="e#215#259#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomParser/ece_uscb_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding>
+            <element signature="e#203#247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SampleData/ece_ucsb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <marker date="1502620680610" expanded="true" signature="14:882" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomParser/cee_ucla_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="82" column="33" lean-forward="true" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
+          <folding>
+            <element signature="e#203#247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/SqlHelper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="133" column="5" lean-forward="false" selection-start-line="133" selection-start-column="5" selection-end-line="133" selection-end-column="5" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/utils/timer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="805">
           <caret line="37" column="37" lean-forward="true" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+=======
+    <entry file="file://$PROJECT_DIR$/SampleData/mccormick_northwestern.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="695">
+          <caret line="36" column="21" lean-forward="true" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/utils/proxy_manager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
           <caret line="22" column="44" lean-forward="true" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+=======
+    <entry file="file://$PROJECT_DIR$/SampleData/ece_umd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="24" column="9" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/utils/selenuim_parser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
           <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
           <folding>
             <element signature="e#196#226#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/BaseClass/common_task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="50" column="28" lean-forward="false" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+          <folding>
+            <element signature="e#197#210#0" expanded="true" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/BaseClass/science_direct_parser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="897">
@@ -1371,18 +2216,48 @@
           <folding>
             <element signature="e#210#254#0" expanded="true" />
             <marker date="1502982960806" expanded="true" signature="452:607" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/SqlHelper.py">
+=======
+    <entry file="file://$PROJECT_DIR$/SampleData/cs_ucsb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="120" column="8" lean-forward="true" selection-start-line="120" selection-start-column="8" selection-end-line="120" selection-end-column="8" />
+        <state relative-caret-position="395">
+          <caret line="17" column="21" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CustomParser/mccormick_northwestern_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+          <folding>
+            <marker date="1502697759168" expanded="true" signature="749:1088" ph="..." />
+            <marker date="1502697759168" expanded="true" signature="749:900" ph="..." />
+            <marker date="1502697759168" expanded="true" signature="1123:1282" ph="..." />
+            <marker date="1502697759168" expanded="true" signature="1443:1600" ph="..." />
+            <marker date="1502697759168" expanded="true" signature="2024:2234" ph="..." />
+            <marker date="1502697759168" expanded="true" signature="2289:2571" ph="..." />
+            <marker date="1502697759168" expanded="true" signature="2990:3292" ph="..." />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/db/SqlHelper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="120" column="8" lean-forward="true" selection-start-line="120" selection-start-column="8" selection-end-line="120" selection-end-column="8" />
+=======
+    <entry file="file://$PROJECT_DIR$/CustomParser/cse_nd_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="861">
+          <caret line="47" column="30" lean-forward="false" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/ScholarConfig/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1564">
@@ -1397,24 +2272,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="805">
           <caret line="35" column="4" lean-forward="true" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+=======
+    <entry file="file://$PROJECT_DIR$/BaseClass/ThesisClass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="55" column="12" lean-forward="true" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/utils/connection.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1260">
           <caret line="170" column="4" lean-forward="true" selection-start-line="170" selection-start-column="4" selection-end-line="170" selection-end-column="4" />
+=======
+    <entry file="file://$PROJECT_DIR$/SampleData/me_umn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="693">
+          <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/BaseClass/science_direct_task.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1035">
           <caret line="62" column="23" lean-forward="true" selection-start-line="62" selection-start-column="23" selection-end-line="62" selection-end-column="23" />
           <folding>
             <element signature="e#206#219#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/CustomParser/me_umn_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="81" column="25" lean-forward="false" selection-start-line="81" selection-start-column="25" selection-end-line="81" selection-end-column="25" />
+          <folding>
+            <element signature="e#201#245#0" expanded="true" />
+>>>>>>> 5d5cff6baa3856c30e9e11288c10ec0a6b7d0680
           </folding>
         </state>
       </provider>
