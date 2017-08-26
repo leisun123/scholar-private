@@ -9,9 +9,11 @@
 @description:
             --
 """
-from lxml import etree
+import os
+import sys
+sys.path.append(os.path.join(os.getcwd().split('scholar')[0],'scholar'))
 
-from BaseClass.ThesisClass import ThesisInfo
+from BaseModule.ThesisClass import ThesisInfo
 from ErrorHandle.parse_error import except_pass
 from db.SqlHelper import SqlHelper
 from utils.connection import extract

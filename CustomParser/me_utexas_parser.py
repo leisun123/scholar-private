@@ -10,22 +10,16 @@
             --
 """
 #coding:utf-8
-"""
-@file:      cs_utexas_parser
-@author:    IsolationWyn
-@contact:   genius_wz@aliyun.com
-@python:    3.5.2
-@editor:    PyCharm
-@create:    2017/7/16 17:49
-@description:
-            --
-"""
+import os
+import sys
+sys.path.append(os.path.join(os.getcwd().split('scholar')[0],'scholar'))
+
 import re
 from datetime import datetime
 
 from lxml import etree
 
-from BaseClass.ThesisClass import ThesisInfo
+from BaseModule.ThesisClass import ThesisInfo
 from ErrorHandle.parse_error import except_pass
 from db.SqlHelper import SqlHelper
 from utils.connection import extract

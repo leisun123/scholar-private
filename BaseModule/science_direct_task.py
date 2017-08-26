@@ -18,7 +18,7 @@ from utils.connection import *
 import queue
 import requests
 from utils.logger import get_logger
-from BaseClass.science_direct_parser import ScienceDirectClass
+from BaseModule.science_direct_parser import ScienceDirectClass
 from db.SqlHelper import SqlHelper
 from utils.timer import Timer
 from utils.proxy_manager import ProxyManager

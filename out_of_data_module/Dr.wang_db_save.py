@@ -9,6 +9,10 @@
 @description:
             --
 """
+import os
+import sys
+sys.path.append(os.path.join(os.getcwd().split('scholar')[0],'scholar'))
+
 from db.SqlHelper import SqlHelper
 from utils.logger import get_logger
 import json

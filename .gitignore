@@ -54,7 +54,7 @@ ENV/
 .ropeproject
 .gitignore
 .idea/
-BaseClass/__pycache__/
+BaseModule/__pycache__/
 CustomParser/__pycache__/
 ErrorHandle/__pycache__/
 PhotoTemp/

@@ -9,7 +9,11 @@
 @description:
             --
 """
-from BaseClass.ThesisClass import ThesisInfo
+import os
+import sys
+sys.path.append(os.path.join(os.getcwd().split('scholar')[0],'scholar'))
+
+from BaseModule.ThesisClass import ThesisInfo
 from ErrorHandle.parse_error import except_pass
 from utils.connection import extract
 from ScholarConfig.me_berkeley_rule  import RULES

@@ -10,7 +10,7 @@
             --
 """
 
-from BaseClass.ThesisClass import ThesisInfo
+from BaseModule.ThesisClass import ThesisInfo
 from ErrorHandle.parse_error import except_pass
 
 PS_ERROR = lambda func:except_pass(func,ModelName = 'science_direct')

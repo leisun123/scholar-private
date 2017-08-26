@@ -32,5 +32,28 @@ def pretty_dict(obj, indent=' '):
     print((''.join(_pretty(obj, indent))))
     
 if __name__ == '__main__':
-    pass
+    pretty_dict(
+    {"name":"Lorenzo Valdevit",
+     "email":"valdevit@uci.edu",
+     "password":"",
+     "avatar":"",
+     "profile":
+         {"keywordKeys":[],
+          "cityKeys":[],
+          "timeKeys":[],
+          "firstName":"",
+          "lastName":"",
+          "organization":"",
+          "major":"Department of Mechanical and Aerospace Engineering at The University of California, Irvine",
+          "title":"",
+          "birth":"",
+          "country":"USA",
+          "state":"",
+          "city":"",
+          "phone":"",
+          "email":"valdevit@uci.edu",
+          "website":"http://engineering.uci.edu/users/lorenzo-valdevit",
+          "cooperation":[],
+          "bio":""}
+     })
     

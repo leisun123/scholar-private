@@ -9,13 +9,15 @@
 @description:
             --
 """
+import os
+import sys
+sys.path.append(os.path.join(os.getcwd().split('scholar')[0],'scholar'))
+
 import gevent
 
-from BaseClass.task_manager import Taskmanager
+from BaseModule.task_manager import Taskmanager
 from utils.connection import fetch,extract
 from ScholarConfig.tmi_utexas_rule import RULES,BASE_URL
-
-
 
 class TmiUtexasTask(Taskmanager):
     
@@ -43,7 +45,7 @@ class TmiUtexasTask(Taskmanager):
     
     def _crawl_info(self,item_url):
         self.logger.info("processing info %s",item_url)
-        from BaseClass.ThesisClass import ThesisInfo
+        from BaseModule.ThesisClass import ThesisInfo
         from CustomParser.tmi_utexas_parser import TmiUtexasClass
         sec=fetch(item_url,proxies=None,logger=self.logger)
         tmp = TmiUtexasClass(sec)

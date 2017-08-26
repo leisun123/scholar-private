@@ -9,13 +9,14 @@
 @description:
             --
 """
+import os
+import sys
+sys.path.append(os.path.join(os.getcwd().split('scholar')[0],'scholar'))
 
 import gevent
-from BaseClass.task_manager import Taskmanager
+from BaseModule.task_manager import Taskmanager
 from utils.connection import fetch,extract
 from ScholarConfig.caee_utexas_rule import RULES,BASE_URL
-
-
 
 class CaeeUtexasTask(Taskmanager):
     

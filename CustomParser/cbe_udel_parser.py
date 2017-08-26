@@ -9,13 +9,16 @@
 @description:
             --
 """
-from BaseClass.ThesisClass import ThesisInfo
-from BaseClass.common_task import CommonTask
+import os
+import sys
+sys.path.append(os.path.join(os.getcwd().split('scholar')[0],'scholar'))
+
+from BaseModule.ThesisClass import ThesisInfo
+from BaseModule.common_task import CommonTask
 from SampleData.cbe_udel import *
 from nameparser import HumanName
 import re
 from utils.connection import extract
-
 
 class CBEUdelClass(ThesisInfo):
     def __init__(self, sec=None, parse_data=None):

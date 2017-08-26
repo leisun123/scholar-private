@@ -9,14 +9,17 @@
 @description:
             --
 """
-from BaseClass.ThesisClass import ThesisInfo
-from BaseClass.common_task import CommonTask
+import os
+import sys
+sys.path.append(os.path.join(os.getcwd().split('scholar')[0],'scholar'))
+
+from BaseModule.ThesisClass import ThesisInfo
+from BaseModule.common_task import CommonTask
 from SampleData.cyber_umd import *
 from nameparser import HumanName
 import re
 
 from utils.connection import extract
-
 
 class CYBERUmdClass(ThesisInfo):
     def __init__(self, sec=None, parse_data=None):

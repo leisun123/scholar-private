@@ -10,7 +10,7 @@
             --
 """
 import gevent
-from BaseClass.task_manager import Taskmanager
+from BaseModule.task_manager import Taskmanager
 from utils.connection import fetch,extract
 from utils.auto_generate import auto_generate
 from utils.logger import get_logger
@@ -74,5 +74,3 @@ class CommonTask(Taskmanager):
         tmp.terminal_monitoring()
         self.parm_queue.put_nowait(parm)
         
-if __name__ == '__main__':
-    pass

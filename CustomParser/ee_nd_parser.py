@@ -9,8 +9,12 @@
 @description:
             --
 """
-from BaseClass.ThesisClass import ThesisInfo
-from BaseClass.common_task import CommonTask
+import os
+import sys
+sys.path.append(os.path.join(os.getcwd().split('scholar')[0],'scholar'))
+
+from BaseModule.ThesisClass import ThesisInfo
+from BaseModule.common_task import CommonTask
 from SampleData.ee_nd import *
 from nameparser import HumanName
 import re

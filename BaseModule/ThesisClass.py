@@ -9,7 +9,6 @@
 @description:
             --
 """
-import requests
 class ThesisInfo(object):
     def __init__(self):
         self.avatar = None
@@ -182,6 +181,7 @@ if __name__ == '__main__':
             "keyword-3":"power grids",
             "city-1":"China",
             "time-1":"Flexible"}
-    pass
+    
+
     
     
