@@ -81,19 +81,33 @@ def bme():
         organzation = "University of California,Davis"
         website = extract("//a[@rel='noopener noreferrer']/@href", str(etree.tostring(i)))
 
-        sc_url = extract("//td[2]/a/@href", str(etree.tostring(i)))
-        ht = fetch(sc_url)
-        email = extract("//a[@rel='noopener noreferrer']/text()", ht)
+        if extract("//td[2]/a/@href", str(etree.tostring(i))) is not None:
+            sc_url = extract("//td[2]/a/@href", str(etree.tostring(i)))
+        elif extract("//td[2]/p[1]/a/@href", str(etree.tostring(i))) is not None:
+            sc_url = extract("//td[2]/p[1]/a/@href", str(etree.tostring(i)))
+        else:
+            sc_url = extract("//td[2]/p[1]/strong/a/@href", str(etree.tostring(i)))
+        
+        try:
+            ht = fetch(sc_url)
+            emailRegex = r"([\w\.\-]+@[\w\.\-]+)"
+            import re
+            email = re.search(emailRegex, ht).group(0)
+        except:
+            pass
         
         print(avatar)
         print(name)
         print(website)
         print(email)
         print("--------------------------------------------")
-        # parm = set_value(avatar=avatar, name=name, website=website, email=email, organization=organzation, major=major)
-        # sqlhelper.insert_scholar(**parm)
+        try:
+            parm = set_value(avatar=avatar, name=name, website=website, email=email, organization=organzation, major=major)
+        except:
+            pass
+        sqlhelper.insert_scholar(**parm)
     print("End")
-bme()
+#bme()
 
 def che():
     html = fetch("https://che.engineering.ucdavis.edu/people/faculty/")
@@ -110,10 +124,13 @@ def che():
         print(website)
         print(email)
         print("--------------------------------------------")
-        #parm = set_value(avatar=avatar, name=name, website=website, email=email, organization=organzation, major=major)
-        #sqlhelper.insert_scholar(**parm)
+        try:
+            parm = set_value(avatar=avatar, name=name, website=website, email=email, organization=organzation, major=major)
+        except:
+            pass
+        sqlhelper.insert_scholar(**parm)
     print("End")
-che()
+
 
 def cee():
     html = fetch("http://cee.engr.ucdavis.edu/people/faculty-directory/")
@@ -151,10 +168,13 @@ def cee():
         print(website)
         print(email)
         print("--------------------------------------------")
-        #parm = set_value(avatar=avatar, name=name, website=website, email=email, organization=organzation, major=major)
-        #sqlhelper.insert_scholar(**parm)
+        try:
+            parm = set_value(avatar=avatar, name=name, website=website, email=email, organization=organzation, major=major)
+        except:
+            pass
+        sqlhelper.insert_scholar(**parm)
     print("End")
-cee()
+#cee()
 
 def mse():
     html = fetch("https://mse.engineering.ucdavis.edu/people/faculty/")
@@ -171,10 +191,13 @@ def mse():
         print(website)
         print(email)
         print("-----------------------------------------------------------")
-        #parm = set_value(avatar=avatar, name=name, website=website, email=email, organization=organzation, major=major)
-        #sqlhelper.insert_scholar(**parm)
+        try:
+            parm = set_value(avatar=avatar, name=name, website=website, email=email, organization=organzation, major=major)
+        except:
+            pass
+        sqlhelper.insert_scholar(**parm)
     print("End")
-mse()
+#mse()
 
 def mae():
     html = fetch("http://mae.ucdavis.edu/people/faculty/")
@@ -190,10 +213,13 @@ def mae():
         print(name)
         print(website)
         print(email)
-        parm = set_value(avatar=avatar, name=name, website=website, email=email, organization=organzation, major=major)
-        #sqlhelper.insert_scholar(**parm)
+        try:
+            parm = set_value(avatar=avatar, name=name, website=website, email=email, organization=organzation, major=major)
+            sqlhelper.insert_scholar(**parm)
+        except:
+            pass
     print("End")
-mae()
+#mae()
 
 def ece():
     html = fetch("https://www.ece.ucdavis.edu/people/faculty/")
@@ -201,10 +227,14 @@ def ece():
     name_list = extract("//div[@id='post-2013']/ul/li/a/text()", html, multi=True)
     for i, j in zip(item_list, name_list):
         name = ''.join(j.split(',')[:-1]).replace(',','')
-        ht = fetch(i)
+        
+        try:
+            ht = fetch(i)
+        except:
+            continue
         if extract("//li[contains(text(),'Email')]/text()", ht) is not None:
             email = extract("//li[contains(text(),'Email')]/text()", ht).replace('Email:','').\
-                replace('at','@').replace(' ','')
+                replace('at','@').replace(' ','')[1:]
         website = i
         organaztion = "University of California,Davis"
         major = "Electrical And Computer Engineering"
@@ -213,8 +243,13 @@ def ece():
         print(website)
         print(email)
         print(avatar)
-        parm = set_value(avatar=avatar, name=name, website=website, email=email, organization=organzation, major=major)
-        #sqlhelper.insert_scholar(**parm)
+        try:
+            parm = set_value(avatar=avatar, name=name, website=website, email=email, organization=organaztion, major=major)
+            sqlhelper.insert_scholar(**parm)
+        except:
+            pass
+        
+        
     print('End')
 ece()
 
