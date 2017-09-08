@@ -24,51 +24,9 @@ sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 from utils.logger import get_logger
 from utils.connection import *
 from db.SqlHelper import SqlHelper
+from utils.set_value import set_value
 sqlhelper = SqlHelper(logger=get_logger("wz"))
 
-def set_value(name, email, organization, website, major, avatar):
-    
-    keywordKeys = []
-    cityKeys = []
-    timeKeys = []
-    
-    keywords = []
-    city = ["China"]
-    time = ["Flexible"]
-    
-    parm = {
-            "name":name,
-            "email":email,
-            "password":"dr.wang",
-            "avatar":avatar,
-            "profile":
-                {
-                "keywordKeys":[],
-                "cityKeys":[1],
-                "timeKeys":[1],
-                "firstName":HumanName(name).first,
-                "lastName":HumanName(name).last,
-                "organization":organization,
-                "major":major,
-                "title":None,
-                "birth":None,
-                "country":None,
-                "state":None,
-                "city":["China"],
-                "phone":None,
-                "email":email,
-                "website":website,
-                "cooperation":[],
-                "bio":None
-                }
-            }
-    for i in keywordKeys:
-        parm["profile"]["keyword-{}".format(i)] = keywords[i-1]
-    for j in cityKeys:
-        parm["profile"]["city-{}".format(j)] = city[j-1]
-    for h in timeKeys:
-        parm["profile"]["time-{}".format(h)] = time[h-1]
-    return parm
     
 
 def bme():

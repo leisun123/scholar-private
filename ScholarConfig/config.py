@@ -20,7 +20,7 @@ DB_CONFIG={
     'DB_CONNECT_TYPE':'sqlalchemy',#'pymongo'sqlalchemy
     # 'DB_CONNECT_STRING':'mongodb://localhost:27017/'
     #'DB_CONNECT_STRING':'sqlite:///'+os.path.dirname(__file__)+'/data/proxy.db'
-    'DB_CONNECT_STRING' : "mysql+pymysql://wyn:weiaizq1314@localhost/eb"
+    'DB_CONNECT_STRING' : "mysql+pymysql://root:weiaizq1314@localhost/eb"
 }
 
 proxies = None
@@ -71,7 +71,7 @@ def create_ssh_tunnel():
         server = SSHTunnelForwarder(
                 ('13.113.193.188',22),
                 ssh_username="ubuntu",
-                ssh_pkey="/home/wyn/Desktop/rainbow.pem",
+                ssh_pkey="C:/Users/tonylu/Desktop/eb-web(1).pem",
                 remote_bind_address=('localhost',3306)
                 )
         server.start()

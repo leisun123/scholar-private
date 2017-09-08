@@ -11,57 +11,13 @@
 """
 import os
 import sys
+
 sys.path.append(os.path.join(os.getcwd().split('scholar')[0],'scholar'))
 
-from nameparser import HumanName
+
 
 from utils.logger import get_logger
-
-
-def set_value(name, email, organization, website, major, avatar):
-    
-    keywordKeys = []
-    cityKeys = []
-    timeKeys = []
-    
-    keywords = []
-    city = ["China"]
-    time = ["Flexible"]
-    
-    parm = {
-            "name":name,
-            "email":email,
-            "password":"dr.wang",
-            "avatar":avatar,
-            "profile":
-                {
-                "keywordKeys":[],
-                "cityKeys":[1],
-                "timeKeys":[1],
-                "firstName":HumanName(name).first,
-                "lastName":HumanName(name).last,
-                "organization":organization,
-                "major":major,
-                "title":None,
-                "birth":None,
-                "country":None,
-                "state":None,
-                "city":["China"],
-                "phone":None,
-                "email":email,
-                "website":website,
-                "cooperation":[],
-                "bio":None
-                }
-            }
-    for i in keywordKeys:
-        parm["profile"]["keyword-{}".format(i)] = keywords[i-1]
-    for j in cityKeys:
-        parm["profile"]["city-{}".format(j)] = city[j-1]
-    for h in timeKeys:
-        parm["profile"]["time-{}".format(h)] = time[h-1]
-    return parm
-
+from utils.set_value import set_value
 
 from db.SqlHelper import SqlHelper
 import pymysql
@@ -72,6 +28,7 @@ cur.execute("""
                   select * from sc;
                   """)
 res= iter(cur.fetchall() )
+
 while True:
     tmp = (next(res))
     name = tmp[0].replace("INSERT INTO `sc` VALUES ('","").replace("'","").strip()
@@ -92,9 +49,10 @@ while True:
     # print("organzation:",organization)
     parm = set_value(name=name, email=email, avatar=avatar, major=major, organization=organization,
                      website=website)
-    sqlhepler.update_scholar(**parm)
-
-
+    try:
+        sqlhepler.update_scholar(**parm)
+    except:
+        pass
     
     
 

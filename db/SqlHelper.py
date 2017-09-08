@@ -29,12 +29,27 @@ from utils.photo_download import download
 BaseModel = declarative_base()
 
 
+class UserGroup(BaseModel):
+    __tablename__ = 'user_groups'
+    __table_args__ = (
+        Index('unique_user_id_group_id', 'user_id', 'group_id', unique=True),
+    )
+
+    id = Column(BigInteger, primary_key=True)
+    user_id = Column(ForeignKey('users.id'), nullable=False)
+    group_id = Column(ForeignKey('groups.id'), nullable=False, index=True)
+    group = relationship('Group')
+    user = relationship('User')
+
+
+
 class Group(BaseModel):
     __tablename__ = 'groups'
 
-    id = Column(BigInteger, primary_key=True)
-    object_id = Column(String(36), nullable=False)
-    name = Column(String(255), nullable=False, unique=True)
+    id = Column(BigInteger, primary_key=True, default=1)
+    object_id = Column(String(36), nullable=False, default='2efa4f8b-9e8b-45fe-bec4-517e4020f852')
+    name = Column(String(255), nullable=False, unique=True, default='scholars')
+
     
 class ObjectAttribute(BaseModel):
     __tablename__ = 'object_attributes'
@@ -85,17 +100,9 @@ class User(BaseModel):
     created_at = Column(DateTime)
     updated_at = Column(DateTime)
 
-class UserGroup(BaseModel):
-    __tablename__ = 'user_groups'
-    __table_args__ = (
-        Index('unique_user_id_group_id', 'user_id', 'group_id', unique=True),
-    )
 
-    id = Column(BigInteger, primary_key=True)
-    user_id = Column(ForeignKey('users.id'), nullable=False)
-    group_id = Column(ForeignKey('groups.id'), nullable=False, index=True)
-    group = relationship('Group')
-    user = relationship('User')
+
+
     
 class Proxy(BaseModel):
     __tablename__ = 'proxys'
@@ -109,26 +116,60 @@ class Proxy(BaseModel):
     updatetime = Column(DateTime(), default=datetime.datetime.utcnow)
     speed = Column(Numeric(5, 2), nullable=False)
     score = Column(Integer, nullable=False, default=10)
-    
+
     
 class SqlHelper(ISqlHelper):
-    def __init__(self,logger=None):
+    def __init__(self,logger=get_logger("TEST")):
         self.logger = logger
         if 'sqlite' in DB_CONFIG['DB_CONNECT_STRING']:
             connect_args = {'check_same_thread':False}
             self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'],echo=False,connect_args=connect_args)
         else:
-            self.engine =create_ssh_tunnel()
-            #self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
+            #self.engine =create_ssh_tunnel()
+            self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
             DB_Session = sessionmaker(bind=self.engine)
             self.session = DB_Session()
         
     def init_db(self):
-        BaseModel.metadata.create_all(self.engine)
+        BaseModel.metadata.create_all(bind=self.engine)
+        #BaseModel.metadata.tables["user_groups"].create(bind=self.engine)
+        group_1 = Group(
+            id = 1,
+            object_id = '84193943-db89-404e-b894-02ea60ffc9b1',
+            name = 'Administrators'
+        )
+        group_2 = Group(
+            id = 2,
+            object_id = 'd0d45dd3-d770-416f-b44d-cd739d2a12a0',
+            name = 'Users'
+        )
+        group_3 = Group(
+            id = 3,
+            object_id = '56531a6e-f3b1-4ba5-8e88-1754a9e988e5',
+            name = 'Guests'
+        )
+        group_4 = Group(
+            id = 4,
+            object_id = '4ad69298-8969-40ea-a1fd-330627a69f8c',
+            name = 'Schools'
+        )
+        
+        group_5 = Group(
+            id = 5,
+            object_id = '2efa4f8b-9e8b-45fe-bec4-517e4020f852',
+            name = 'Scholars'
+        )
+
+        self.session.add(group_1)
+        self.session.add(group_2)
+        self.session.add(group_3)
+        self.session.add(group_4)
+        self.session.add(group_5)
+        self.session.commit()
         
 
-    # def drop_db(self):
-    #     BaseModel.metadata.drop_all(self.engine)
+    def drop_db(self):
+        BaseModel.metadata.drop_all(self.engine)
     
         
     def insert_scholar(self, **values):
@@ -204,21 +245,26 @@ class SqlHelper(ISqlHelper):
         except exc.SQLAlchemyError as e:
             self.logger.error("{} info commit failed! Caused by {}".format(values["name"],e))
             self.session.rollback()
+        finally:
+            self.session.close()
 
     def update_scholar(self, **values):
         try:
-            res = self.session.query(User).filter(User.name == values["name"])
+            res = self.session.query(User).filter(User.email == values["email"])
             res.update({User.email:values["email"],
                         User.unlock_token:values["avatar"]})
             
-            self.session.query(ObjectAttribute).filter(ObjectAttribute.id == res.one().id)\
+            self.session.query(ObjectAttribute)\
+                .filter(and_(ObjectAttribute.object_id == res.first().object_id, ObjectAttribute.name == "profile"))\
                     .update({ObjectAttribute.value:bytes(simplejson.dumps(values["profile"]),encoding='utf8')})
             
             self.session.commit()
-            self.logger.info("{} has updated".format(res.one().name))
+            self.logger.info("{} has updated".format(res.first().name))
         except exc.SQLAlchemyError as e:
             self.logger.error("{} info updated failed! Caused by {}".format(values["name"],e))
             self.session.rollback()
+        finally:
+            self.session.close()
     
     def output_proxy(self):
         ipprort=self.session.query(Proxy.ip,Proxy.port).all()
@@ -257,9 +303,9 @@ class SqlHelper(ISqlHelper):
         pass
     
 if __name__ == '__main__':
-    # sqlhelper = SqlHelper(logger=get_logger("test"))
-    # #sqlhelper.parser_data_delete()
-    pass
+    sqlhelper = SqlHelper(logger=get_logger("test"))
+    sqlhelper.drop_db()
+    sqlhelper.init_db()
     
     
         
