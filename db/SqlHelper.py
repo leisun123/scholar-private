@@ -125,8 +125,8 @@ class SqlHelper(ISqlHelper):
             connect_args = {'check_same_thread':False}
             self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'],echo=False,connect_args=connect_args)
         else:
-            #self.engine =create_ssh_tunnel()
-            self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
+            self.engine =create_ssh_tunnel()
+            #self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
             DB_Session = sessionmaker(bind=self.engine)
             self.session = DB_Session()
         
@@ -251,7 +251,8 @@ class SqlHelper(ISqlHelper):
     def update_scholar(self, **values):
         try:
             res = self.session.query(User).filter(User.email == values["email"])
-            res.update({User.email:values["email"],
+            res.update({User.name:values["name"],
+                        User.email:values["email"],
                         User.unlock_token:values["avatar"]})
             
             self.session.query(ObjectAttribute)\
@@ -291,7 +292,8 @@ class SqlHelper(ISqlHelper):
                     self.session.rollback()
         except StopIteration:
             self.logger.info("Finish")
-        self.session.close()
+        finally:
+            self.session.close()
     
     def update(self, conditions=None,value=None):
         pass

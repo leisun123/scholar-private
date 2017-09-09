@@ -24,20 +24,19 @@ sqlhepler = SqlHelper(logger=get_logger("dzh"))
 cur.execute("""
                   select * from json;
                   """)
-#res= cur.fetchall()
+res= cur.fetchall()
 from utils.pretty_dict import pretty_dict
-# import simplejson
-# for i in cur:
-#     #sqlhepler.insert_scholar(**(simplejson.loads(i[1])))
-#     try:
-#         tmp = simplejson.loads(i[1])
-#         tmp["profile"]["firstName"] = HumanName(tmp["name"]).first
-#         tmp["profile"]["lastName"] = HumanName(tmp["name"]).last
-#         #print(tmp["firstName"], tmp["lastName"], tmp["profile"]["organization"], tmp["profile"]["email"], tmp["profile"]["webiste"])
-#         #print(tmp)
-#         sqlhepler.insert_scholar(**tmp)
-#     except:
-#         print(i)
-# print("---------------------End----------------------------")
-#
-print(cur.fetchall())
+import simplejson
+for i in cur:
+    #sqlhepler.insert_scholar(**(simplejson.loads(i[1])))
+    try:
+        tmp = simplejson.loads(i[1])
+        tmp["profile"]["firstName"] = HumanName(tmp["name"]).first
+        tmp["profile"]["lastName"] = HumanName(tmp["name"]).last
+        #print(tmp["firstName"], tmp["lastName"], tmp["profile"]["organization"], tmp["profile"]["email"], tmp["profile"]["webiste"])
+        #print(tmp)
+        sqlhepler.insert_scholar(**tmp)
+    except:
+        print(i)
+print("---------------------End----------------------------")
+

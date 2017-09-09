@@ -20,6 +20,7 @@ def set_value(name, email, organization, website, major, avatar=None):
     city = ["China"]
     time = ["Flexible"]
     
+    
     parm = {
             "name":name,
             "email":email,
