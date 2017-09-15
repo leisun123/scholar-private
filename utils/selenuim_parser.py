@@ -21,18 +21,23 @@ def SelenuimParser(proxy_manager, user_agent, use_proxy):
         driver_option.add_argument('--proxy-server={}'.format(use_proxy))
     driver_option.add_argument('--user-agent={}'.format(user_agent))
     driver = webdriver.Chrome()
+    driver
     return driver
 
 
 if __name__ == '__main__':
-    pass
-    # try:
-    #     WebDriverWait(driver, 20).until(
-    #         expected_conditions.presence_of_element_located((
-    #             By.XPATH,"//div[@class='author-group']/a[1]"))
-    #     ).click()
-    # finally:
-    #     driver.quit()
-
-        
-        
+   driver = webdriver.Chrome()
+   driver.get("http://eng.auburn.edu/aero/faculty/")
+   html_source = (driver.page_source)
+   print(html_source)
+   from utils.connection import *
+   email = extract("//p[contains(text(),'@')]/./text()", html_source)
+   print(email)
+   import re
+   regex = r"([\w\.\-]+@[\w\.\-]+)"
+   
+   
+   print("-------------------------------------------")
+   email = re.search(regex, html_source).group()
+   print(email)
+   

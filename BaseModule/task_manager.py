@@ -70,7 +70,7 @@ class Taskmanager(object):
     def _db_save_loop(self):
         while 1:
             parm = self.parm_queue.get(block=True)
-            gevent.sleep(2)
+            gevent.sleep(0.1)
             self.count = self.count+1
             S = SqlHelper(logger=self.logger)
             self.crawl_pool.spawn(S.insert_scholar, **parm)

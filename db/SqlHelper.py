@@ -17,7 +17,7 @@ import datetime
 from sqlalchemy import *
 from sqlalchemy import exc
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, relationship
+from sqlalchemy.orm import sessionmaker, relationship, backref
 from ScholarConfig.config import DB_CONFIG,create_ssh_tunnel
 import simplejson
 from db.ISqlHelper import ISqlHelper
@@ -27,7 +27,6 @@ from utils.logger import get_logger
 from utils.photo_download import download
 
 BaseModel = declarative_base()
-
 
 class UserGroup(BaseModel):
     __tablename__ = 'user_groups'
@@ -46,7 +45,7 @@ class UserGroup(BaseModel):
 class Group(BaseModel):
     __tablename__ = 'groups'
 
-    id = Column(BigInteger, primary_key=True, default=1)
+    id = Column(BigInteger, primary_key=True)
     object_id = Column(String(36), nullable=False, default='2efa4f8b-9e8b-45fe-bec4-517e4020f852')
     name = Column(String(255), nullable=False, unique=True, default='scholars')
 
@@ -72,6 +71,11 @@ class Object(BaseModel):
     name = Column(String(255), nullable=False, unique=True)
     created_at = Column(DateTime, nullable=False)
 
+class Organization(BaseModel):
+    __tablename__='organizations'
+
+    id = Column(BigInteger, primary_key=True, autoincrement=True)
+    name = Column(String(255))
 
 class User(BaseModel):
     __tablename__ = 'users'
@@ -81,6 +85,11 @@ class User(BaseModel):
     scope = Column(String(255), nullable=False)
     name = Column(String(255), nullable=False)
     email = Column(String(255), nullable=False, unique=True)
+    website = Column(String(255))
+    
+    organization_id = Column(Integer, index=True)
+    organization = Column(String(255))
+    
     password = Column(Text, nullable=False)
     reset_password_token = Column(Text)
     reset_password_sent_at = Column(DateTime)
@@ -125,14 +134,14 @@ class SqlHelper(ISqlHelper):
             connect_args = {'check_same_thread':False}
             self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'],echo=False,connect_args=connect_args)
         else:
-            self.engine =create_ssh_tunnel()
-            #self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
+            #self.engine =create_ssh_tunnel()
+            self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'])
             DB_Session = sessionmaker(bind=self.engine)
             self.session = DB_Session()
         
     def init_db(self):
         BaseModel.metadata.create_all(bind=self.engine)
-        #BaseModel.metadata.tables["user_groups"].create(bind=self.engine)
+        #BaseModel.metadata.tables["organizations"].create(bind=self.engine)
         group_1 = Group(
             id = 1,
             object_id = '84193943-db89-404e-b894-02ea60ffc9b1',
@@ -153,7 +162,7 @@ class SqlHelper(ISqlHelper):
             object_id = '4ad69298-8969-40ea-a1fd-330627a69f8c',
             name = 'Schools'
         )
-        
+
         group_5 = Group(
             id = 5,
             object_id = '2efa4f8b-9e8b-45fe-bec4-517e4020f852',
@@ -170,7 +179,7 @@ class SqlHelper(ISqlHelper):
 
     def drop_db(self):
         BaseModel.metadata.drop_all(self.engine)
-    
+        print("FINISH")
         
     def insert_scholar(self, **values):
         tmp_id = str(uuid4())
@@ -217,10 +226,7 @@ class SqlHelper(ISqlHelper):
         object_attributes_password = ObjectAttribute(
                         object_id = tmp_id,
                         name = "password",
-                        value = bytes(values["password"],encoding='utf8')
-        )
-
-        
+                        value = bytes(values["password"],encoding='utf8'))
 
         try:
             self.session.add(object)
@@ -295,6 +301,59 @@ class SqlHelper(ISqlHelper):
         finally:
             self.session.close()
     
+    def migrate(self):
+        res = iter(self.session.query(User.object_id, User.id, User.organization_id, User.organization).all())
+        try:
+            while True:
+                res_next = next(res)
+                oj_id = res_next[0]
+                user_id = res_next[1]
+                og_id = res_next[2]
+                og = res_next[3]
+                
+                sc_info_byte = self.session.query(ObjectAttribute)\
+                    .filter(and_(ObjectAttribute.object_id == oj_id, ObjectAttribute.name == "profile")).first().value
+                sc_info = simplejson.loads(bytes.decode(sc_info_byte))
+                
+                
+                organization_object = self.session.query(Organization)\
+                        .filter(Organization.name == sc_info["organization"])\
+                        .first()
+
+                if og_id or og is None:
+                    if organization_object is None:
+                        organization = Organization(
+                            name = sc_info["organization"])
+                        self.session.add(organization)
+                        self.session.flush()
+                        organization_id = organization.id
+                    else:
+                        organization_id = organization_object.id
+                    
+                    self.session.query(User).filter(User.id == user_id)\
+                        .update({User.organization_id: organization_id,\
+                                 User.organization: sc_info["organization"],\
+                                 User.website: sc_info["website"]})
+                    self.session.commit()
+                    self.session.close()
+                    
+        except StopIteration:
+            print("----------------------------END----------------------------------")
+            
+        finally:
+            # res = self.session.query(User.name, Organization.name, User.website)\
+            #           .outerjoin(Organization, Organization.id == User.organization_id)\
+            #           .all()
+            res = self.session.query(User.name, User.organization ,User.website).all()
+            for i in res:
+                print("Name:", i[0])
+                print("Organization:", i[1])
+                print("Website:", i[2])
+                print("--------------------------------------------")
+            
+            
+    
+        
     def update(self, conditions=None,value=None):
         pass
     
@@ -306,8 +365,13 @@ class SqlHelper(ISqlHelper):
     
 if __name__ == '__main__':
     sqlhelper = SqlHelper(logger=get_logger("test"))
-    sqlhelper.drop_db()
-    sqlhelper.init_db()
+    # sqlhelper.drop_db()
+    # sqlhelper.init_db()
+    sqlhelper.migrate()
+    # res = sqlhelper.session.query(User).group_by(User.organization).all()
+    # for i in res:
+    #     print(i.organization)
+    
     
     
         

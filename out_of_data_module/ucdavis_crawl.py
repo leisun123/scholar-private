@@ -211,11 +211,11 @@ def ece():
     print('End')
 ece()
 
-def cs():
-    html = fetch("http://www.cs.ucdavis.edu/people/faculty/")
-    item_list = extract("//ul/li/a/@href", html)
-    name_list = extract("//ul/li/a/text()", html)
-    for i, j in zip(item_list, name_list):
-        name = j
-        ht = fetch(i)
+# def cs():
+#     html = fetch("http://www.cs.ucdavis.edu/people/faculty/")
+#     item_list = extract("//ul/li/a/@href", html)
+#     name_list = extract("//ul/li/a/text()", html)
+#     for i, j in zip(item_list, name_list):
+#         name = j
+#         ht = fetch(i)
         
