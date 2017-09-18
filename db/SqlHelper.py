@@ -90,7 +90,9 @@ class User(BaseModel):
     organization_id = Column(Integer, index=True)
     organization = Column(String(255))
     
-    password = Column(Text, nullable=False)
+    is_clean = Column(Boolean, default=False)
+    
+    password = Column(Text, nullable=False, default="bcrypt")
     reset_password_token = Column(Text)
     reset_password_sent_at = Column(DateTime)
     remember_created_at = Column(DateTime)
@@ -108,9 +110,6 @@ class User(BaseModel):
     locked_at = Column(DateTime)
     created_at = Column(DateTime)
     updated_at = Column(DateTime)
-
-
-
 
     
 class Proxy(BaseModel):
@@ -301,8 +300,9 @@ class SqlHelper(ISqlHelper):
         finally:
             self.session.close()
     
-    def migrate(self):
-        res = iter(self.session.query(User.object_id, User.id, User.organization_id, User.organization).all())
+    
+    def local_migrate(self):
+        res = iter(self.session.query(User.object_id, User.id, User.organization_id, User.organization).filter(User.scope == "").all())
         try:
             while True:
                 res_next = next(res)
@@ -311,35 +311,57 @@ class SqlHelper(ISqlHelper):
                 og_id = res_next[2]
                 og = res_next[3]
                 
-                sc_info_byte = self.session.query(ObjectAttribute)\
-                    .filter(and_(ObjectAttribute.object_id == oj_id, ObjectAttribute.name == "profile")).first().value
-                sc_info = simplejson.loads(bytes.decode(sc_info_byte))
                 
-                
-                organization_object = self.session.query(Organization)\
-                        .filter(Organization.name == sc_info["organization"])\
-                        .first()
-
-                if og_id or og is None:
-                    if organization_object is None:
-                        organization = Organization(
-                            name = sc_info["organization"])
-                        self.session.add(organization)
-                        self.session.flush()
-                        organization_id = organization.id
-                    else:
-                        organization_id = organization_object.id
+                tmp_1 = self.session.query(ObjectAttribute)\
+                        .filter(and_(ObjectAttribute.object_id == oj_id, ObjectAttribute.name == "profile")).first()
+                if tmp_1:
+                    sc_info_byte = tmp_1.value
+                else:
+                    print("ObjectAttributes Missing",oj_id)
                     
+                sc_info = simplejson.loads(bytes.decode(sc_info_byte))
+                if "organization" not in sc_info.keys():
+                    print("organization Field Missing!", oj_id)
+                    sc_info["organization"] = "Unknown"
+                
+                if "website" not in sc_info.keys():
+                    print("website Field Missing!", oj_id)
+                    sc_info["website"] = "Unknown"
+
+                try:
+                    organization_object = self.session.query(Organization)\
+                            .filter(or_(Organization.name == sc_info["organization"]))\
+                            .first()
+                except:
+                    sc_info["organization"] = sc_info["organization"].encode('latin-1', 'ignore')
+                    sc_info["website"] = sc_info["website"].encode('latin-1', 'ignore')
+                    organization_object = self.session.query(Organization)\
+                            .filter(Organization.name == sc_info["organization"])\
+                            .first()
+                    print("Fucking Character Error!")
+                
+                if organization_object is None:
+                    organization = Organization(
+                        name = sc_info["organization"])
+                    self.session.add(organization)
+                    self.session.flush()
+                    organization_id = organization.id
+                else:
+                    organization_id = organization_object.id
+                
+                try:
                     self.session.query(User).filter(User.id == user_id)\
-                        .update({User.organization_id: organization_id,\
-                                 User.organization: sc_info["organization"],\
-                                 User.website: sc_info["website"]})
+                            .update({User.organization_id: organization_id,\
+                                     User.organization:  sc_info["organization"],\
+                                     User.website: sc_info["website"]})
                     self.session.commit()
                     self.session.close()
-                    
+                except Exception as e:
+                    print(e)
+                
+                print("Successfully Commit One!")
         except StopIteration:
             print("----------------------------END----------------------------------")
-            
         finally:
             # res = self.session.query(User.name, Organization.name, User.website)\
             #           .outerjoin(Organization, Organization.id == User.organization_id)\
@@ -367,12 +389,10 @@ if __name__ == '__main__':
     sqlhelper = SqlHelper(logger=get_logger("test"))
     # sqlhelper.drop_db()
     # sqlhelper.init_db()
-    sqlhelper.migrate()
-    # res = sqlhelper.session.query(User).group_by(User.organization).all()
-    # for i in res:
-    #     print(i.organization)
-    
-    
+    sqlhelper.local_migrate()
+   
+
+
     
         
         
