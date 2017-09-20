@@ -363,9 +363,6 @@ class SqlHelper(ISqlHelper):
         except StopIteration:
             print("----------------------------END----------------------------------")
         finally:
-            # res = self.session.query(User.name, Organization.name, User.website)\
-            #           .outerjoin(Organization, Organization.id == User.organization_id)\
-            #           .all()
             res = self.session.query(User.name, User.organization ,User.website).all()
             for i in res:
                 print("Name:", i[0])
@@ -373,9 +370,17 @@ class SqlHelper(ISqlHelper):
                 print("Website:", i[2])
                 print("--------------------------------------------")
             
-            
+    def organization_clean(self, old_id, modify_id, name=None):
+        og_name = name
+        if name is None:
+            og_name = self.session.query(Organization).filter(Organization.id ==old_id).first().name
+        self.session.query(Organization).filter(Organization.id == old_id)\
+            .delete()
+        self.session.query(User).filter(User.organization_id == old_id)\
+            .update({"organization_id": modify_id,\
+                     "organization": og_name})
+        self.session.commit()
     
-        
     def update(self, conditions=None,value=None):
         pass
     
@@ -387,12 +392,8 @@ class SqlHelper(ISqlHelper):
     
 if __name__ == '__main__':
     sqlhelper = SqlHelper(logger=get_logger("test"))
-    # sqlhelper.drop_db()
-    # sqlhelper.init_db()
-    sqlhelper.local_migrate()
+    sqlhelper.organization_clean(old_id=10, modify_id=13)
    
-
-
     
         
         
