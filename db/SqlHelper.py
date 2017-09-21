@@ -392,9 +392,9 @@ class SqlHelper(ISqlHelper):
     
 if __name__ == '__main__':
     sqlhelper = SqlHelper(logger=get_logger("test"))
-    sqlhelper.organization_clean(old_id=10, modify_id=13)
-   
-    
+    # sqlhelper.organization_clean(old_id=10, modify_id=13)
+    count = sqlhelper.session.query(User).filter(User.scope == "").count()
+    print(count)
         
         
     

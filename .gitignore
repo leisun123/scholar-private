@@ -54,6 +54,8 @@ ENV/
 .ropeproject
 .gitignore
 .idea/
+.idea/misc.xml
+.idea/scholar.iml
 BaseModule/__pycache__/
 CustomParser/__pycache__/
 ErrorHandle/__pycache__/
