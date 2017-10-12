@@ -15,12 +15,6 @@ def get_data(url):
         organization = "University of North Carolina"
         major = "Department of Computer Science"
         avatar = "https://www.csc.ncsu.edu" + extract("//*[@class='person_img']/@src",str(etree.tostring(a)))
-        # print('name:',name)
-        # print('email:',email)
-        # print('organization:', organization)
-        # print("url:", web)
-        # print("major:", major)
-        # print("---------------------------")
         print(set_value(name,email,web,organization,major,avatar))
 
 get_data("https://www.csc.ncsu.edu/directories/faculty.php")
