@@ -20,7 +20,7 @@ DB_CONFIG={
     'DB_CONNECT_TYPE':'sqlalchemy',#'pymongo'sqlalchemy
     # 'DB_CONNECT_STRING':'mongodb://localhost:27017/'
     #'DB_CONNECT_STRING':'sqlite:///'+os.path.dirname(__file__)+'/data/proxy.db'
-    'DB_CONNECT_STRING' : "mysql+pymysql://root:weiaizq1314@localhost/eb"
+    'DB_CONNECT_STRING' : "mysql+pymysql://root:123456@localhost/eb"
 }
 
 proxies = None
