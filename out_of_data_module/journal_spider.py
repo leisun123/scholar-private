@@ -6,6 +6,9 @@ import json
 from threadpool import *
 import time
 import random
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
+from sshtunnel import SSHTunnelForwarder
 
 USER_AGENTS = [
     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; AcooBrowser; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
@@ -162,18 +165,41 @@ def getArticleInfo(i):#获取所有文章的信息
     except Exception as e:
         print(e)
         print(url)
-        with open("F:/study/python/TODO.txt","a") as f:
+        with open("./TODO.txt","a") as f:
             f.write(url + "\n")
             f.close()
+    # try:
+    #     jsObj = json.dumps(new)
+    #     with open("F:/study/python/res.json","a") as f:
+    #         f.write(jsObj)
+    #         f.close()
+    # except:
+    #     pass
+    # print(new)
     try:
-        jsObj = json.dumps(new)
-        with open("F:/study/python/res.json","a") as f:
-            f.write(jsObj)
-            f.close()
-    except:
+        sqlinput(new)
+    except Exception as e:
+        print(e)
         pass
-    print(new)
     return ""
+
+def sqlinput(infodic):
+    with SSHTunnelForwarder(
+    ('39.104.50.183',22),
+    ssh_username = "sc",
+    ssh_pkey="./id_rsa",
+    remote_bind_address= ('127.0.0.1',5432)
+    ) as server:
+        server.start()
+        print("successfully connected")
+
+        local_port = str(server.local_bind_port)
+        engine = create_engine('postgresql://wyn:weiaizq1314@127.0.0.1:'+local_port+'/sc_2018')
+        Session = sessionmaker(bind=engine)
+        session = Session()
+        print("Database session created")
+        sql ="INSERT INTO paper(title,keywords,author,issue,pdf,'time',findtime) VALUES (infodic['title'],infodic['keywords'],infodic['author'],infodic['issue'],infodic['pdf'],infodic['time'],time.strftime('%Y-%m-%d', time.localtime(time.time())))"
+        session.execute(sql)
 
 
 
@@ -183,26 +209,27 @@ slist = {}
 urlList = []
 infoDic = []
 slist = getJournalList(journal_list_url)
-try:
-    for i,k in slist.items():
-        with open("F:/study/python/slist.txt","a") as f:
-            f.write(i+":"+slist[i]+"\n")
-        f.close()
-except:
-    pass
+# try:
+#     for i,k in slist.items():
+#         with open("F:/study/python/slist.txt","a") as f:
+#             f.write(i+":"+slist[i]+"\n")
+#         f.close()
+# except:
+#     pass
 urlList = getIssueURL(slist)
-try:
-    for i in urlList:
-        with open("F:/study/python/url.txt","a") as f:
-            f.write(i+"\n")
-        f.close()
-except:
-    pass
-print(urlList)
+# try:
+#     for i in urlList:
+#         with open("F:/study/python/url.txt","a") as f:
+#             f.write(i+"\n")
+#         f.close()
+# except:
+#     pass
+# print(urlList)
 print(len(urlList))
 start_time = time.time()
-pool = ThreadPool(5)
+pool = ThreadPool(3)
 res = makeRequests(getArticleInfo,urlList)
 [pool.putRequest(req) for req in res]
+time.sleep(2)
 pool.wait()
 print(time.time()-start_time)
