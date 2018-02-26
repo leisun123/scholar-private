@@ -1,29 +1,6 @@
-# #-*-coding:utf-8-*-
-#
-# from utils.connection import *
-# from utils.set_value import *
-#
-# def get_data(url):
-#     res = fetch(url)
-#     tmp = extract("//div[@class='directory_entry']",res,multi=True)
-#     for a in tmp:
-#         name = extract("//*[@class='name']/b/text()",html_source=str(etree.tostring(a)))
-#         email = extract("//*[@class='email']/text()",html_source=str(etree.tostring(a)))
-#         web = extract("//a/@href", str(etree.tostring(a)))
-#         avtar = extract("//a/img/@src",str(etree.tostring(a)))
-#         organization = "University of North Carolina"
-#         major = "Department of Chemical and Biomolecular Engineering"
-#         print(set_value(name,email,web,organization,major,avtar))
-# get_data("https://www.cbe.ncsu.edu/directory/faculty/")
-
-
-
-
-
 #-*-coding:utf-8-*-
 
 from utils.connection import *
-from selenium import webdriver
 import requests
 import json
 from threadpool import *
@@ -67,7 +44,8 @@ USER_AGENTS = [
     "Mozilla/5.0 (X11; U; Linux x86_64; zh-CN; rv:1.9.2.10) Gecko/20100922 Ubuntu/10.10 (maverick) Firefox/3.6.10"
 ]
 
-def getJournalList(infoDic, journalURL): #获取所有的title名字与链接
+def getJournalList(journalURL): #获取所有的title名字与链接
+    infoDic = {}
     html = fetch(journalURL)
     info_1 = {}
     info_2 = {}
@@ -82,7 +60,7 @@ def getJournalList(infoDic, journalURL): #获取所有的title名字与链接
     except:
         pass
     for i in range(1,11):
-        urls = "https://www.sciencedirect.com/science/browsescroll/journals/a/full-text-access/begidx" + str(i*50) + "rwpos/0"
+        urls = "https://www.sciencedirect.com/science/browsescroll/journals/a/full-text-access/begidx" + str(i*50) + "/rwpos/0"
         try:
             user_agent = random.choice(USER_AGENTS)
             headers = {
@@ -98,7 +76,7 @@ def getJournalList(infoDic, journalURL): #获取所有的title名字与链接
                         if key == "I":
                             url = each[key]
                             res = fetch("https://www.sciencedirect.com/science/journal/" + url)
-                            print(url)
+                            # print(url)
                             title = extract('//link[@rel="canonical"]/@href', res, False)
                             title = title.split('al/')[-1]
                             info_2[url] = title
@@ -110,15 +88,121 @@ def getJournalList(infoDic, journalURL): #获取所有的title名字与链接
             print(e)
             print(urls)
             pass
-    infoDic = dict(info_1,**info_2)
-    print(info_2)
-    print(info_1)
-    print(infoDic)
+        infoDic = dict(info_1,**info_2)
+    # print(info_2)
+    # print(info_1)
+    return infoDic
+
+def getIssueURL(infoDic): #获取所有article的链接
+    urlList = []
+    for i in infoDic.keys():
+        a = infoDic[i]
+        articleurlDic = []
+        for y in range(2000,2019):
+            s = i.split('e')[-1] + "/year/" + str(y) + "/issues"
+            url = "https://www.sciencedirect.com" + s
+            print(url)
+            try:
+                r = requests.get(url)
+                json_response = r.content.decode()
+                dict_json = json.loads(json_response)
+                if dict_json.__contains__("data"):
+                    dic = dict_json["data"][0]
+                    urlinfo = "https://www.sciencedirect.com/journal/" + a + dic["uriLookup"]
+                    res = fetch(urlinfo)
+                    articleurlDic = extract("//a[@class='anchor article-content-title u-margin-top-xs u-margin-bottom-s']/@href",res,True)
+                    urlList = urlList + articleurlDic
+                else:
+                    continue
+            except Exception as e:
+                print(e)
+    return urlList
+
+def getArticleInfo(i):#获取所有文章的信息
+    new = {}
+    url = "https://www.sciencedirect.com" + i
+    try:
+        keywords = ""
+        author = ""
+        pdfurl = ""
+        html = fetch(url)
+        title = extract("//span[@class='title-text']/text()", html, False)
+        if title is None or title == "":
+            title = "NO Found"
+        keyword = extract("//div[@class='keyword']/span/text()", html, True)
+        if keyword is None:
+            keywords = "No Found"
+        for key in keyword:
+            keywords = keywords + key + ";"
+        if keywords == "":
+            keywords = "No Found"
+        author_group = extract("//a[@class='author size-m workspace-trigger']", html, True)
+        if author_group is None:
+            author = "No Found"
+        for auth in author_group:
+            firstname = extract("//span[@class='text given-name']/text()", str(etree.tostring(auth)), False)
+            lastname = extract("//span[@class='text surname']/text()", str(etree.tostring(auth)), False)
+            name = str(firstname) + " " + str(lastname)
+            author = author + name + ";"
+        if author == "":
+            author = "No Found"
+        a = extract("//a[@class='anchor PdfDownloadButton']/@href", html, False)
+        if a is None:
+            pdfurl = "NO Found"
+        pdfurl = "https://www.sciencedirect.com" + a
+        if pdfurl == "https://www.sciencedirect.com":
+            pdfurl = "No Found"
+        time = extract("//span[@class='size-m']/text()[2]", html, False)
+        if time == "" or time is None:
+            time = "No Found"
+        issue = extract("//a[@class='publication-title-link']/text()", html, False)
+        if issue == "" or issue is None:
+            issue = "No Found"
+        new.update({"title": title, "keywords": keywords, "author": author, "issue": issue, "pdf": pdfurl, "time": time})
+    except Exception as e:
+        print(e)
+        print(url)
+        with open("F:/study/python/TODO.txt","a") as f:
+            f.write(url + "\n")
+            f.close()
+    try:
+        jsObj = json.dumps(new)
+        with open("F:/study/python/res.json","a") as f:
+            f.write(jsObj)
+            f.close()
+    except:
+        pass
+    print(new)
+    return ""
+
+
+
 
 journal_list_url = "https://www.sciencedirect.com/science/journals/a/full-text-access"
-urlDic = {}
-getJournalList(urlDic,journal_list_url)
-
-
-
-# print(fetch("https://www.sciencedirect.com/science/browsescroll/journals/a/full-text-access/begidx/1000/rwpos/0"))
+slist = {}
+urlList = []
+infoDic = []
+slist = getJournalList(journal_list_url)
+try:
+    for i,k in slist.items():
+        with open("F:/study/python/slist.txt","a") as f:
+            f.write(i+":"+slist[i]+"\n")
+        f.close()
+except:
+    pass
+urlList = getIssueURL(slist)
+try:
+    for i in urlList:
+        with open("F:/study/python/url.txt","a") as f:
+            f.write(i+"\n")
+        f.close()
+except:
+    pass
+print(urlList)
+print(len(urlList))
+start_time = time.time()
+pool = ThreadPool(5)
+res = makeRequests(getArticleInfo,urlList)
+[pool.putRequest(req) for req in res]
+pool.wait()
+print(time.time()-start_time)
