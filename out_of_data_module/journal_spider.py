@@ -151,8 +151,10 @@ def getArticleInfo(i):#获取所有文章的信息
             author = "No Found"
         a = extract("//a[@class='anchor PdfDownloadButton']/@href", html, False)
         if a is None:
-            pdfurl = "NO Found"
-        pdfurl = "https://www.sciencedirect.com" + a
+            b = re.findall(r'"linkToPdf":"(.*?)","',html)[0]
+            pdfurl = "https://www.sciencedirect.com" + b
+        else:
+            pdfurl = "https://www.sciencedirect.com" + a
         if pdfurl == "https://www.sciencedirect.com":
             pdfurl = "No Found"
         time = extract("//span[@class='size-m']/text()[2]", html, False)

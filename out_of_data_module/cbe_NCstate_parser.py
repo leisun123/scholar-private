@@ -57,15 +57,14 @@ def getArticleInfo(i):#获取所有文章的信息
             author = author + name + ";"
         if author == "":
             author = "No Found"
-        try:
-            a = extract("//a[@class='anchor PdfDownloadButton']/@href", html, False)
-            if a is None:
-                pdfurl = re.findall(r'"linkToPdf":"(.*?)","',html)
+        a = extract("//a[@class='anchor PdfDownloadButton']/@href", html, False)
+        if a is None:
+            b = re.findall(r'"linkToPdf":"(.*?)","',html)[0]
+            pdfurl = "https://www.sciencedirect.com" + b
+        else:
             pdfurl = "https://www.sciencedirect.com" + a
-            if pdfurl == "https://www.sciencedirect.com":
-                pdfurl = "No Found"
-        except:
-            pdfurl = "None"
+        if pdfurl == "https://www.sciencedirect.com":
+            pdfurl = "No Found"
         time = extract("//span[@class='size-m']/text()[2]", html, False)
         if time == "" or time is None:
             time = "No Found"
@@ -81,7 +80,7 @@ def getArticleInfo(i):#获取所有文章的信息
             f.close()
     try:
         print(new)
-        sqlinput(new)
+        # sqlinput(new)
     except Exception as e:
         print(e)
         pass
@@ -95,14 +94,15 @@ def sqlinput(infodic):
     remote_bind_address= ('127.0.0.1',5432)
     ) as server:
         server.start()
-        print("successfully connected")
+        # print("successfully connected")
 
         local_port = str(server.local_bind_port)
         engine = create_engine('postgresql://wyn:weiaizq1314@127.0.0.1:'+local_port+'/sc_2018')
         Session = sessionmaker(bind=engine)
         session = Session()
-        print("Database session created")
-        sql ="INSERT INTO paper(title,keywords,author,issue,pdf,'time',findtime) VALUES (infodic['title'],infodic['keywords'],infodic['author'],infodic['issue'],infodic['pdf'],infodic['time'],time.strftime('%Y-%m-%d', time.localtime(time.time())))"
+        # print("Database session created")
+        findtime = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+        sql ="INSERT INTO paper(title,keywords,author,issue,pdf,'time',findtime) VALUES (%s,%s,%s,%s,%s,%s,%s)",[infodic['title'],infodic['keywords'],infodic['author'],infodic['issue'],infodic['pdf'],infodic['time'],findtime]
         session.execute(sql)
 
 with open('./url.txt') as f:
@@ -110,3 +110,4 @@ with open('./url.txt') as f:
     while line:
         getArticleInfo(line)
         line = f.readline()
+
