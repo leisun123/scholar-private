@@ -190,18 +190,24 @@ def sqlinput(infodic):
     ('39.104.50.183',22),
     ssh_username = "sc",
     ssh_pkey="./id_rsa",
-    remote_bind_address= ('127.0.0.1',5432)
+    remote_bind_address=('127.0.0.1',5432)
     ) as server:
         server.start()
         print("successfully connected")
-
-        local_port = str(server.local_bind_port)
-        engine = create_engine('postgresql://wyn:weiaizq1314@127.0.0.1:'+local_port+'/sc_2018')
+        engine = create_engine('postgresql://wyn:weiaizq1314@127.0.0.1:{}/sc_2018'.format(server.local_bind_port))
         Session = sessionmaker(bind=engine)
         session = Session()
         print("Database session created")
-        sql ="INSERT INTO paper(title,keywords,author,issue,pdf,'time',findtime) VALUES (infodic['title'],infodic['keywords'],infodic['author'],infodic['issue'],infodic['pdf'],infodic['time'],time.strftime('%Y-%m-%d', time.localtime(time.time())))"
+        tit = str(infodic['title'])
+        keyw = str(infodic['keywords'])
+        aut = str(infodic['author'])
+        iss = str(infodic['issue'])
+        tim = str(infodic['time'])
+        pd = str(infodic['pdf'])
+        sql = '''INSERT INTO paper(title,keywords,author,issue,pdf,"time",findtime) VALUES {}'''.format((tit,keyw,aut,iss,pd,tim,time.strftime('%Y:%m:%d:%M:%S', time.localtime(time.time()))))
         session.execute(sql)
+        session.commit()
+        server.stop()
 
 
 
@@ -211,22 +217,8 @@ slist = {}
 urlList = []
 infoDic = []
 slist = getJournalList(journal_list_url)
-# try:
-#     for i,k in slist.items():
-#         with open("F:/study/python/slist.txt","a") as f:
-#             f.write(i+":"+slist[i]+"\n")
-#         f.close()
-# except:
-#     pass
 urlList = getIssueURL(slist)
-# try:
-#     for i in urlList:
-#         with open("F:/study/python/url.txt","a") as f:
-#             f.write(i+"\n")
-#         f.close()
-# except:
-#     pass
-# print(urlList)
+
 print(len(urlList))
 start_time = time.time()
 pool = ThreadPool(3)
