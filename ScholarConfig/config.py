@@ -13,6 +13,8 @@ import os
 
 from sqlalchemy import create_engine
 from sshtunnel import SSHTunnelForwarder
+import requests
+from bs4 import BeautifulSoup
 
 CRWAL_POOL_SIZE = 40
 DB_CONFIG={
@@ -23,7 +25,31 @@ DB_CONFIG={
     'DB_CONNECT_STRING' : "mysql+pymysql://root:123456@localhost/eb"
 }
 
-proxies = None
+def get_ip_list(url, headers):
+    web_data = requests.get(url, headers=headers)
+    soup = BeautifulSoup(web_data.text, 'lxml')
+    ips = soup.find_all('tr')
+    ip_list = []
+    for i in range(1, len(ips)):
+        ip_info = ips[i]
+        tds = ip_info.find_all('td')
+        ip_list.append(tds[5].text.lower()+"://"+tds[1].text + ':' + tds[2].text)
+    return ip_list
+
+def get_random_ip(ip_list):
+    proxy_list = []
+    for ip in ip_list:
+        proxy_list.append(ip)
+    proxy_ip = random.choice(proxy_list)
+    proxies = {proxy_ip.split('://')[0]: proxy_ip}
+    return proxies
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36'
+}
+ip_list = get_ip_list('http://www.xicidaili.com/nn/', headers=headers)
+
+
 
 USER_AGENTS = [
     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; AcooBrowser; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
@@ -63,7 +89,7 @@ USER_AGENTS = [
 ]
 import random
 USER_AGENT = random.choice(USER_AGENTS)
-
+proxies = get_random_ip(ip_list)
 def get_user_agent():
     return random.choice(USER_AGENT)
 
