@@ -10,6 +10,33 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from sshtunnel import SSHTunnelForwarder
 import re
+from bs4 import BeautifulSoup
+
+
+def get_ip_list(url, headers):
+    web_data = requests.get(url, headers=headers)
+    soup = BeautifulSoup(web_data.text, 'lxml')
+    ips = soup.find_all('tr')
+    ip_list = []
+    for i in range(1, len(ips)):
+        ip_info = ips[i]
+        tds = ip_info.find_all('td')
+        ip_list.append(tds[1].text + ':' + tds[2].text)
+    return ip_list
+
+def get_random_ip(ip_list):
+    proxy_list = []
+    for ip in ip_list:
+        proxy_list.append('http://' + ip)
+    proxy_ip = random.choice(proxy_list)
+    proxies = {'http': proxy_ip}
+    return proxies
+
+url = 'http://www.xicidaili.com/nn/'
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36'
+}
+ip_list = get_ip_list(url, headers=headers)
 
 USER_AGENTS = [
     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; AcooBrowser; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
@@ -47,6 +74,7 @@ USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11",
     "Mozilla/5.0 (X11; U; Linux x86_64; zh-CN; rv:1.9.2.10) Gecko/20100922 Ubuntu/10.10 (maverick) Firefox/3.6.10"
 ]
+pool = ThreadPool(3)
 
 def getJournalList(s): #获取所有的title名字与链接
     journalURL = "https://www.sciencedirect.com/science/journals/" + s + "/full-text-access"
@@ -65,10 +93,15 @@ def getJournalList(s): #获取所有的title名字与链接
             title = extract('//link[@rel="canonical"]/@href', res, False)
             title = title.split('al/')[-1]
             info_1[url] = title
-            time.sleep(random.uniform(2,3))
+            time.sleep(random.uniform(3,5))
     except:
         pass
-    time.sleep(random.uniform(3,4))
+    time.sleep(random.uniform(30,60))
+    urlList1 = getIssueURL(info_1)
+    time.sleep(random.uniform(30,60))
+    res = makeRequests(getArticleInfo, urlList1)
+    [pool.putRequest(req) for req in res]
+    pool.wait()
     for i in range(1,11):
         urls = "https://www.sciencedirect.com/science/browsescroll/journals/" + s + "/full-text-access/begidx" + str(i*50) + "/rwpos/0"
         try:
@@ -76,7 +109,8 @@ def getJournalList(s): #获取所有的title名字与链接
             headers = {
                 "User-Agent":user_agent
             }
-            r = requests.get(urls,headers=headers)
+            proxies = get_random_ip(ip_list)
+            r = requests.get(urls,headers=headers,proxies=proxies)
             json_response = r.content.decode()
             json_dict = json.loads(json_response)
             if json_dict:
@@ -97,11 +131,13 @@ def getJournalList(s): #获取所有的title名字与链接
             print(e)
             print(urls)
             pass
-        infoDic = dict(info_1,**info_2)
-        time.sleep(random.uniform(4,5))
-    # print(info_2)
-    # print(info_1)
-    return infoDic
+        time.sleep(random.uniform(30, 60))
+        urlList2 = getIssueURL(info_2)
+        time.sleep(random.uniform(30, 60))
+        reqs = makeRequests(getArticleInfo, urlList2)
+        [pool.putRequest(req) for req in reqs]
+        pool.wait()
+    return ""
 
 def getIssueURL(infoDic): #获取所有article的链接
     urlList = []
@@ -113,7 +149,12 @@ def getIssueURL(infoDic): #获取所有article的链接
             url = "https://www.sciencedirect.com" + s
             print(url)
             try:
-                r = requests.get(url)
+                user_agent = random.choice(USER_AGENTS)
+                headers = {
+                    "User-Agent": user_agent
+                }
+                proxies = get_random_ip(ip_list)
+                r = requests.get(url,headers=headers,proxies=proxies)
                 json_response = r.content.decode()
                 dict_json = json.loads(json_response)
                 if dict_json.__contains__("data"):
@@ -126,8 +167,8 @@ def getIssueURL(infoDic): #获取所有article的链接
                     continue
             except Exception as e:
                 print(e)
-            time.sleep(random.uniform(3,5))
-        time.sleep(random.uniform(3,5))
+            time.sleep(random.uniform(4,10))
+        time.sleep(random.uniform(6,12))
     return urlList
 
 def getArticleInfo(i):#获取所有文章的信息
@@ -178,11 +219,12 @@ def getArticleInfo(i):#获取所有文章的信息
             f.write(url + "\n")
             f.close()
     try:
-        sqlinput(new)
+        # sqlinput(new)
+        print(new)
     except Exception as e:
         print(e)
         pass
-    time.sleep(random.uniform(3,6))
+    time.sleep(random.uniform(6,10))
     return ""
 
 def sqlinput(infodic):
@@ -212,17 +254,17 @@ def sqlinput(infodic):
 
 start_time = time.time()
 s = "a"
-slist = {}
-urlList = []
-infoDic = []
-slist = getJournalList(s)
-time.sleep(random.uniform(60,120))
-urlList = getIssueURL(slist)
-time.sleep(random.uniform(60,120))
-
-print(len(urlList))
-pool = ThreadPool(4)
-res = makeRequests(getArticleInfo,urlList)
-[pool.putRequest(req) for req in res]
-pool.wait()
+# slist = {}
+# urlList = []
+# infoDic = []
+getJournalList(s)
+# time.sleep(random.uniform(60,120))
+# urlList = getIssueURL(slist)
+# time.sleep(random.uniform(60,120))
+#
+# print(len(urlList))
+# pool = ThreadPool(4)
+# res = makeRequests(getArticleInfo,urlList)
+# [pool.putRequest(req) for req in res]
+# pool.wait()
 print(time.time()-start_time)

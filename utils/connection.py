@@ -17,8 +17,35 @@ from lxml import etree
 from ScholarConfig.config import proxies
 from ErrorHandle.request_error import HTTPError, URLFetchError
 from ScholarConfig.config import USER_AGENT
+from bs4 import BeautifulSoup
+import random
 
 
+def get_ip_list(url, headers):
+    web_data = requests.get(url, headers=headers)
+    soup = BeautifulSoup(web_data.text, 'lxml')
+    ips = soup.find_all('tr')
+    ip_list = []
+    for i in range(1, len(ips)):
+        ip_info = ips[i]
+        tds = ip_info.find_all('td')
+        ip_list.append(tds[1].text + ':' + tds[2].text)
+    return ip_list
+
+def get_random_ip(ip_list):
+    proxy_list = []
+    for ip in ip_list:
+        proxy_list.append('http://' + ip)
+    proxy_ip = random.choice(proxy_list)
+    proxies = {'http': proxy_ip}
+    return proxies
+
+url = 'http://www.xicidaili.com/nn/'
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36'
+}
+ip_list = get_ip_list(url, headers=headers)
+proxy = get_random_ip(ip_list)
 
 def fetch(url,requests_session=requests.session(),
           timeout=10,
@@ -41,9 +68,8 @@ def fetch(url,requests_session=requests.session(),
         for i in range(retry_num):
             try:
                 #是否启动代理
-                if proxies is not None:
-                    kwargs["proxies"] = { "http": proxies,\
-                                          "https": proxies, }
+                if proxies is None:
+                    kwargs["proxies"] = { "http": proxy}
                 resp=requests_session.get(url,**kwargs)
                 if resp.status_code != 200:
                     raise HTTPError(resp.status_code,url)
