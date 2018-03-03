@@ -9,6 +9,7 @@ import random
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from sshtunnel import SSHTunnelForwarder
+import re
 
 USER_AGENTS = [
     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; AcooBrowser; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
@@ -47,9 +48,13 @@ USER_AGENTS = [
     "Mozilla/5.0 (X11; U; Linux x86_64; zh-CN; rv:1.9.2.10) Gecko/20100922 Ubuntu/10.10 (maverick) Firefox/3.6.10"
 ]
 
-def getJournalList(journalURL): #获取所有的title名字与链接
+def getJournalList(s): #获取所有的title名字与链接
+    journalURL = "https://www.sciencedirect.com/science/journals/" + s + "/full-text-access"
     infoDic = {}
-    html = fetch(journalURL)
+    try:
+        html = fetch(journalURL)
+    except:
+        return getJournalList(s)
     info_1 = {}
     info_2 = {}
     try:
@@ -60,10 +65,12 @@ def getJournalList(journalURL): #获取所有的title名字与链接
             title = extract('//link[@rel="canonical"]/@href', res, False)
             title = title.split('al/')[-1]
             info_1[url] = title
+            time.sleep(random.uniform(2,3))
     except:
         pass
+    time.sleep(random.uniform(3,4))
     for i in range(1,11):
-        urls = "https://www.sciencedirect.com/science/browsescroll/journals/a/full-text-access/begidx" + str(i*50) + "/rwpos/0"
+        urls = "https://www.sciencedirect.com/science/browsescroll/journals/" + s + "/full-text-access/begidx" + str(i*50) + "/rwpos/0"
         try:
             user_agent = random.choice(USER_AGENTS)
             headers = {
@@ -77,9 +84,8 @@ def getJournalList(journalURL): #获取所有的title名字与链接
                 for each in json_dict:
                     for key in each.keys():
                         if key == "I":
-                            url = each[key]
-                            res = fetch("https://www.sciencedirect.com/science/journal/" + url)
-                            # print(url)
+                            url = "/science/journal/" + each[key]
+                            res = fetch("https://www.sciencedirect.com" + url)
                             title = extract('//link[@rel="canonical"]/@href', res, False)
                             title = title.split('al/')[-1]
                             info_2[url] = title
@@ -92,6 +98,7 @@ def getJournalList(journalURL): #获取所有的title名字与链接
             print(urls)
             pass
         infoDic = dict(info_1,**info_2)
+        time.sleep(random.uniform(4,5))
     # print(info_2)
     # print(info_1)
     return infoDic
@@ -119,6 +126,8 @@ def getIssueURL(infoDic): #获取所有article的链接
                     continue
             except Exception as e:
                 print(e)
+            time.sleep(random.uniform(3,5))
+        time.sleep(random.uniform(3,5))
     return urlList
 
 def getArticleInfo(i):#获取所有文章的信息
@@ -130,24 +139,22 @@ def getArticleInfo(i):#获取所有文章的信息
         pdfurl = ""
         html = fetch(url)
         title = extract("//span[@class='title-text']/text()", html, False)
-        if title is None or title == "":
+        if str(title) == "None":
             title = "NO Found"
         keyword = extract("//div[@class='keyword']/span/text()", html, True)
-        if keyword is None:
-            keywords = "No Found"
-        for key in keyword:
-            keywords = keywords + key + ";"
-        if keywords == "":
+        if keyword:
+            for key in keyword:
+                keywords = keywords + key + ";"
+        else:
             keywords = "No Found"
         author_group = extract("//a[@class='author size-m workspace-trigger']", html, True)
-        if author_group is None:
-            author = "No Found"
-        for auth in author_group:
-            firstname = extract("//span[@class='text given-name']/text()", str(etree.tostring(auth)), False)
-            lastname = extract("//span[@class='text surname']/text()", str(etree.tostring(auth)), False)
-            name = str(firstname) + " " + str(lastname)
-            author = author + name + ";"
-        if author == "":
+        if author_group:
+            for auth in author_group:
+                firstname = extract("//span[@class='text given-name']/text()", str(etree.tostring(auth)), False)
+                lastname = extract("//span[@class='text surname']/text()", str(etree.tostring(auth)), False)
+                name = str(firstname) + " " + str(lastname)
+                author = author + name + ";"
+        else:
             author = "No Found"
         a = extract("//a[@class='anchor PdfDownloadButton']/@href", html, False)
         if a is None:
@@ -158,10 +165,10 @@ def getArticleInfo(i):#获取所有文章的信息
         if pdfurl == "https://www.sciencedirect.com":
             pdfurl = "No Found"
         time = extract("//span[@class='size-m']/text()[2]", html, False)
-        if time == "" or time is None:
+        if str(time) == "None":
             time = "No Found"
         issue = extract("//a[@class='publication-title-link']/text()", html, False)
-        if issue == "" or issue is None:
+        if issue == "None":
             issue = "No Found"
         new.update({"title": title, "keywords": keywords, "author": author, "issue": issue, "pdf": pdfurl, "time": time})
     except Exception as e:
@@ -170,19 +177,12 @@ def getArticleInfo(i):#获取所有文章的信息
         with open("./TODO.txt","a") as f:
             f.write(url + "\n")
             f.close()
-    # try:
-    #     jsObj = json.dumps(new)
-    #     with open("F:/study/python/res.json","a") as f:
-    #         f.write(jsObj)
-    #         f.close()
-    # except:
-    #     pass
-    # print(new)
     try:
         sqlinput(new)
     except Exception as e:
         print(e)
         pass
+    time.sleep(random.uniform(3,6))
     return ""
 
 def sqlinput(infodic):
@@ -204,26 +204,25 @@ def sqlinput(infodic):
         iss = str(infodic['issue'])
         tim = str(infodic['time'])
         pd = str(infodic['pdf'])
-        sql = '''INSERT INTO paper(title,keywords,author,issue,pdf,"time",findtime) VALUES {}'''.format((tit,keyw,aut,iss,pd,tim,time.strftime('%Y:%m:%d:%M:%S', time.localtime(time.time()))))
+        sql = '''INSERT INTO paper(title,keywords,author,issue,pdf,"time",findtime) VALUES {}'''.format((tit,keyw,aut,iss,pd,tim,time.strftime('%Y-%m-%d', time.localtime(time.time()))))
         session.execute(sql)
         session.commit()
         server.stop()
 
 
-
-
-journal_list_url = "https://www.sciencedirect.com/science/journals/a/full-text-access"
+start_time = time.time()
+s = "a"
 slist = {}
 urlList = []
 infoDic = []
-slist = getJournalList(journal_list_url)
+slist = getJournalList(s)
+time.sleep(random.uniform(60,120))
 urlList = getIssueURL(slist)
+time.sleep(random.uniform(60,120))
 
 print(len(urlList))
-start_time = time.time()
-pool = ThreadPool(3)
+pool = ThreadPool(4)
 res = makeRequests(getArticleInfo,urlList)
 [pool.putRequest(req) for req in res]
-time.sleep(2)
 pool.wait()
 print(time.time()-start_time)

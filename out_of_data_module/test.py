@@ -19,24 +19,22 @@ def getArticleInfo(i):#获取所有文章的信息
         pdfurl = ""
         html = fetch(url)
         title = extract("//span[@class='title-text']/text()", html, False)
-        if title is None or title == "":
-            title = "NO Found"
-        keyword = extract("//div[@class='keyword']/span/text()", html, True)
-        if keyword is None:
-            keywords = "No Found"
-        for key in keyword:
-            keywords = keywords + key + ";"
-        if keywords == "":
+        if str(title) == "None":
+            title = "No Found"
+        keyword = extract("//div[@class='keywords']/span/text()", html, True)
+        if keyword:
+            for key in keyword:
+                keywords = keywords + key + ";"
+        else:
             keywords = "No Found"
         author_group = extract("//a[@class='author size-m workspace-trigger']", html, True)
-        if author_group is None:
-            author = "No Found"
-        for auth in author_group:
-            firstname = extract("//span[@class='text given-name']/text()", str(etree.tostring(auth)), False)
-            lastname = extract("//span[@class='text surname']/text()", str(etree.tostring(auth)), False)
-            name = str(firstname) + " " + str(lastname)
-            author = author + name + ";"
-        if author == "":
+        if author_group:
+            for auth in author_group:
+                firstname = extract("//span[@class='text given-name']/text()", str(etree.tostring(auth)), False)
+                lastname = extract("//span[@class='text surname']/text()", str(etree.tostring(auth)), False)
+                name = str(firstname) + " " + str(lastname)
+                author = author + name + ";"
+        else:
             author = "No Found"
         a = extract("//a[@class='anchor PdfDownloadButton']/@href", html, False)
         if a is None:
@@ -60,7 +58,8 @@ def getArticleInfo(i):#获取所有文章的信息
             f.write(url + "\n")
             f.close()
     try:
-        sqlinput(new)
+        # sqlinput(new)
+        print(new)
     except Exception as e:
         print(e)
         pass
@@ -98,6 +97,7 @@ with open('./url.txt') as f:
     while line:
         getArticleInfo(line)
         line = f.readline()
+        time.sleep(3)
 
 # server = SSHTunnelForwarder(
 #     ('39.104.50.183', 22),  # Remote server IP and SSH port
@@ -118,3 +118,4 @@ with open('./url.txt') as f:
 # test = session.execute('''INSERT INTO paper(title,keywords,author,issue,pdf,"time",findtime) VALUES {}'''.format((str("aa"),str("bb"),str("cc"),str("dd"),str("ee"),str("ff"),str("gg"))))
 # session.commit()
 # server.stop()
+print(random.uniform(1,4))
