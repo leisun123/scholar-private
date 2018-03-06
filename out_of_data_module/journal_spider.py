@@ -3,20 +3,17 @@
 from utils.connection import *
 import requests
 import json
-from threadpool import *
+# from threadpool import *
 import time
 import random
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from sshtunnel import SSHTunnelForwarder
 import re
-from ScholarConfig import proxies
+# from ScholarConfig.config import proxies
 from ScholarConfig.config import USER_AGENT
+import threading
 
-
-
-
-pool = ThreadPool(3)
 
 def getJournalList(s): #获取所有的title名字与链接
     journalURL = "https://www.sciencedirect.com/science/journals/" + s + "/full-text-access"
@@ -35,55 +32,48 @@ def getJournalList(s): #获取所有的title名字与链接
             title = extract('//link[@rel="canonical"]/@href', res, False)
             title = title.split('al/')[-1]
             info_1[url] = title
-            time.sleep(random.uniform(3,5))
+            time.sleep(random.uniform(3,6))
     except:
         pass
-    time.sleep(random.uniform(30,60))
-    urlList1 = getIssueURL(info_1)
-    time.sleep(random.uniform(30,60))
-    res = makeRequests(getArticleInfo, urlList1)
-    [pool.putRequest(req) for req in res]
-    pool.wait()
-    for i in range(1,11):
-        urls = "https://www.sciencedirect.com/science/browsescroll/journals/" + s + "/full-text-access/begidx" + str(i*50) + "/rwpos/0"
-        try:
-            headers = {
-                "User-Agent":USER_AGENT
-            }
-            r = requests.get(urls,headers=headers,proxies=proxies)
-            json_response = r.content.decode()
-            json_dict = json.loads(json_response)
-            if json_dict:
-                # print(json_dict)
-                for each in json_dict:
-                    for key in each.keys():
-                        if key == "I":
-                            url = "/science/journal/" + each[key]
-                            res = fetch("https://www.sciencedirect.com" + url)
-                            title = extract('//link[@rel="canonical"]/@href', res, False)
-                            title = title.split('al/')[-1]
-                            info_2[url] = title
-                        else:
-                            pass
-            else:
-                break
-        except Exception as e:
-            print(e)
-            print(urls)
-            pass
-        time.sleep(random.uniform(30, 60))
-        urlList2 = getIssueURL(info_2)
-        time.sleep(random.uniform(30, 60))
-        reqs = makeRequests(getArticleInfo, urlList2)
-        [pool.putRequest(req) for req in reqs]
-        pool.wait()
+    print(info_1)
+    # time.sleep(random.uniform(60,120))
+    getIssueURL(info_1)
+    # # time.sleep(random.uniform(60,120))
+    # for i in range(1,11):
+    #     urls = "https://www.sciencedirect.com/science/browsescroll/journals/" + s + "/full-text-access/begidx" + str(i*50) + "/rwpos/0"
+    #     try:
+    #         headers = {
+    #             "User-Agent":USER_AGENT
+    #         }
+    #         r = requests.Session().get(urls,headers=headers)
+    #         time.sleep(random.uniform(5,10))
+    #         json_response = r.content.decode()
+    #         json_dict = json.loads(json_response)
+    #         if json_dict:
+    #             # print(json_dict)
+    #             for each in json_dict:
+    #                 for key in each.keys():
+    #                     if key == "I":
+    #                         url = "/science/journal/" + each[key]
+    #                         res = fetch("https://www.sciencedirect.com" + url)
+    #                         title = extract('//link[@rel="canonical"]/@href', res, False)
+    #                         title = title.split('al/')[-1]
+    #                         info_2[url] = title
+    #                     else:
+    #                         pass
+    #             getIssueURL(info_2)
+    #         else:
+    #             break
+    #     except Exception as e:
+    #         print(e)
+    #         print(urls)
+    #         pass
     return ""
 
 def getIssueURL(infoDic): #获取所有article的链接
     urlList = []
     for i in infoDic.keys():
         a = infoDic[i]
-        articleurlDic = []
         for y in range(2000,2019):
             s = i.split('e')[-1] + "/year/" + str(y) + "/issues"
             url = "https://www.sciencedirect.com" + s
@@ -92,117 +82,33 @@ def getIssueURL(infoDic): #获取所有article的链接
                 headers = {
                     "User-Agent": USER_AGENT
                 }
-                r = requests.get(url,headers=headers,proxies=proxies)
+                r = requests.get(url,headers=headers)
+                time.sleep(random.uniform(5, 10))
                 json_response = r.content.decode()
                 dict_json = json.loads(json_response)
                 if dict_json.__contains__("data"):
                     dic = dict_json["data"][0]
                     urlinfo = "https://www.sciencedirect.com/journal/" + a + dic["uriLookup"]
                     res = fetch(urlinfo)
-                    articleurlDic = extract("//a[@class='anchor article-content-title u-margin-top-xs u-margin-bottom-s']/@href",res,True)
-                    urlList = urlList + articleurlDic
+                    st = extract("//a[@class='anchor article-content-title u-margin-top-xs u-margin-bottom-s']/@href",res,True)
+                    with open('./url.txt', 'a') as f:
+                        for u in st:
+                            f.write(u + '\n')
+                        f.close()
+                        print("open successfully")
                 else:
                     continue
             except Exception as e:
                 print(e)
-            time.sleep(random.uniform(4,10))
         time.sleep(random.uniform(6,12))
     return urlList
 
-def getArticleInfo(i):#获取所有文章的信息
-    new = {}
-    url = "https://www.sciencedirect.com" + i
-    try:
-        keywords = ""
-        author = ""
-        pdfurl = ""
-        html = fetch(url)
-        title = extract("//span[@class='title-text']/text()", html, False)
-        if str(title) == "None":
-            title = "NO Found"
-        keyword = extract("//div[@class='keyword']/span/text()", html, True)
-        if keyword:
-            for key in keyword:
-                keywords = keywords + key + ";"
-        else:
-            keywords = "No Found"
-        author_group = extract("//a[@class='author size-m workspace-trigger']", html, True)
-        if author_group:
-            for auth in author_group:
-                firstname = extract("//span[@class='text given-name']/text()", str(etree.tostring(auth)), False)
-                lastname = extract("//span[@class='text surname']/text()", str(etree.tostring(auth)), False)
-                name = str(firstname) + " " + str(lastname)
-                author = author + name + ";"
-        else:
-            author = "No Found"
-        a = extract("//a[@class='anchor PdfDownloadButton']/@href", html, False)
-        if a is None:
-            b = re.findall(r'"linkToPdf":"(.*?)","',html)[0]
-            pdfurl = "https://www.sciencedirect.com" + b
-        else:
-            pdfurl = "https://www.sciencedirect.com" + a
-        if pdfurl == "https://www.sciencedirect.com":
-            pdfurl = "No Found"
-        time = extract("//span[@class='size-m']/text()[2]", html, False)
-        if str(time) == "None":
-            time = "No Found"
-        issue = extract("//a[@class='publication-title-link']/text()", html, False)
-        if issue == "None":
-            issue = "No Found"
-        new.update({"title": title, "keywords": keywords, "author": author, "issue": issue, "pdf": pdfurl, "time": time})
-    except Exception as e:
-        print(e)
-        print(url)
-        with open("./TODO.txt","a") as f:
-            f.write(url + "\n")
-            f.close()
-    try:
-        # sqlinput(new)
-        print(new)
-    except Exception as e:
-        print(e)
-        pass
-    time.sleep(random.uniform(6,10))
-    return ""
-
-def sqlinput(infodic):
-    with SSHTunnelForwarder(
-    ('39.104.50.183',22),
-    ssh_username = "sc",
-    ssh_pkey="./id_rsa",
-    remote_bind_address=('127.0.0.1',5432)
-    ) as server:
-        server.start()
-        print("successfully connected")
-        engine = create_engine('postgresql://wyn:weiaizq1314@127.0.0.1:{}/sc_2018'.format(server.local_bind_port))
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        print("Database session created")
-        tit = str(infodic['title'])
-        keyw = str(infodic['keywords'])
-        aut = str(infodic['author'])
-        iss = str(infodic['issue'])
-        tim = str(infodic['time'])
-        pd = str(infodic['pdf'])
-        sql = '''INSERT INTO paper(title,keywords,author,issue,pdf,"time",findtime) VALUES {}'''.format((tit,keyw,aut,iss,pd,tim,time.strftime('%Y-%m-%d', time.localtime(time.time()))))
-        session.execute(sql)
-        session.commit()
-        server.stop()
-
 
 start_time = time.time()
-s = "a"
-# slist = {}
-# urlList = []
-# infoDic = []
+s = "b"
 getJournalList(s)
-# time.sleep(random.uniform(60,120))
-# urlList = getIssueURL(slist)
-# time.sleep(random.uniform(60,120))
-#
-# print(len(urlList))
-# pool = ThreadPool(4)
-# res = makeRequests(getArticleInfo,urlList)
-# [pool.putRequest(req) for req in res]
-# pool.wait()
+# info = {'/science/journal/22140085': 'biochimie-open', '/science/journal/0304419X': 'biochimica-et-biophysica-acta-bba-reviews-on-cancer', '/science/journal/03044157': 'biochimica-et-biophysica-acta-bba-reviews-on-biomembranes', '/science/journal/13881981': 'biochimica-et-biophysica-acta-bba-molecular-and-cell-biology-of-lipids', '/science/journal/03766357': 'behavioural-processes', '/science/journal/15216918': 'best-practice-and-research-clinical-gastroenterology', '/science/journal/03024598': 'bioelectrochemistry-and-bioenergetics', '/science/journal/15216942': 'best-practice-and-research-clinical-rheumatology', '/science/journal/01664328': 'behavioural-brain-research', '/science/journal/03009084': 'biochimie', '/science/journal/09503528': 'baillieres-clinical-gastroenterology', '/science/journal/0006291X': 'biochemical-and-biophysical-research-communications', '/science/journal/00063207': 'biological-conservation', '/science/journal/09503501': 'baillieres-clinical-anaesthesiology', '/science/journal/1369703X': 'biochemical-engineering-journal', '/science/journal/22105336': 'basal-ganglia', '/science/journal/18749399': 'biochimica-et-biophysica-acta-bba-gene-regulatory-mechanisms', '/science/journal/00052728': 'biochimica-et-biophysica-acta-bba-bioenergetics', '/science/journal/18788181': 'biocatalysis-and-agricultural-biotechnology', '/science/journal/09254439': 'biochimica-et-biophysica-acta-bba-molecular-basis-of-disease', '/science/journal/23148535': 'beni-suef-university-journal-of-basic-and-applied-sciences', '/science/journal/22126198': 'bioactive-carbohydrates-and-dietary-fibre', '/science/journal/15216896': 'best-practice-and-research-clinical-anaesthesiology', '/science/journal/03044165': 'biochimica-et-biophysica-acta-bba-general-subjects', '/science/journal/00153796': 'biochemie-und-physiologie-der-pflanzen', '/science/journal/03051978': 'biochemical-systematics-and-ecology', '/science/journal/01674781': 'biochimica-et-biophysica-acta-bba-gene-structure-and-expression', '/science/journal/01674838': 'biochimica-et-biophysica-acta-bba-protein-structure-and-molecular-enzymology', '/science/journal/02085216': 'biocybernetics-and-biomedical-engineering', '/science/journal/2452199X': 'bioactive-materials', '/science/journal/00057967': 'behaviour-research-and-therapy', '/science/journal/15675394': 'bioelectrochemistry', '/science/journal/00052760': 'biochimica-et-biophysica-acta-bba-lipids-and-lipid-metabolism', '/science/journal/10773150': 'biochemical-and-molecular-medicine', '/science/journal/22146474': 'bba-clinical', '/science/journal/15216926': 'best-practice-and-research-clinical-haematology', '/science/journal/1521690X': 'best-practice-and-research-clinical-endocrinology-and-metabolism', '/science/journal/00057894': 'behavior-therapy', '/science/journal/15709639': 'biochimica-et-biophysica-acta-bba-proteins-and-proteomics', '/science/journal/09503536': 'baillieres-clinical-haematology', '/science/journal/09503552': 'baillieres-clinical-obstetrics-and-gynaecology', '/science/journal/00062952': 'biochemical-pharmacology', '/science/journal/14391791': 'basic-and-applied-ecology', '/science/journal/22145796': 'big-data-research', '/science/journal/24055808': 'biochemistry-and-biophysics-reports'}
+getIssueURL(info)
 print(time.time()-start_time)
+
+

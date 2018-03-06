@@ -20,7 +20,7 @@ from ScholarConfig.config import USER_AGENT
 
 
 
-def fetch(url,requests_session=requests.session(),
+def fetch(url,requests_session=requests.Session(),
           timeout=10,
           from_web=True,
           retry_num=5,
@@ -41,9 +41,13 @@ def fetch(url,requests_session=requests.session(),
         for i in range(retry_num):
             try:
                 #是否启动代理
-                if Proxies is None:
-                    kwargs["proxies"] = proxies
+                if Proxies is not None:
+                    kwargs["proxies"] = {
+                        "http":"",\
+                        "https":""
+                    }
                 resp=requests_session.get(url,**kwargs)
+                time.sleep(2)
                 if resp.status_code != 200:
                     raise HTTPError(resp.status_code,url)
                 break
