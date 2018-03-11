@@ -36,10 +36,10 @@ def dele():#删除文件中已经入库得链接
             for line in lines:
                 file.append(line.split('\n')[0])
             f.close()
-        with open('./TODO.txt','r') as f:
-            lines =f.readlines()
-            for line in lines:
-                file.append(line.split('com')[-1].split('\n')[0])
+        # with open('./TODO.txt','r') as f:
+        #     lines =f.readlines()
+        #     for line in lines:
+        #         file.append(line.split('com')[-1].split('\n')[0])
         newlist = set(file)-set(list)
         print(len(set(file)),len(set(list)),len(newlist))
         print(len(file))
@@ -50,4 +50,3 @@ def dele():#删除文件中已经入库得链接
         # if os.path.exists('./TODO.txt'):
         #     os.remove('./TODO.txt')
         # os.remove('./new_url.txt')
-dele()

@@ -20,6 +20,10 @@ dele()
 def getArticleInfo(i):#获取所有文章的信息
     new = {}
     url = "https://www.sciencedirect.com" + i
+    html = fetch(url)
+    json_content = extract('//script[@type="application/json"]/text()',html,False)
+    json_dict = json.loads(json_content)
+    # print(json_dict)
     try:
         title = ""
         keywords = ""
@@ -27,6 +31,7 @@ def getArticleInfo(i):#获取所有文章的信息
         pdfurl = ""
         time = ""
         issue = ""
+        abstract =""
         html = fetch(url)
         title = extract("//span[@class='title-text']/text()", html, False)
         if str(title) == "None":
@@ -37,46 +42,91 @@ def getArticleInfo(i):#获取所有文章的信息
                 keywords = keywords + key + ";"
         else:
             keywords = "No Found"
-        author_group = extract("//a[@class='author size-m workspace-trigger']", html, True)
-        if author_group:
-            for auth in author_group:
-                firstname = extract("//span[@class='text given-name']/text()", str(etree.tostring(auth)), False)
-                lastname = extract("//span[@class='text surname']/text()", str(etree.tostring(auth)), False)
-                name = str(firstname) + " " + str(lastname)
-                author = author + name + ";"
+        a = json_dict.get('authors').get('content')[0].get('$$')
+        authordic = {}
+        authorlist= []
+        affiliation = re.findall(r"'textfn', '_': '(.*?)'",str(a))
+        if affiliation:
+            affiliation = affiliation[0]
         else:
-            author = "No Found"
-        a = extract("//a[@class='anchor PdfDownloadButton']/@href", html, False)
-        if a is None:
-            b = re.findall(r'"linkToPdf":"(.*?)","',html)[0]
-            if '"},"isCorpReq"' in b:
-                b = b.split('"},"isCorpReq"')[0]
-            pdfurl = "https://www.sciencedirect.com" + b
-        else:
-            pdfurl = "https://www.sciencedirect.com" + a
-        if pdfurl == "https://www.sciencedirect.com":
-            pdfurl = "No Found"
-        time = extract("//span[@class='size-m']/text()[2]", html, False)
-        if str(time) == "None":
-            time = "No Found"
-        issue = extract("//a[@class='publication-title-link']/text()", html, False)
-        if issue == "None":
-            issue = "No Found"
-        new.update({"title": title, "keywords": keywords, "author": author, "issue": issue, "pdf": pdfurl, "time": time})
+            affiliation = None
+        for i in a:
+            name  = ""
+            if i.get('#name') == 'author':
+                firstname = re.findall(r" 'given-name', '_': '(.*?)'",str(i))
+                if firstname:
+                    name = firstname[0] + " " + re.findall(r"surname', '_': '(.*?)'",str(i))[0]
+                email = re.findall(r"'e-address', '_': '(.*?)'",str(i))
+                if email:
+                    email = email[0]
+                else:
+                    email = None
+                authordic.update({
+                    "name":name,
+                    "email":email,
+                    "affiliation":affiliation
+                                  })
+                authorlist.append(authordic)
+            print(url)
+            print(authorlist)
+            a = extract("//a[@class='anchor PdfDownloadButton']/@href", html, False)
+            if a is None:
+                b = re.findall(r'"linkToPdf":"(.*?)","',html)[0]
+                if '"},"isCorpReq"' in b:
+                    b = b.split('"},"isCorpReq"')[0]
+                pdfurl = "https://www.sciencedirect.com" + b
+            else:
+                pdfurl = "https://www.sciencedirect.com" + a
+            if pdfurl == "https://www.sciencedirect.com":
+                pdfurl = "No Found"
+            time = extract("//span[@class='size-m']/text()[2]", html, False)
+            if str(time) == "None":
+                time = "No Found"
+            issue = extract("//a[@class='publication-title-link']/text()", html, False)
+            if issue == "None":
+                issue = "No Found"
+            abs = extract("//p[@id='spar0005']/text()", html, False)
+            if abs:
+                abstract = abs
+            else:
+                abstract = "No Found"
+            dio = extract("//a[@class='dio']/@href", html, False)
+            references = extract("//dd[@class='reference']/span/text()", html, True)
+            reference = {}
+            if references:
+                n = 1
+                for each in references:
+                    reference[str(n)] = each
+            new.update({
+                "article_title": title,
+                "keywords": keywords,
+                "author": str(authorlist),
+                "journal_title": issue,
+                "pdf": pdfurl,
+                "time": time,
+                "affiliation":affiliation,
+                "abstract":abstract,
+                "dio":dio,
+                "reference":str(reference)
+            })
     except Exception as e:
         print(e)
         print(url)
         with open("./TODO.txt","a") as f:
-            f.write(url + "\n")
+            f.write(i)
             f.close()
-    try:
-        sqlinput(new)
-        print(new)
-    except Exception as e:
-        print(e)
-        traceback.print_exc()
-        pass
-    return ""
+    # try:
+    #     # sqlinput(new)
+    #     # print(new)
+    # except Exception as e:
+    #     print(e)
+    #     traceback.print_exc()
+    #     with open("./TODO.txt","a") as f:
+    #         f.write(i)
+    #         f.close()
+    #     pass
+    # return ""
+
 
 def sqlinput(infodic):
     with SSHTunnelForwarder(
@@ -86,11 +136,11 @@ def sqlinput(infodic):
     remote_bind_address=('127.0.0.1',5432)
     ) as server:
         server.start()
-        print("successfully connected")
+        # print("successfully connected")
         engine = create_engine('postgresql://wyn:weiaizq1314@127.0.0.1:{}/sc_2018'.format(server.local_bind_port))
         Session = sessionmaker(bind=engine)
         session = Session()
-        print("Database session created")
+        # print("Database session created")
         tit = str(infodic['title'])
         keyw = str(infodic['keywords'])
         aut = str(infodic['author'])
@@ -120,16 +170,20 @@ class myThread (threading.Thread):   #继承父类threading.Thread
         process_data(self.name,self.q)
 
 def process_data(name,q):
+    start = 0
     while not exitFlag:
         queueLock.acquire()
         if not workQueue.empty():
+            start = start + 1
             data = q.get()
             getArticleInfo(data)
-            print(name + "正在运行")
             queueLock.release()
+            if start == 2:
+                time.sleep(30)
+                return process_data(name,q)
         else:
             queueLock.release()
-        time.sleep(2)
+        time.sleep(random.uniform(2,4))
 
 
 threadList = ["Thread-1", "Thread-2", "Thread-3"]
