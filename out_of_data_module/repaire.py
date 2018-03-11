@@ -50,4 +50,3 @@ def dele():#删除文件中已经入库得链接
         # if os.path.exists('./TODO.txt'):
         #     os.remove('./TODO.txt')
         # os.remove('./new_url.txt')
-dele()

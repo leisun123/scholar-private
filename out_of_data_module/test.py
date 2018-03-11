@@ -16,7 +16,7 @@ from out_of_data_module.repaire import dele
 exitFlag = 0
 
 
-dele()
+# dele()
 def getArticleInfo(i):#获取所有文章的信息
     new = {}
     url = "https://www.sciencedirect.com" + i
@@ -67,12 +67,15 @@ def getArticleInfo(i):#获取所有文章的信息
         print(e)
         print(url)
         with open("./TODO.txt","a") as f:
-            f.write(url + "\n")
+            f.write(i)
             f.close()
     try:
         sqlinput(new)
         print(new)
     except Exception as e:
+        with open("./TODO.txt","a") as f:
+            f.write(i)
+            f.close()
         print(e)
         traceback.print_exc()
         pass
@@ -103,61 +106,61 @@ def sqlinput(infodic):
         server.stop()
 
 
-task = []
-with open('./new_url.txt') as f:
-    line = f.readline()
-    while line:
-        task.append(line)
-        line = f.readline()
-
-class myThread (threading.Thread):   #继承父类threading.Thread
-    def __init__(self, threadID, name, q):
-        threading.Thread.__init__(self)
-        self.threadID = threadID
-        self.name = name
-        self.q = q
-    def run(self):                   #把要执行的代码写到run函数里面 线程在创建后会直接运行run函数
-        process_data(self.name,self.q)
-
-def process_data(name,q):
-    while not exitFlag:
-        queueLock.acquire()
-        if not workQueue.empty():
-            data = q.get()
-            getArticleInfo(data)
-            print(name + "正在运行")
-            queueLock.release()
-        else:
-            queueLock.release()
-        time.sleep(2)
-
-
-threadList = ["Thread-1", "Thread-2", "Thread-3"]
-queueLock = threading.Lock()
-workQueue = queue.Queue(len(task))
-threads = []
-threadID = 1
-
-# 创建新线程
-for tName in threadList:
-    thread = myThread(threadID, tName, workQueue)
-    thread.start()
-    threads.append(thread)
-    threadID += 1
-
-# 填充队列
-queueLock.acquire()
-for i in task:
-    workQueue.put(i)
-queueLock.release()
-
-# 等待队列清空
-while not workQueue.empty():
-    pass
-
-# 通知线程是时候退出
-exitFlag = 1
-
-# 等待所有线程完成
-for t in threads:
-    t.join()
+# task = []
+# with open('./new_url.txt') as f:
+#     line = f.readline()
+#     while line:
+#         task.append(line)
+#         line = f.readline()
+#
+# class myThread (threading.Thread):   #继承父类threading.Thread
+#     def __init__(self, threadID, name, q):
+#         threading.Thread.__init__(self)
+#         self.threadID = threadID
+#         self.name = name
+#         self.q = q
+#     def run(self):                   #把要执行的代码写到run函数里面 线程在创建后会直接运行run函数
+#         process_data(self.name,self.q)
+#
+# def process_data(name,q):
+#     while not exitFlag:
+#         queueLock.acquire()
+#         if not workQueue.empty():
+#             data = q.get()
+#             getArticleInfo(data)
+#             print(name + "正在运行")
+#             queueLock.release()
+#         else:
+#             queueLock.release()
+#         time.sleep(5)
+#
+#
+# threadList = ["Thread-1", "Thread-2", "Thread-3"]
+# queueLock = threading.Lock()
+# workQueue = queue.Queue(len(task))
+# threads = []
+# threadID = 1
+#
+# # 创建新线程
+# for tName in threadList:
+#     thread = myThread(threadID, tName, workQueue)
+#     thread.start()
+#     threads.append(thread)
+#     threadID += 1
+#
+# # 填充队列
+# queueLock.acquire()
+# for i in task:
+#     workQueue.put(i)
+# queueLock.release()
+#
+# # 等待队列清空
+# while not workQueue.empty():
+#     pass
+#
+# # 通知线程是时候退出
+# exitFlag = 1
+#
+# # 等待所有线程完成
+# for t in threads:
+#     t.join()
