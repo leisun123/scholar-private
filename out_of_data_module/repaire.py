@@ -49,8 +49,5 @@ def dele():#删除文件中已经入库得链接
             f.close()
         # if os.path.exists('./TODO.txt'):
         #     os.remove('./TODO.txt')
-<<<<<<< HEAD
         # os.remove('./new_url.txt')
-=======
         # os.remove('./new_url.txt')
->>>>>>> 4ca0f67664642543b94144136b9e7b4db90c67ff

@@ -4,42 +4,44 @@ import json
 from utils.connection import *
 import re
 import traceback
-def get(url):
-    html = fetch(url)
-    json_content = extract('//script[@type="application/json"]/text()',html,False)
-    json_dict = json.loads(json_content)
-    # print(json_content)
-    a = json_dict.get('authors').get('content')[0].get('$$')
-    authordic = {}
-    authorlist= []
-    affiliation = re.findall(r"'textfn', '_': '(.*?)'",str(a),re.S)
-    if not affiliation:
-        traceback.print_exc()
-    # affiliation = affiliation[0]
-    for i in a:
-        name  = ""
-        if i.get('#name') == "author":
-            firstname = re.findall(r" 'given-name', '_': '(.*?)'",str(i),re.S)
-            if firstname:
-                name = firstname[0] + " " + re.findall(r"surname', '_': '(.*?)'",str(i),re.S)[0]
-            email = re.findall(r"'e-address', '_': '(.*?)'",str(i),re.S)
-            if not email:
-                email = None
-            else:
-                email = email[0]
-            authordic.update({
-                "name":name,
-                "email":email,
-                "affiliation":affiliation
-                              })
-            print(authordic)
-            authorlist =
-            print(authorlist)
-            print("\n\n")
+from collections import OrderedDict
+from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains #引入ActionChains鼠标操作类
+from ScholarConfig.config import USER_AGENT
 
-    print(authorlist)
+def get(url):
+    authorlist = []
+    browser = webdriver.Chrome()
+    browser.get(url)
+    time.sleep(2)
+    print("succeed")
+    lis = browser.find_elements_by_xpath('//span[@class="content"]')
+    for i in lis:
+        authordic = {}
+        i.click()
+        name =""
+        email = ""
+        aff = ""
+        try:
+            name = browser.find_element_by_xpath("//div[@class='WorkspaceAuthor']/div/span[@class='text given-name']").text + " " +browser.find_element_by_xpath("//div[@class='WorkspaceAuthor']/div/span[@class='text surname']").text
+        except:
+            name = None
+        try:
+            email = browser.find_element_by_xpath("//div[@class='WorkspaceAuthor']/div[@class='e-address']").text
+        except:
+            email = None
+        try:
+            aff = browser.find_element_by_xpath("//div[@class='WorkspaceAuthor']/div[@class='affiliation']").text
+        except:
+            aff = None
+        authordic.update({'name':name,'email':email,'affiliation':aff})
+        authorlist.append(authordic)
+    print(str(authorlist))
     print("----------------------------------------------------------\n")
 # print(json_dict)
 
 get("https://www.sciencedirect.com/science/article/pii/S2212671614000109")
 get("https://www.sciencedirect.com/science/article/pii/S2212671614000134")
+
+
+
