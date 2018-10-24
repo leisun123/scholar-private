@@ -16,7 +16,8 @@ def get_data(url,major):
     tmp = extract("//div[@class='col-xs-12 col-sm-12 col-md-9 col-lg-10 person']",res,multi=True)
     for a in tmp:
         name = extract("//h4/text()",html_source=str(etree.tostring(a))).replace('-','')
-        email = extract("//p[contains(text(), '@')]/text()",html_source=str(etree.tostring(a))).replace('\xa0\xa0','').strip()
+        email = extract("//p[contains(text(), '@')]/text()",html_source=str(etree.tostring(a)))\
+            .replace('\xa0\xa0','').strip()
         web = extract("//div[@class='col-xs-12 col-sm-12 col-md-9 col-lg-10 person']/a/@href", str(etree.tostring(a)))
         organization = "Auburn University"
         print('name:',name)

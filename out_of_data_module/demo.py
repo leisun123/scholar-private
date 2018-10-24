@@ -23,7 +23,9 @@ def get(url):
         email = ""
         aff = ""
         try:
-            name = browser.find_element_by_xpath("//div[@class='WorkspaceAuthor']/div/span[@class='text given-name']").text + " " +browser.find_element_by_xpath("//div[@class='WorkspaceAuthor']/div/span[@class='text surname']").text
+            name = browser.find_element_by_xpath \
+                       ("//div[@class='WorkspaceAuthor']/div/span[@class='text given-name']").text \
+                   + " " + browser.find_element_by_xpath("//div[@class='WorkspaceAuthor']/div/span[@class='text surname']").text
         except:
             name = None
         try:
@@ -34,11 +36,14 @@ def get(url):
             aff = browser.find_element_by_xpath("//div[@class='WorkspaceAuthor']/div[@class='affiliation']").text
         except:
             aff = None
-        authordic.update({'name':name,'email':email,'affiliation':aff})
+        authordic.update({'name': name,
+                          'email': email,
+                          'affiliation': aff})
         authorlist.append(authordic)
     print(str(authorlist))
     print("----------------------------------------------------------\n")
 # print(json_dict)
+
 
 get("https://www.sciencedirect.com/science/article/pii/S2212671614000109")
 get("https://www.sciencedirect.com/science/article/pii/S2212671614000134")

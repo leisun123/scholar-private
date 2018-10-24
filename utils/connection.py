@@ -53,7 +53,7 @@ def fetch(url,requests_session=requests.Session(),
                 break
             except Exception as exc:
                 logger.warn("%s %d failed!\n%s",url,i,str(exc))
-                time.sleep(2)
+
                 continue
         if resp is None:
             raise URLFetchError(url)

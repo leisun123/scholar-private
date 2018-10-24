@@ -19,9 +19,9 @@ import requests
 
 def download(url,user_id,logger):
     try:
-        tmp = fetch(url,decode=False)
+        tmp = (url)
         try:
-            with open('../PhotoTemp/{}.jpg'.format(user_id),'wb') as f:
+            with open('{}.jpg'.format(user_id),'wb') as f:
                 f.write(tmp)
         except Exception as e:
             logger.warn("{} {} save failed! {}".format(url,user_id,e))
