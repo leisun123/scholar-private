@@ -22,7 +22,7 @@ DB_CONFIG={
     'DB_CONNECT_TYPE':'sqlalchemy',#'pymongo'sqlalchemy
     # 'DB_CONNECT_STRING':'mongodb://localhost:27017/'
     #'DB_CONNECT_STRING':'sqlite:///'+os.path.dirname(__file__)+'/data/proxy.db'
-    'DB_CONNECT_STRING' : "mysql+pymysql://root:123456@localhost/eb"
+    'DB_CONNECT_STRING' : "mysql+pymysql://root:123456@localhost/sc"
 }
 
 def get_ip_list(url, headers):
@@ -40,8 +40,11 @@ def get_random_ip(ip_list):
     proxy_list = []
     for ip in ip_list:
         proxy_list.append(ip)
-    proxy_ip = random.choice(proxy_list)
-    proxies = {proxy_ip.split('://')[0]: proxy_ip}
+    if not ip_list:
+        proxies = None
+    else:
+        proxy_ip = random.choice(proxy_list)
+        proxies = {proxy_ip.split('://')[0]: proxy_ip}
     return proxies
 
 headers = {
@@ -93,16 +96,16 @@ proxies = get_random_ip(ip_list)
 def get_user_agent():
     return random.choice(USER_AGENT)
 
-def create_ssh_tunnel():
-        server = SSHTunnelForwarder(
-                ('13.113.193.188',22),
-                ssh_username="ubuntu",
-                ssh_pkey="C:/Users/tonylu/Desktop/rainbow(1).pem",
-                remote_bind_address=('localhost',3306)
-                )
-        server.start()
-        
-        enginee = create_engine("mysql+pymysql://root:root@localhost:{}/eb".format(server.local_bind_port),\
-                                pool_size=30,
-                                max_overflow=10)
-        return enginee
+# def create_ssh_tunnel():
+#         server = SSHTunnelForwarder(
+#                 ('13.113.193.188',22),
+#                 ssh_username="ubuntu",
+#                 ssh_pkey="C:/Users/tonylu/Desktop/rainbow(1).pem",
+#                 remote_bind_address=('localhost',3306)
+#                 )
+#         server.start()
+#
+#         enginee = create_engine("mysql+pymysql://root:root@localhost:{}/eb".format(server.local_bind_port),\
+#                                 pool_size=30,
+#                                 max_overflow=10)
+#         return enginee

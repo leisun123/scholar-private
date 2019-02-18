@@ -49,9 +49,6 @@ def getArticleInfo(i):#获取所有文章的信息
         for es in lis:
             authordic = {}
             es.click()
-            name = ""
-            email = ""
-            aff = ""
             try:
                 name = browser.find_element_by_xpath(
                     "//div[@class='WorkspaceAuthor']/div/span[@class='text given-name']").text + " " + browser.find_element_by_xpath(

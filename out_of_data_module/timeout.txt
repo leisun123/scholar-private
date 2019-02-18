@@ -1,1 +1,13 @@
-calvinly@ucmail.uc.edu : https://www.ceas3.uc.edu/xml/fonts/nophoto.jpgmontjoy@ucmail.uc.edu : https://www.ceas3.uc.edu/xml/fonts/nophoto.jpgjjung1@lsu.edu : https://www.lsu.edu/eng/bae/images/philip.jung.jpg
+pbraker@nmsu.edu : https://et.nmsu.edu/files/2018/07/portrait.jpg
+barretj1@ohio.edu : 
+faliszek@ohio.edu : 
+mcvicar@ohio.edu : 
+mourning@ohio.edu : 
+chenw@ohio.edu : 
+youngd1@ohio.edu : 
+sheetsd1@ohio.edu : 
+chelberg@ohio.edu : https://www.ohio.edu/engineering/about/people/images/chelberg_david_MG_4658.jpg
+vassilia@ohio.edu : https://www.ohio.edu/engineering/faculty-staff/images/Vassiliadis_Constantinos-_2jpg.jpg
+colbert@ohio.edu : https://www.ohio.edu/engineering/manage/images/Colbert_Corinne_350x400.jpg
+walkers3@ohio.edu : 
+bwisner@ohio.edu : 

@@ -21,9 +21,10 @@ from db.operateSql import People
 url = "mysql+pymysql://root:123456@localhost/sc"
 session = connect_db(url)
 
-datas = session.query(People.name, People.email, People.major, People.web).all()
+datas = session.query(People.name, People.email, People.major, People.web, People.orginazation).all()
 
-with open('new.csv', 'w', newline='') as f:
+with open('new2.csv', 'w', newline='') as f:
     writer = csv.writer(f)
+    writer.writerow(['Name', 'email', 'major', 'web', 'organization'])
     for row in datas:
         writer.writerow(row)
